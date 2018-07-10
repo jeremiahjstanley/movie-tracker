@@ -25,5 +25,28 @@ describe('action tests', () => {
     });
   });
 
+  describe('logIn', () => {
+    it('should return an object with type of logIn, username and password', () => {
+      const username = 'LukeSkywalker';
+      const password = 'princessLeia';
+
+      const result = logIn(username, password);
+      const expected = { type: 'LOG_IN', username, password };
+
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe('logOut', () => {
+    it('should return an object with type of logOut, username', () => {
+      const username = 'LukeSkywalker';
+
+      const result = logOut(username);
+      const expected = { type: 'LOG_OUT', username };
+
+      expect(result).toEqual(expected);
+    });
+  });
+
 
 });

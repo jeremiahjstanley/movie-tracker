@@ -16,7 +16,7 @@ export const logIn = (username, password) => ({
 });
 
 export const logOut = (username) => ({
-  type: 'LOG_IN',
+  type: 'LOG_OUT',
   username
 });
 
