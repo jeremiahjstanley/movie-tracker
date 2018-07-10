@@ -1,6 +1,16 @@
-import { toggleFavorite, signUp, logIn, logOut } from './';
+import { toggleFavorite, signUp, logIn, logOut, fetchMovies } from './';
 
 describe('action tests', () => {
+
+  describe('fetchMovies', () => {
+    it('should return an object with type of fetch movies and a url', () => {
+      const url = 'www.google.com';
+      const expected = { type: 'FETCH_MOVIES', url };
+      const result = fetchMovies(url);
+
+      expect(result).toEqual(expected);
+    });
+  });
 
   describe('toggle favorites', () => {
     it('should return an object with type of toggle favorties and an id', () => {
