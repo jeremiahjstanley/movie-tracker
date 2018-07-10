@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import fetchMovieData from './apiCalls';
+import { apiKey } from './apiKey';
+import { movieCleaner } from './helper';
 
 class App extends Component {
 
-  componentDidMount() {
-    
+  componentDidMount = async () => {
+    const movies = await fetchMovieData(apiKey);
+    console.log(movieCleaner(movies));
   }
-
 
   render() {
     return (
