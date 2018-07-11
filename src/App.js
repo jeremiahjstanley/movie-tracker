@@ -1,21 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import fetchMovieData from './apiCalls';
+import { apiKey } from './apiKey';
+import { movieCleaner } from './helper';
+import { connect } from 'react-redux';
+import { addMovies } from './actions';
 
 class App extends Component {
+
+  componentDidMount = async () => {
+    const movies = await fetchMovieData(apiKey);
+    const cleanMovies = await movieCleaner(movies);
+    this.props.addMovies(cleanMovies);
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        hello world
       </div>
     );
   }
 }
+export const mapStateToProps = (state) => ({
+  movies: state.movies
+});
 
-export default App;
+export const mapDispatchToProps = (dispatch) => ({
+  addMovies: (movies) => dispatch(addMovies(movies))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

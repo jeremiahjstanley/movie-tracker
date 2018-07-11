@@ -1,3 +1,8 @@
+export const addMovies = (movies) => ({
+  type: 'ADD_MOVIES',
+  movies
+});
+
 export const toggleFavorite = (id) => ({
   type: 'TOGGLE_FAVORITE',
   id
@@ -9,6 +14,7 @@ export const signUp = (username, password, email) => ({
   password, 
   email
 });
+
 export const logIn = (username, password) => ({
   type: 'LOG_IN',
   username,

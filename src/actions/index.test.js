@@ -1,6 +1,16 @@
-import { toggleFavorite, signUp, logIn, logOut } from './';
+import { toggleFavorite, signUp, logIn, logOut, addMovies } from './';
 
 describe('action tests', () => {
+
+  describe('addMovies', () => {
+    it('should return an object with type of add movies and movies', () => {
+      const movies = [{title: 'Star Wars'}, {title: 'Emperors New Groove'}];
+      const expected = { type: 'ADD_MOVIES', movies };
+      const result = addMovies(movies);
+
+      expect(result).toEqual(expected);
+    });
+  });
 
   describe('toggle favorites', () => {
     it('should return an object with type of toggle favorties and an id', () => {
