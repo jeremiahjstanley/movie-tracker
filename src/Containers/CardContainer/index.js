@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import fetchMovieData from '../../apiCalls';
-import { apiKey } from '../../apiKey';
-import { movieCleaner } from '../../helper';
+import fetchMovieData from '../../helper/apiCalls';
+import { apiKey } from '../../helper/apiKey';
+import { movieCleaner } from '../../helper/helper';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 // import Card from '../../Components/Card';
@@ -17,13 +17,13 @@ class CardContainer extends Component {
 
   moviesToDisplay = (movies) => {
     return movies.map(movie => {
-      return <Link to={`/movies/${movie.title}`}>
-        <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.movieImage}`} width="200px"/>
-      </Link>
+      return (
+        <Link to={`/movies/${movie.title}`}>
+          <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.movieImage}`} width="200px"/>
+        </Link>
+      )
     })
   } 
-
-
 
   render() {
     
