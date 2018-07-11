@@ -4,7 +4,7 @@ import { apiKey } from '../../apiKey';
 import { movieCleaner } from '../../helper';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Card from '../../Components/Card';
+// import Card from '../../Components/Card';
 import { addMovies } from '../../actions';
 
 class CardContainer extends Component {
@@ -15,18 +15,21 @@ class CardContainer extends Component {
     this.props.addMovies(cleanMovies);
   }
 
-  moviesToDisplay = ({ movies }) => {
+  moviesToDisplay = (movies) => {
     return movies.map(movie => {
-      console.log(movie)
-    }); 
+      return <Link to={`/movies/${movie.title}`}>
+        <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.movieImage}`} width="200px"/>
+      </Link>
+    })
   } 
 
 
 
   render() {
+    
     return (
       <div>
-
+        { this.moviesToDisplay(this.props.movies) }
       </div>
     );
   }
