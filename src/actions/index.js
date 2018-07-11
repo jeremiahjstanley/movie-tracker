@@ -1,6 +1,6 @@
-export const fetchMovies = (url) => ({
-  type: 'FETCH_MOVIES',
-  url
+export const addMovies = (movies) => ({
+  type: 'ADD_MOVIES',
+  movies
 });
 
 export const toggleFavorite = (id) => ({

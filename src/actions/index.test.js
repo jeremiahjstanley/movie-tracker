@@ -1,12 +1,12 @@
-import { toggleFavorite, signUp, logIn, logOut, fetchMovies } from './';
+import { toggleFavorite, signUp, logIn, logOut, addMovies } from './';
 
 describe('action tests', () => {
 
-  describe('fetchMovies', () => {
-    it('should return an object with type of fetch movies and a url', () => {
-      const url = 'www.google.com';
-      const expected = { type: 'FETCH_MOVIES', url };
-      const result = fetchMovies(url);
+  describe('addMovies', () => {
+    it('should return an object with type of add movies and movies', () => {
+      const movies = [{title: 'Star Wars'}, {title: 'Emperors New Groove'}];
+      const expected = { type: 'ADD_MOVIES', movies };
+      const result = addMovies(movies);
 
       expect(result).toEqual(expected);
     });

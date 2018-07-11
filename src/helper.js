@@ -1,11 +1,13 @@
-export const movieCleaner = results => {
-  return {
-    title: results.original_title,
-    releaseDate: results.release_date,
-    rating: results.vote_average,
-    tagline: results.tagline,
-    movieImage: results.poster_path,
-    overview: results.overview,
+export const movieCleaner = response => {
+  const movies = response.results.map(result => ({
+    title: result.original_title,
+    releaseDate: result.release_date,
+    rating: result.vote_average,
+    tagline: result.tagline,
+    movieImage: result.poster_path,
+    overview: result.overview,
     favorite: false
-  };
+  })
+  );
+  return movies;
 };
