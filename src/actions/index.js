@@ -3,26 +3,28 @@ export const addMovies = (movies) => ({
   movies
 });
 
-export const toggleFavorite = (id) => ({
-  type: 'TOGGLE_FAVORITE',
+export const addFavorite = (movie) => ({
+  type: 'ADD_FAVORITE',
+  movie
+});
+
+export const signUp = (userName, email, id) => ({
+  type: 'SIGN_UP',
+  userName,
+  email, 
   id
 });
 
-export const signUp = (userName, password, email) => ({
-  type: 'SIGN_UP',
-  userName,
-  password, 
-  email
-});
-
-export const logIn = (email, password) => ({
+export const logIn = (email, name, id) => ({
   type: 'LOG_IN',
   email,
-  password
+  name,
+  id
 });
 
-export const logOut = (email) => ({
+export const logOut = () => ({
   type: 'LOG_OUT',
-  email
+  email: '',
+  name: ''
 });
 

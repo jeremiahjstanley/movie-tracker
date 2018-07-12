@@ -16,14 +16,14 @@ class CardContainer extends Component {
   }
 
   moviesToDisplay = (movies) => {
-    return movies.map(movie => {
+    return movies.map((movie, index) => {
       return (
-        <Link to={`/movies/${movie.title}`}>
+        <Link to={`/movies/${movie.title}`} key={`${index} + ${movie.title}`}>
           <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.movieImage}`} width="200px"/>
         </Link>
-      )
-    })
-  } 
+      );
+    });
+  }
 
   render() {
     
@@ -44,4 +44,4 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(CardContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);

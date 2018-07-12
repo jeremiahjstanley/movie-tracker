@@ -1,63 +1,81 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logIn } from '../../actions';
-import { fetchUser } from '../../helper/apiCalls'
-
-
+import { logIn, logOut } from '../../actions';
+import { fetchUser } from '../../helper/apiCalls';
 
 class LoginForm extends Component {
   constructor() {
-    super()
+    super();
 
     this.state = {
       email: '',
       password: ''
-    }
+    };
   }
 
-  handleChange = (e) => {
-    const { name, value } = e.target;
+  handleChange = (event) => {
+    const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
-  submitForm = async (e) => {
-    e.preventDefault()
-    const response = await fetchUser(this.state.email, this.state.password)
-    console.log(response)
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    const response = await fetchUser(this.state.email.toLowerCase(), this.state.password);
     
-    this.props.handleSubmit(this.state.email, this.state.password)
+    this.props.submitForm(response.data.email, response.data.name, response.data.id);
     this.setState({
       email: '',
       password: ''
-    })
+    });
+  }
+
+  logOutUser = () => {
+    this.props.logOutUser();
   }
 
   render() {
-    return(
-      <form
-        onSubmit={ this.submitForm }>
-        <input
-          type='text'
-          name='email'
-          value={ this.state.email }
-          onChange={ this.handleChange }
-        />
-        <input
-          type='password'
-          name='password'
-          value={ this.state.password }
-          onChange={ this.handleChange }
-        />
-        <button>Login</button>
-      </form>
+    if (!this.props.email) {
+      return (
+        <form
+          onSubmit={ this.handleSubmit}>
+          <input
+            type='text'
+            name='email'
+            value={ this.state.email }
+            onChange={ this.handleChange }
+          />
+          <input
+            type='password'
+            name='password'
+            value={ this.state.password }
+            onChange={ this.handleChange }
+          />
+          <button>Login</button>
+        </form>
       );
+    } else {
+      return (
+        <div>
+          <button
+            onClick={this.logOutUser}> Logout </button>
+        </div>
+      );
+    }
+  }
+}
+
+export const mapStateToProps = (state) => {
+  return {
+    email: state.login.email,
+    name: state.login.name
   };
 };
 
 export const mapStateToDispatch = (dispatch) => {
   return {
-    handleSubmit: (email, password) => dispatch(logIn(email, password))
-  }
-}
+    submitForm: (email, name, id) => dispatch(logIn(email, name, id)),
+    logOutUser: () => dispatch(logOut())
+  };
+};
 
-export default connect(null,mapStateToDispatch)(LoginForm)
+export default connect(mapStateToProps, mapStateToDispatch)(LoginForm);
