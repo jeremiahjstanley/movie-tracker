@@ -15,14 +15,14 @@ export const signUp = (userName, password, email) => ({
   email
 });
 
-export const logIn = (userName, password) => ({
+export const logIn = (email, password) => ({
   type: 'LOG_IN',
-  userName,
+  email,
   password
 });
 
-export const logOut = (userName) => ({
+export const logOut = (email) => ({
   type: 'LOG_OUT',
-  userName
+  email
 });
 

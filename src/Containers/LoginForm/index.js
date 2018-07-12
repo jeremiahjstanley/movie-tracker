@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logIn } from '../../actions'
+import { logIn } from '../../actions';
+import { fetchUser } from '../../helper/apiCalls'
 
 
 
@@ -9,7 +10,7 @@ class LoginForm extends Component {
     super()
 
     this.state = {
-      userName: '',
+      email: '',
       password: ''
     }
   }
@@ -19,11 +20,14 @@ class LoginForm extends Component {
     this.setState({ [name]: value });
   };
 
-  submitForm = (e) => {
+  submitForm = async (e) => {
     e.preventDefault()
-    this.props.handleSubmit(this.state.userName, this.state.password)
+    const response = await fetchUser(this.state.email, this.state.password)
+    console.log(response)
+    
+    this.props.handleSubmit(this.state.email, this.state.password)
     this.setState({
-      userName: '',
+      email: '',
       password: ''
     })
   }
@@ -34,8 +38,8 @@ class LoginForm extends Component {
         onSubmit={ this.submitForm }>
         <input
           type='text'
-          name='userName'
-          value={ this.state.userName }
+          name='email'
+          value={ this.state.email }
           onChange={ this.handleChange }
         />
         <input
@@ -52,7 +56,7 @@ class LoginForm extends Component {
 
 export const mapStateToDispatch = (dispatch) => {
   return {
-    handleSubmit: (userName, password) => dispatch(logIn(userName, password))
+    handleSubmit: (email, password) => dispatch(logIn(email, password))
   }
 }
 

@@ -1,9 +1,9 @@
 export const loginReducer = (state = {}, action) => {
   switch (action.type) {
     case 'LOG_IN':
-      return { userName: action.userName, password: action.password };
+      return { email: action.email, password: action.password };
     case 'LOG_OUT':
-      return { userName: action.userName };
+      return { email: action.email };
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fetchMovieData from '../../helper/apiCalls';
+import { fetchMovieData } from '../../helper/apiCalls';
 import { apiKey } from '../../helper/apiKey';
 import { movieCleaner } from '../../helper/helper';
 import { connect } from 'react-redux';
