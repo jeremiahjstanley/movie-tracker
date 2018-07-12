@@ -10,6 +10,9 @@ import SignUpForm from '../SignUpForm';
 
 class App extends Component {
 
+  addToFavorites = (id) => {
+    console.log(id);
+  }
   
   render() {
     return (
@@ -28,13 +31,12 @@ class App extends Component {
         </header>
 
         <Route path='/movies/:title' render={({match}) => {
-          const movieToDisplay=this.props.movies.find(movie => movie.title === match.params.title)
-          return <MovieDetails {...movieToDisplay}/>
+          const movieToDisplay=this.props.movies.find(movie => movie.title === match.params.title);
+          return <MovieDetails {...movieToDisplay} addToFavorites={this.addToFavorites}/>;
         }}/>
         <Route path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
-        <Route path='/' component={CardContainer}/>
-        
+        <Route path='/' component={CardContainer}/> 
       </div>
     );
   }

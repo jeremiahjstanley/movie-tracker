@@ -40,9 +40,11 @@ export const createUser = async (name, email, password) => {
       }
     });
     const results = await response.json();
-    console.log(results);
+    if (results.error) {
+      alert(results.error)
+    }
     return await results;
   } catch (error) {
-    console.log(error);
+    alert('email already exists');
   }
 };

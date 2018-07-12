@@ -1,5 +1,6 @@
 export const movieCleaner = response => {
   const movies = response.results.map(result => ({
+    id: result.id,
     backdrop: result.backdrop_path,
     favorite: false,
     movieImage: result.poster_path,

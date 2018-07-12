@@ -18,11 +18,11 @@ class LoginForm extends Component {
     this.setState({ [name]: value });
   };
 
-  submitForm = async (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
     const response = await fetchUser(this.state.email.toLowerCase(), this.state.password);
     
-    this.props.handleSubmit(response.data.email, response.data.name);
+    this.props.submitForm(response.data.email, response.data.name, response.data.id);
     this.setState({
       email: '',
       password: ''
@@ -37,7 +37,7 @@ class LoginForm extends Component {
     if (!this.props.email) {
       return (
         <form
-          onSubmit={ this.submitForm }>
+          onSubmit={ this.handleSubmit}>
           <input
             type='text'
             name='email'
@@ -73,7 +73,7 @@ export const mapStateToProps = (state) => {
 
 export const mapStateToDispatch = (dispatch) => {
   return {
-    handleSubmit: (email, name) => dispatch(logIn(email, name)),
+    submitForm: (email, name, id) => dispatch(logIn(email, name, id)),
     logOutUser: () => dispatch(logOut())
   };
 };
