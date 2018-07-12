@@ -1,39 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logIn } from '../../actions';
-import { fetchUser } from '../../helper/apiCalls'
-
-
+import { fetchUser } from '../../helper/apiCalls';
 
 class LoginForm extends Component {
   constructor() {
-    super()
+    super();
 
     this.state = {
       email: '',
       password: ''
-    }
+    };
   }
 
-  handleChange = (e) => {
-    const { name, value } = e.target;
+  handleChange = (event) => {
+    const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
-  submitForm = async (e) => {
-    e.preventDefault()
-    const response = await fetchUser(this.state.email, this.state.password)
-    console.log(response)
+  submitForm = async (event) => {
+    event.preventDefault();
+    const response = await fetchUser(this.state.email, this.state.password);
     
-    this.props.handleSubmit(this.state.email, this.state.password)
+    this.props.handleSubmit(response.data.email, response.data.name);
     this.setState({
       email: '',
       password: ''
-    })
+    });
   }
 
   render() {
-    return(
+    return (
       <form
         onSubmit={ this.submitForm }>
         <input
@@ -50,14 +47,14 @@ class LoginForm extends Component {
         />
         <button>Login</button>
       </form>
-      );
-  };
-};
-
-export const mapStateToDispatch = (dispatch) => {
-  return {
-    handleSubmit: (email, password) => dispatch(logIn(email, password))
+    );
   }
 }
 
-export default connect(null,mapStateToDispatch)(LoginForm)
+export const mapStateToDispatch = (dispatch) => {
+  return {
+    handleSubmit: (email, name) => dispatch(logIn(email, name))
+  };
+};
+
+export default connect(null,mapStateToDispatch)(LoginForm);

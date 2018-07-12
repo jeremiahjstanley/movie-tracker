@@ -6,7 +6,7 @@ export const fetchMovieData = async (key) => {
 };
 
 export const fetchUser = async (email, password) => {
-  const url = 'http://localhost:3000/api/users'
+  const url = 'http://localhost:3000/api/users';
   try {
     const response = await fetch(url, {
       method: 'POST',
@@ -18,9 +18,31 @@ export const fetchUser = async (email, password) => {
         'Content-Type': 'application/json'
       }
     })
-    const results = await response.json()  
-    return await results
+    const results = await response.json();  
+    return await results;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-} 
+};
+
+export const createUser = async (name, email, password) => {
+  const url = 'http://localhost:3000/api/users/new';
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        name,
+        email,
+        password
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const results = await response.json();
+    console.log(results);
+    return await results;
+  } catch (error) {
+    console.log(error);
+  }
+};

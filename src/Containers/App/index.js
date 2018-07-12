@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import CardContainer from '../CardContainer'
+import CardContainer from '../CardContainer';
 import './App.css';
-import { NavLink, Route, withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
-import MovieDetails from '../MovieDetails'
-import LoginForm from '../LoginForm'
+import { NavLink, Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import MovieDetails from '../MovieDetails';
+import LoginForm from '../LoginForm';
+import SignUpForm from '../SignUpForm';
 
 
 class App extends Component {
@@ -18,6 +19,9 @@ class App extends Component {
           <NavLink to='/login'>
             Login/LogOut
           </NavLink>
+          <NavLink to='/signup'>
+            SignUp
+          </NavLink>
           <NavLink to='/favorites'>
             favorites
           </NavLink>
@@ -28,6 +32,7 @@ class App extends Component {
           return <MovieDetails {...movieToDisplay}/>
         }}/>
         <Route path='/login' component={LoginForm}/>
+        <Route path='/signup' component={SignUpForm}/>
         <Route path='/' component={CardContainer}/>
         
       </div>
