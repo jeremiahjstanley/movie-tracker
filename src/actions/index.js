@@ -21,8 +21,9 @@ export const logIn = (email, name) => ({
   name
 });
 
-export const logOut = (email) => ({
+export const logOut = () => ({
   type: 'LOG_OUT',
-  email
+  email: '',
+  name: ''
 });
 
