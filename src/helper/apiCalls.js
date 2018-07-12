@@ -41,10 +41,35 @@ export const createUser = async (name, email, password) => {
     });
     const results = await response.json();
     if (results.error) {
-      alert(results.error)
+      alert(results.error);
     }
     return await results;
   } catch (error) {
     alert('email already exists');
+  }
+};
+
+export const sendFavoriteToDatabase = async (movie, userId) => {
+  const url = 'http://localhost:3000/api/users/favorites/new';
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        'movie_id': movie.id, 
+        'user_id': userId,
+        'title': movie.title, 
+        'poster_path': movie.movieImage, 
+        'release_date': movie.releaseDate, 
+        'vote_average': movie.rating, 
+        'overview': movie.overview
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const results = await response.json();
+    console.log(results);
+  } catch (error) {
+    alert('you fucked up');
   }
 };

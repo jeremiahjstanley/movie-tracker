@@ -6,12 +6,17 @@ import { connect } from 'react-redux';
 import MovieDetails from '../MovieDetails';
 import LoginForm from '../LoginForm';
 import SignUpForm from '../SignUpForm';
+import { addFavorite } from '../../actions';
+import { sendFavoriteToDatabase } from '../../helper/apiCalls';
 
 
 class App extends Component {
 
-  addToFavorites = (id) => {
-    console.log(id);
+  addFavorite = (id) => {
+    console.log(this.props.users);
+    const movieToFave = this.props.movies.find(movie => movie.id === id);
+    this.props.addToFavorites(movieToFave);
+    sendFavoriteToDatabase(movieToFave, this.props.users.id);
   }
   
   render() {
@@ -32,7 +37,7 @@ class App extends Component {
 
         <Route path='/movies/:title' render={({match}) => {
           const movieToDisplay=this.props.movies.find(movie => movie.title === match.params.title);
-          return <MovieDetails {...movieToDisplay} addToFavorites={this.addToFavorites}/>;
+          return <MovieDetails {...movieToDisplay} addToFavorites={this.addFavorite}/>;
         }}/>
         <Route path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
@@ -43,8 +48,12 @@ class App extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  movies: state.movies
+  movies: state.movies,
+  users: state.login
 });
 
+export const mapDispatchToProps = (dispatch) => ({
+  addToFavorites: (movie) => dispatch(addFavorite(movie))
+});
 
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
