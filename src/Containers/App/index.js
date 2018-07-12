@@ -4,6 +4,7 @@ import './App.css';
 import { NavLink, Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import MovieDetails from '../MovieDetails'
+import LoginForm from '../LoginForm'
 
 
 class App extends Component {
@@ -26,7 +27,7 @@ class App extends Component {
           const movieToDisplay=this.props.movies.find(movie => movie.title === match.params.title)
           return <MovieDetails {...movieToDisplay}/>
         }}/>
-
+        <Route path='/login' component={LoginForm}/>
         <Route path='/' component={CardContainer}/>
         
       </div>
