@@ -8,21 +8,21 @@ export const toggleFavorite = (id) => ({
   id
 });
 
-export const signUp = (username, password, email) => ({
+export const signUp = (userName, password, email) => ({
   type: 'SIGN_UP',
-  username,
+  userName,
   password, 
   email
 });
 
-export const logIn = (username, password) => ({
+export const logIn = (userName, password) => ({
   type: 'LOG_IN',
-  username,
+  userName,
   password
 });
 
-export const logOut = (username) => ({
+export const logOut = (userName) => ({
   type: 'LOG_OUT',
-  username
+  userName
 });
 
