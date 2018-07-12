@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CardContainer from '../CardContainer'
 import './App.css';
-import { NavLink, Route } from 'react-router-dom'
+import { NavLink, Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import MovieDetails from '../MovieDetails'
 
@@ -9,7 +9,6 @@ import MovieDetails from '../MovieDetails'
 class App extends Component {
 
   
-
   render() {
     return (
       <div className="App">
@@ -28,7 +27,7 @@ class App extends Component {
           return <MovieDetails {...movieToDisplay}/>
         }}/>
 
-        <Route path='/movies' component={CardContainer}/>
+        <Route path='/' component={CardContainer}/>
         
       </div>
     );
@@ -40,4 +39,4 @@ export const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));
