@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const MovieDetails = ({title, backdrop, releaseDate, rating, tagline, movieImage, overview, favorite, addToFavorites, id}) => { 
+const MovieDetails = ({title, backdrop, releaseDate, rating, tagline, movieImage, overview, favorite, checkFavorites, id}) => { 
   return (
     <div style={ { backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop})`, backgroundSize: 'contain' } }>
       <h1>{title}</h1>
       <h3>{tagline}</h3>
       <p>{overview}</p>
-      <button className="favorite-button" onClick={()=>{ addToFavorites(id); }}>
+      <button className="favorite-button" onClick={()=>{ checkFavorites(id); }}>
         Favorite
       </button>
       <h4>{rating}</h4>

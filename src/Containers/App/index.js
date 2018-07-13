@@ -6,17 +6,31 @@ import { connect } from 'react-redux';
 import MovieDetails from '../MovieDetails';
 import LoginForm from '../LoginForm';
 import SignUpForm from '../SignUpForm';
-import { addFavorite } from '../../actions';
-import { sendFavoriteToDatabase } from '../../helper/apiCalls';
+import { addFavorite, removeFavorite } from '../../actions';
+import { sendFavoriteToDatabase, deleteFavoriteFromDatabase } from '../../helper/apiCalls';
 
 
 class App extends Component {
 
-  addFavorite = (id) => {
-    console.log(this.props.users);
-    const movieToFave = this.props.movies.find(movie => movie.id === id);
-    this.props.addToFavorites(movieToFave);
-    sendFavoriteToDatabase(movieToFave, this.props.users.id);
+  checkFavorites = (id) => { 
+    const favorite = this.props.favorites.find(favorite => favorite.id === id);
+    if (!favorite) {
+      const movie = this.props.movies.find(movie => movie.id === id);
+      this.addFavorite(movie);
+    } else {
+      this.removeFavorite(favorite);
+    }
+  }
+
+  addFavorite = (movie) => {
+    this.props.addToFavorites(movie);
+    sendFavoriteToDatabase(movie, this.props.users.id);
+  }
+
+  removeFavorite = (movie) => {
+    const newFavorites = this.props.favorites.filter(favorite => favorite.id !== movie.id)
+    this.props.removeFromFavorites(newFavorites);
+    deleteFavoriteFromDatabase(movie.id, this.props.users.id)
   }
   
   render() {
@@ -37,7 +51,7 @@ class App extends Component {
 
         <Route path='/movies/:title' render={({match}) => {
           const movieToDisplay=this.props.movies.find(movie => movie.title === match.params.title);
-          return <MovieDetails {...movieToDisplay} addToFavorites={this.addFavorite}/>;
+          return <MovieDetails {...movieToDisplay} checkFavorites={this.checkFavorites}/>;
         }}/>
         <Route path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
@@ -49,11 +63,13 @@ class App extends Component {
 
 export const mapStateToProps = (state) => ({
   movies: state.movies,
-  users: state.login
+  users: state.login,
+  favorites: state.favorites
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  addToFavorites: (movie) => dispatch(addFavorite(movie))
+  addToFavorites: (movie) => dispatch(addFavorite(movie)),
+  removeFromFavorites: (movie) => dispatch(removeFavorite(movie))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

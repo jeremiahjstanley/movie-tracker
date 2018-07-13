@@ -49,6 +49,17 @@ export const createUser = async (name, email, password) => {
   }
 };
 
+export const getFavoritesFromDatabase = async (userId) => {
+  const url = `http://localhost:3000/api/users/${userId}/favorites`;
+  try { 
+    const response = await fetch(url)
+    const results = await response.json();
+    return results
+  } catch (error) {
+    alert('Cannot get favorites')
+  }
+}
+
 export const sendFavoriteToDatabase = async (movie, userId) => {
   const url = 'http://localhost:3000/api/users/favorites/new';
   try {
@@ -68,8 +79,19 @@ export const sendFavoriteToDatabase = async (movie, userId) => {
       }
     });
     const results = await response.json();
-    console.log(results);
   } catch (error) {
     alert('you fucked up');
+  }
+};
+
+export const deleteFavoriteFromDatabase = async (movieId, userId) => {
+  const url = `http://localhost:3000/api/users/${userId}/favorites/${movieId}`;
+  try {
+    const response = await fetch(url, {
+      method: 'DELETE'
+    })
+    const results = await response.json();
+  } catch (error) {
+    alert('You cannot unfavorite the Cage')
   }
 };
