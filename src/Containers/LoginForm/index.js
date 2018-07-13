@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logIn, logOut } from '../../actions';
-import { fetchUser } from '../../helper/apiCalls';
+import { logIn, logOut, getSavedFavorites } from '../../actions';
+import { fetchUser, getFavoritesFromDatabase } from '../../helper/apiCalls';
 
 class LoginForm extends Component {
   constructor() {
@@ -21,8 +21,9 @@ class LoginForm extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const response = await fetchUser(this.state.email.toLowerCase(), this.state.password);
-    
     this.props.submitForm(response.data.email, response.data.name, response.data.id);
+    const favorites = await getFavoritesFromDatabase(response.data.id);
+    this.props.getUserFavorites(favorites.data);
     this.setState({
       email: '',
       password: ''
@@ -73,6 +74,7 @@ export const mapStateToProps = (state) => {
 
 export const mapStateToDispatch = (dispatch) => {
   return {
+    getUserFavorites: (favorites) => dispatch(getSavedFavorites(favorites)),
     submitForm: (email, name, id) => dispatch(logIn(email, name, id)),
     logOutUser: () => dispatch(logOut())
   };
