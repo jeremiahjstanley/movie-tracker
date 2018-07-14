@@ -9,7 +9,8 @@ class LoginForm extends Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     };
   }
 
@@ -26,6 +27,10 @@ class LoginForm extends Component {
       this.props.submitForm(response.data.email, response.data.name, response.data.id);
       const favorites = await getFavoritesFromDatabase(response.data.id);
       this.props.getUserFavorites(favorites.data);
+    } else {
+      this.setState({
+        errorMessage: 'Incorrect username or password'
+      });
     }
     this.setState({
       email: '',
@@ -55,13 +60,14 @@ class LoginForm extends Component {
             onChange={ this.handleChange }
           />
           <button>Login</button>
+          <h3> {this.state.errorMessage} </h3>
         </form>
       );
     } else {
       return (
         <div>
           <button
-            onClick={this.logOutUser}> Logout </button>
+            onClick={this.props.logOutUser}> Logout </button>
         </div>
       );
     }

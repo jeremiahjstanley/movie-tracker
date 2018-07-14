@@ -15,7 +15,6 @@ class App extends Component {
 
   checkFavorites = (id) => { 
     const favorite = this.props.favorites.find(favorite => {
-      console.log(favorite);
       return favorite.id === id || favorite.movie_id === id; 
     });
     if (!favorite) {
@@ -27,8 +26,12 @@ class App extends Component {
   }
 
   addFavorite = (movie) => {
-    this.props.addToFavorites(movie);
-    sendFavoriteToDatabase(movie, this.props.users.id);
+    if (this.props.users.email) {
+      this.props.addToFavorites(movie);
+      sendFavoriteToDatabase(movie, this.props.users.id);
+    } else {
+      this.props.history.push('/login');
+    }
   }
 
   removeFavorite = (movie) => {

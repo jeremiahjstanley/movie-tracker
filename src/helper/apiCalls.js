@@ -19,10 +19,8 @@ export const fetchUser = async (email, password) => {
       }
     });
     const results = await response.json();
-    // console.log(results); 
     return await results;
   } catch (error) {
-    // console.log(error);
     alert('incorrect username or password');
   }
 };
@@ -60,7 +58,7 @@ export const getFavoritesFromDatabase = async (userId) => {
   } catch (error) {
     alert('Cannot get favorites');
   }
-}
+};
 
 export const sendFavoriteToDatabase = async (movie, userId) => {
   console.log(movie, userId);
