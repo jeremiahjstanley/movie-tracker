@@ -27,7 +27,8 @@
       "!src/index.js",
       "!src/setupTests.js",
       "!src/helper/apiKey.js",
-      "!src/registerServiceWorker.js"
+      "!src/registerServiceWorker.js",
+      "!src/reducers/index.js"
     ]
   }
 }
