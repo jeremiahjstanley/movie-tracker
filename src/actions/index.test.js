@@ -1,4 +1,4 @@
-import { addFavorite, signUp, logIn, logOut, addMovies } from './';
+import { addFavorite, updateFavorites, getSavedFavorites, signUp, logIn, logOut, addMovies } from './';
 
 describe('action tests', () => {
 
@@ -17,6 +17,26 @@ describe('action tests', () => {
       const movie = { title: 'Emperors New Groove' };
       const expected = { movie: { title: 'Emperors New Groove' }, type:'ADD_FAVORITE'};
       const result = addFavorite(movie);
+
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe('update favorites', () => {
+    it('should return an object with an array of favorites and a type of update favorite', () => {
+      const favorites = [{ title: 'Emperors New Groove' }, { title: 'Emperors New Groove' }];
+      const expected = { favorites, type: 'UPDATE_FAVORITES' };
+      const result = updateFavorites(favorites);
+
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe('get saved favorites', () => {
+    it('should return an object with an array of favorites and a type of get saved favorite', () => {
+      const favorites = [{ title: 'Emperors New Groove' }, { title: 'Emperors New Groove' }];
+      const expected = { favorites, type: 'GET_SAVED_FAVORITES' };
+      const result = getSavedFavorites(favorites);
 
       expect(result).toEqual(expected);
     });
