@@ -7,7 +7,7 @@ export const movieCleaner = response => {
     vote_average: result.vote_average,
     release_date: result.release_date,
     tagline: result.tagline,
-    original_title: result.original_title
+    title: result.original_title
   })
   );
   return movies;

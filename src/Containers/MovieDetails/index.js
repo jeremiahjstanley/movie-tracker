@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const MovieDetails = ({original_title, backdrop_path, release_date, vote_average, tagline, poster_path, overview, checkFavorites, id}) => { 
+const MovieDetails = ({title, backdrop_path, release_date, vote_average, tagline, poster_path, overview, checkFavorites, id}) => { 
   return (
     <div style={ { backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop_path})`, backgroundSize: 'contain' } }>
-      <h1>{original_title}</h1>
+      <h1>{title}</h1>
       <h3>{tagline}</h3>
       <p>{overview}</p>
       <button className="favorite-button" onClick={()=>{ checkFavorites(id); }}>

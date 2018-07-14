@@ -14,7 +14,10 @@ import { sendFavoriteToDatabase, deleteFavoriteFromDatabase } from '../../helper
 class App extends Component {
 
   checkFavorites = (id) => { 
-    const favorite = this.props.favorites.find(favorite => favorite.id === id);
+    const favorite = this.props.favorites.find(favorite => {
+      console.log(favorite);
+      return favorite.id === id || favorite.movie_id === id; 
+    });
     if (!favorite) {
       const movie = this.props.movies.find(movie => movie.id === id);
       this.addFavorite(movie);
@@ -50,8 +53,8 @@ class App extends Component {
           </NavLink>
         </header>
         <Route path='/favorites/' component={FavoritesContainer}/>
-        <Route path='/movies/:original_title' render={({match}) => {
-          const movieToDisplay=this.props.movies.find(movie => movie.original_title === match.params.original_title);
+        <Route path='/movies/:title' render={({match}) => {
+          const movieToDisplay=this.props.movies.find(movie => movie.title === match.params.title);
           return <MovieDetails {...movieToDisplay} checkFavorites={this.checkFavorites}/>;
         }}/>
         <Route path='/login' component={LoginForm}/>

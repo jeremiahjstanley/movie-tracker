@@ -52,23 +52,24 @@ export const createUser = async (name, email, password) => {
 export const getFavoritesFromDatabase = async (userId) => {
   const url = `http://localhost:3000/api/users/${userId}/favorites`;
   try { 
-    const response = await fetch(url)
+    const response = await fetch(url);
     const results = await response.json();
-    return results
+    return results;
   } catch (error) {
-    alert('Cannot get favorites')
+    alert('Cannot get favorites');
   }
 }
 
 export const sendFavoriteToDatabase = async (movie, userId) => {
+  console.log(movie, userId);
   const url = 'http://localhost:3000/api/users/favorites/new';
   try {
     const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
-        'movie_id': movie.movie_id, 
+        'movie_id': movie.id, 
         'user_id': userId,
-        'original_title': movie.original_title, 
+        'title': movie.title, 
         'poster_path': movie.poster_path, 
         'release_date': movie.release_date, 
         'vote_average': movie.vote_average, 
