@@ -19,7 +19,6 @@ class CardContainer extends Component {
       this.props.favorites.forEach(favorite => {
         if (favorite.movie_id === movie.id) {
           movie.favorite = true;
-          console.log(movie)
         }
       });
       return (

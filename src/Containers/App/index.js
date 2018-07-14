@@ -7,7 +7,7 @@ import MovieDetails from '../MovieDetails';
 import LoginForm from '../LoginForm';
 import SignUpForm from '../SignUpForm';
 import FavoritesContainer from '../FavoritesContainer';
-import { addFavorite, removeFavorite } from '../../actions';
+import { addFavorite, updateFavorites } from '../../actions';
 import { sendFavoriteToDatabase, deleteFavoriteFromDatabase } from '../../helper/apiCalls';
 
 
@@ -18,13 +18,18 @@ class App extends Component {
       return favorite.id === id || favorite.movie_id === id; 
     });
     if (!favorite) {
-      const movie = this.props.movies.find(movie => movie.id === id);
-      event.target.closest('div').classList.add('favorite');
+      const movie = this.findMovie(id);
+      movie.favorite = true;
       this.addFavorite(movie);
     } else {
-      event.target.closest('div').classList.remove('favorite');
+      const movie = this.findMovie(id);
+      movie.favorite = false;
       this.removeFavorite(favorite);
     }
+  }
+
+  findMovie = (id) => {
+    return this.props.movies.find(movie => movie.id === id);
   }
 
   addFavorite = (movie) => {
@@ -38,7 +43,7 @@ class App extends Component {
 
   removeFavorite = (movie) => {
     const newFavorites = this.props.favorites.filter(favorite => favorite.id !== movie.id);
-    this.props.removeFromFavorites(newFavorites);
+    this.props.updateFavorites(newFavorites);
     deleteFavoriteFromDatabase(movie.id, this.props.users.id);
   }
   
@@ -78,7 +83,7 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   addToFavorites: (movie) => dispatch(addFavorite(movie)),
-  removeFromFavorites: (movie) => dispatch(removeFavorite(movie))
+  updateFavorites: (movie) => dispatch(updateFavorites(movie))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
