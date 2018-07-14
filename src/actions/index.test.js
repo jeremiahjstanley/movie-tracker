@@ -1,4 +1,4 @@
-import { toggleFavorite, signUp, logIn, logOut, addMovies } from './';
+import { addFavorite, signUp, logIn, logOut, addMovies } from './';
 
 describe('action tests', () => {
 
@@ -12,11 +12,11 @@ describe('action tests', () => {
     });
   });
 
-  describe('toggle favorites', () => {
-    it('should return an object with type of toggle favorties and an id', () => {
-      const id = 7;
-      const expected = {type:'TOGGLE_FAVORITE', id: 7};
-      const result = toggleFavorite(id);
+  describe('add favorite', () => {
+    it('should return an object with a movie and a type of addFavorite', () => {
+      const movie = { title: 'Emperors New Groove' };
+      const expected = { movie: { title: 'Emperors New Groove' }, type:'ADD_FAVORITE'};
+      const result = addFavorite(movie);
 
       expect(result).toEqual(expected);
     });
@@ -24,35 +24,37 @@ describe('action tests', () => {
 
   describe('signUp', () => {
     it('should return an object with type of sign up, username, email and password', () => {
-      const username = 'LukeSkywalker';
+      const userName = 'LukeSkywalker';
       const email = 'maytheforcebewithyou@aol.com';
-      const password = 'princessLeia';
+      const id = '7';
 
-      const result = signUp(username, password, email);
-      const expected = {type:'SIGN_UP', username, password, email};
+      const result = signUp(userName, email, id);
+      const expected = {type:'SIGN_UP', userName, email, id};
 
       expect(result).toEqual(expected);
     });
   });
 
   describe('logIn', () => {
-    it('should return an object with type of logIn, username and password', () => {
-      const username = 'LukeSkywalker';
-      const password = 'princessLeia';
+    it('should return an object with type of logIn, email, nam and id', () => {
+      const name = 'LukeSkywalker';
+      const email = 'maytheforcebewithyou@aol.com';
+      const id = '7';
 
-      const result = logIn(username, password);
-      const expected = { type: 'LOG_IN', username, password };
+      const result = logIn(email, name, id);
+      const expected = { type: 'LOG_IN', email, name, id };
 
       expect(result).toEqual(expected);
     });
   });
 
   describe('logOut', () => {
-    it('should return an object with type of logOut, username', () => {
-      const username = 'LukeSkywalker';
+    it('should return an object with type of logOut, email and name which are empty strings', () => {
+      const email = '';
+      const name = '';
 
-      const result = logOut(username);
-      const expected = { type: 'LOG_OUT', username };
+      const result = logOut();
+      const expected = { type: 'LOG_OUT', email, name };
 
       expect(result).toEqual(expected);
     });
