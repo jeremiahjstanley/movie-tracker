@@ -5,9 +5,12 @@ import { connect } from 'react-redux';
 const FavoritesContainer = (props) => {
   const displayFavorites = props.favorites.map((favorite, index) => {
     return (
-      <Link to={`/favorites/${favorite.title}`} key={`${index} + ${favorite.title}`}>
-        <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${favorite.poster_path}`} width="200px"/>
-      </Link>
+      <div key={`${index} + ${favorite.title}`}>
+        <Link to={`/favorites/${favorite.title}`}>
+          <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${favorite.poster_path}`} width="200px"/>
+        </Link>
+        <button onClick={() => { props.checkFavorites(favorite.id); }}> **** </button>
+      </div>
     );
   });
 

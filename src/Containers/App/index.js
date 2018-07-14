@@ -55,7 +55,7 @@ class App extends Component {
             favorites
           </NavLink>
         </header>
-        <Route path='/favorites/' component={FavoritesContainer}/>
+        <Route path='/favorites/' render={() => <FavoritesContainer checkFavorites={this.checkFavorites} />}/>
         <Route path='/movies/:title' render={({match}) => {
           const movieToDisplay=this.props.movies.find(movie => movie.title === match.params.title);
           return <MovieDetails {...movieToDisplay} checkFavorites={this.checkFavorites}/>;

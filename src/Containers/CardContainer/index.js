@@ -8,7 +8,6 @@ import { addMovies } from '../../actions';
 
 class CardContainer extends Component {
   componentDidMount = async () => {
-    console.log(this.props);
     const movies = await fetchMovieData(apiKey);
     const cleanMovies = await movieCleaner(movies);
     this.props.addMovies(cleanMovies);
@@ -16,7 +15,6 @@ class CardContainer extends Component {
 
   moviesToDisplay = (movies) => {
     return movies.map((movie, index) => {
-      console.log(movie);
       return (
         <div key={`${index} + ${movie.title}`}>
           <Link to={`/movies/${movie.title}`} >
