@@ -5,6 +5,7 @@ import { movieCleaner } from '../../helper/helper';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addMovies } from '../../actions';
+import './styles.css';
 
 class CardContainer extends Component {
   componentDidMount = async () => {
@@ -15,12 +16,18 @@ class CardContainer extends Component {
 
   moviesToDisplay = (movies) => {
     return movies.map((movie, index) => {
+      this.props.favorites.forEach(favorite => {
+        if (favorite.movie_id === movie.id) {
+          movie.favorite = true;
+          console.log(movie)
+        }
+      });
       return (
-        <div key={`${index} + ${movie.title}`}>
+        <div className={movie.favorite ? 'favorite': ''}key={`${index} + ${movie.title}`}>
           <Link to={`/movies/${movie.title}`} >
             <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} width="200px"/>
           </Link>
-          <button onClick={() => {this.props.checkFavorites(movie.id)}}> **** </button>
+          <button onClick={(event) => {this.props.checkFavorites(movie.id, event)}}> **** </button>
         </div>  
       );
     });
@@ -28,7 +35,7 @@ class CardContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className='cardContainer'>
         { this.moviesToDisplay(this.props.movies) }
       </div>
     );
@@ -36,7 +43,8 @@ class CardContainer extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  movies: state.movies
+  movies: state.movies,
+  favorites: state.favorites
 });
 
 export const mapDispatchToProps = (dispatch) => ({

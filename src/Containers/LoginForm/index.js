@@ -24,8 +24,9 @@ class LoginForm extends Component {
     const response = await fetchUser(this.state.email.toLowerCase(), this.state.password);
     if (response) {
       this.props.submitForm(response.data.email, response.data.name, response.data.id);
-      const favorites = await getFavoritesFromDatabase(response.data.id);
-      this.props.getUserFavorites(favorites.data);
+      const results = await getFavoritesFromDatabase(response.data.id);
+      const favorites = results.data.map(favorite => ({...favorite, favorite:true}));
+      this.props.getUserFavorites(favorites);
       this.props.history.push('/');
     } else {
       this.setState({

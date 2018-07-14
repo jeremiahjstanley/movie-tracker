@@ -13,21 +13,23 @@ import { sendFavoriteToDatabase, deleteFavoriteFromDatabase } from '../../helper
 
 class App extends Component {
 
-  checkFavorites = (id) => { 
+  checkFavorites = (id, event) => { 
     const favorite = this.props.favorites.find(favorite => {
       return favorite.id === id || favorite.movie_id === id; 
     });
     if (!favorite) {
       const movie = this.props.movies.find(movie => movie.id === id);
+      event.target.closest('div').classList.add('favorite');
       this.addFavorite(movie);
     } else {
+      event.target.closest('div').classList.remove('favorite');
       this.removeFavorite(favorite);
     }
   }
 
   addFavorite = (movie) => {
     if (this.props.users.email) {
-      this.props.addToFavorites(movie);
+      this.props.addToFavorites({...movie, favorite: true});
       sendFavoriteToDatabase(movie, this.props.users.id);
     } else {
       this.props.history.push('/login');
