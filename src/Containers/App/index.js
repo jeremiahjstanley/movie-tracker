@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import MovieDetails from '../MovieDetails';
 import LoginForm from '../LoginForm';
 import SignUpForm from '../SignUpForm';
+import FavoritesContainer from '../FavoritesContainer';
 import { addFavorite, removeFavorite } from '../../actions';
 import { sendFavoriteToDatabase, deleteFavoriteFromDatabase } from '../../helper/apiCalls';
 
@@ -28,9 +29,9 @@ class App extends Component {
   }
 
   removeFavorite = (movie) => {
-    const newFavorites = this.props.favorites.filter(favorite => favorite.id !== movie.id)
+    const newFavorites = this.props.favorites.filter(favorite => favorite.id !== movie.id);
     this.props.removeFromFavorites(newFavorites);
-    deleteFavoriteFromDatabase(movie.id, this.props.users.id)
+    deleteFavoriteFromDatabase(movie.id, this.props.users.id);
   }
   
   render() {
@@ -48,9 +49,9 @@ class App extends Component {
             favorites
           </NavLink>
         </header>
-
-        <Route path='/movies/:title' render={({match}) => {
-          const movieToDisplay=this.props.movies.find(movie => movie.title === match.params.title);
+        <Route path='/favorites/' component={FavoritesContainer}/>
+        <Route path='/movies/:original_title' render={({match}) => {
+          const movieToDisplay=this.props.movies.find(movie => movie.original_title === match.params.original_title);
           return <MovieDetails {...movieToDisplay} checkFavorites={this.checkFavorites}/>;
         }}/>
         <Route path='/login' component={LoginForm}/>
