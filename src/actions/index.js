@@ -11,12 +11,12 @@ export const addFavorite = (movie) => ({
 export const updateFavorites = (favorites) => ({
   type: 'UPDATE_FAVORITES',
   favorites
-})
+});
 
 export const getSavedFavorites = (favorites) => ({
   type: 'GET_SAVED_FAVORITES',
   favorites
-})
+});
 
 export const signUp = (userName, email, id) => ({
   type: 'SIGN_UP',
