@@ -18,9 +18,11 @@ export const fetchUser = async (email, password) => {
         'Content-Type': 'application/json'
       }
     });
-    const results = await response.json();  
+    const results = await response.json();
+    // console.log(results); 
     return await results;
   } catch (error) {
+    // console.log(error);
     alert('incorrect username or password');
   }
 };
