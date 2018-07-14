@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 import { addMovies } from '../../actions';
 
 class CardContainer extends Component {
-
   componentDidMount = async () => {
+    console.log(this.props);
     const movies = await fetchMovieData(apiKey);
     const cleanMovies = await movieCleaner(movies);
     this.props.addMovies(cleanMovies);
@@ -16,10 +16,14 @@ class CardContainer extends Component {
 
   moviesToDisplay = (movies) => {
     return movies.map((movie, index) => {
+      console.log(movie);
       return (
-        <Link to={`/movies/${movie.title}`} key={`${index} + ${movie.title}`}>
-          <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} width="200px"/>
-        </Link>
+        <div key={`${index} + ${movie.title}`}>
+          <Link to={`/movies/${movie.title}`} >
+            <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} width="200px"/>
+          </Link>
+          <button onClick={() => {this.props.checkFavorites(movie.id)}}> **** </button>
+        </div>  
       );
     });
   }

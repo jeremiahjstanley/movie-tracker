@@ -18,14 +18,14 @@ const MovieDetails = ({title, backdrop_path, release_date, vote_average, tagline
 };
 
 MovieDetails.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   backdrop: PropTypes.string,
-  releaseDate: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
+  releaseDate: PropTypes.string,
+  rating: PropTypes.number,
   tagline: PropTypes.string,
-  movieImage: PropTypes.string.isRequired,
+  movieImage: PropTypes.string,
   overview: PropTypes.string,
-  favorite: PropTypes.bool.isRequired
+  favorite: PropTypes.bool
 };
 
 export default MovieDetails;

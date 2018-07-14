@@ -62,7 +62,7 @@ class App extends Component {
         }}/>
         <Route path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
-        <Route path='/' component={CardContainer}/> 
+      <Route path='/' render={() => <CardContainer checkFavorites={this.checkFavorites}/>} />
       </div>
     );
   }
