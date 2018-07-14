@@ -5,9 +5,9 @@ import { movieCleaner } from '../../helper/helper';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addMovies } from '../../actions';
+import './styles.css';
 
 class CardContainer extends Component {
-
   componentDidMount = async () => {
     const movies = await fetchMovieData(apiKey);
     const cleanMovies = await movieCleaner(movies);
@@ -16,17 +16,25 @@ class CardContainer extends Component {
 
   moviesToDisplay = (movies) => {
     return movies.map((movie, index) => {
+      this.props.favorites.forEach(favorite => {
+        if (favorite.movie_id === movie.id) {
+          movie.favorite = true;
+        }
+      });
       return (
-        <Link to={`/movies/${movie.original_title}`} key={`${index} + ${movie.original_title}`}>
-          <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} width="200px"/>
-        </Link>
+        <div className={movie.favorite ? 'favorite': ''}key={`${index} + ${movie.title}`}>
+          <Link to={`/movies/${movie.title}`} >
+            <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} width="200px"/>
+          </Link>
+          <button onClick={(event) => {this.props.checkFavorites(movie.id, event)}}> **** </button>
+        </div>  
       );
     });
   }
 
   render() {
     return (
-      <div>
+      <div className='cardContainer'>
         { this.moviesToDisplay(this.props.movies) }
       </div>
     );
@@ -34,7 +42,8 @@ class CardContainer extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  movies: state.movies
+  movies: state.movies,
+  favorites: state.favorites
 });
 
 export const mapDispatchToProps = (dispatch) => ({

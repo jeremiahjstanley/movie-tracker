@@ -9,7 +9,8 @@ class LoginForm extends Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     };
   }
 
@@ -21,17 +22,20 @@ class LoginForm extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const response = await fetchUser(this.state.email.toLowerCase(), this.state.password);
-    this.props.submitForm(response.data.email, response.data.name, response.data.id);
-    const favorites = await getFavoritesFromDatabase(response.data.id);
-    this.props.getUserFavorites(favorites.data);
-    this.setState({
-      email: '',
-      password: ''
-    });
-  }
-
-  logOutUser = () => {
-    this.props.logOutUser();
+    if (response) {
+      this.props.submitForm(response.data.email, response.data.name, response.data.id);
+      const results = await getFavoritesFromDatabase(response.data.id);
+      const favorites = results.data.map(favorite => ({...favorite, favorite:true}));
+      this.props.getUserFavorites(favorites);
+      this.props.history.push('/');
+    } else {
+      this.setState({
+        email: '',
+        password: '',
+        errorMessage: 'Incorrect username or password'
+      });
+    }
+    
   }
 
   render() {
@@ -52,13 +56,14 @@ class LoginForm extends Component {
             onChange={ this.handleChange }
           />
           <button>Login</button>
+          <h3> {this.state.errorMessage} </h3>
         </form>
       );
     } else {
       return (
         <div>
           <button
-            onClick={this.logOutUser}> Logout </button>
+            onClick={this.props.logOutUser}> Logout </button>
         </div>
       );
     }

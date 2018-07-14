@@ -18,80 +18,64 @@ export const fetchUser = async (email, password) => {
         'Content-Type': 'application/json'
       }
     });
-    const results = await response.json();  
+    const results = await response.json();
     return await results;
   } catch (error) {
-    alert('incorrect username or password');
+    return;
   }
 };
 
 export const createUser = async (name, email, password) => {
   const url = 'http://localhost:3000/api/users/new';
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        name,
-        email,
-        password
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const results = await response.json();
-    if (results.error) {
-      alert(results.error);
+  const response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify({
+      name,
+      email,
+      password
+    }),
+    headers: {
+      'Content-Type': 'application/json'
     }
-    return await results;
-  } catch (error) {
-    alert('email already exists');
+  });
+  const results = await response.json();
+  if (results.error) {
+    alert(results.error);
   }
+  return await results;
 };
 
 export const getFavoritesFromDatabase = async (userId) => {
   const url = `http://localhost:3000/api/users/${userId}/favorites`;
-  try { 
-    const response = await fetch(url)
-    const results = await response.json();
-    return results
-  } catch (error) {
-    alert('Cannot get favorites')
-  }
-}
+  const response = await fetch(url);
+  const results = await response.json();
+  return results;
+};
 
 export const sendFavoriteToDatabase = async (movie, userId) => {
   const url = 'http://localhost:3000/api/users/favorites/new';
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        'movie_id': movie.movie_id, 
-        'user_id': userId,
-        'original_title': movie.original_title, 
-        'poster_path': movie.poster_path, 
-        'release_date': movie.release_date, 
-        'vote_average': movie.vote_average, 
-        'overview': movie.overview
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const results = await response.json();
-  } catch (error) {
-    alert('you fucked up');
-  }
+  const response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify({
+      'movie_id': movie.id, 
+      'user_id': userId,
+      'title': movie.title, 
+      'poster_path': movie.poster_path, 
+      'release_date': movie.release_date, 
+      'vote_average': movie.vote_average, 
+      'overview': movie.overview
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  const results = await response.json();
 };
 
 export const deleteFavoriteFromDatabase = async (movieId, userId) => {
   const url = `http://localhost:3000/api/users/${userId}/favorites/${movieId}`;
-  try {
-    const response = await fetch(url, {
-      method: 'DELETE'
-    })
-    const results = await response.json();
-  } catch (error) {
-    alert('You cannot unfavorite the Cage')
-  }
+  const response = await fetch(url, {
+    method: 'DELETE'
+  });
+  const results = await response.json();
 };

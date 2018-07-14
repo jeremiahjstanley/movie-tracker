@@ -20,5 +20,15 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0"
+  }, 
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.js",
+      "!src/setupTests.js",
+      "!src/helper/apiKey.js",
+      "!src/registerServiceWorker.js",
+      "!src/reducers/index.js"
+    ]
   }
 }

@@ -1,0 +1,10 @@
+.favorites {
+  border: 2px solid chartreuse;
+}
+
+.favoritesContainer {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 80%;
+  overflow: scroll;
+}

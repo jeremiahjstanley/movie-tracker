@@ -7,30 +7,43 @@ import MovieDetails from '../MovieDetails';
 import LoginForm from '../LoginForm';
 import SignUpForm from '../SignUpForm';
 import FavoritesContainer from '../FavoritesContainer';
-import { addFavorite, removeFavorite } from '../../actions';
+import { addFavorite, updateFavorites } from '../../actions';
 import { sendFavoriteToDatabase, deleteFavoriteFromDatabase } from '../../helper/apiCalls';
 
 
 class App extends Component {
 
-  checkFavorites = (id) => { 
-    const favorite = this.props.favorites.find(favorite => favorite.id === id);
+  checkFavorites = (id, event) => { 
+    const favorite = this.props.favorites.find(favorite => {
+      return favorite.id === id || favorite.movie_id === id; 
+    });
     if (!favorite) {
-      const movie = this.props.movies.find(movie => movie.id === id);
+      const movie = this.findMovie(id);
+      movie.favorite = true;
       this.addFavorite(movie);
     } else {
+      const movie = this.findMovie(id);
+      movie.favorite = false;
       this.removeFavorite(favorite);
     }
   }
 
+  findMovie = (id) => {
+    return this.props.movies.find(movie => movie.id === id);
+  }
+
   addFavorite = (movie) => {
-    this.props.addToFavorites(movie);
-    sendFavoriteToDatabase(movie, this.props.users.id);
+    if (this.props.users.email) {
+      this.props.addToFavorites({...movie, favorite: true});
+      sendFavoriteToDatabase(movie, this.props.users.id);
+    } else {
+      this.props.history.push('/login');
+    }
   }
 
   removeFavorite = (movie) => {
     const newFavorites = this.props.favorites.filter(favorite => favorite.id !== movie.id);
-    this.props.removeFromFavorites(newFavorites);
+    this.props.updateFavorites(newFavorites);
     deleteFavoriteFromDatabase(movie.id, this.props.users.id);
   }
   
@@ -49,14 +62,14 @@ class App extends Component {
             favorites
           </NavLink>
         </header>
-        <Route path='/favorites/' component={FavoritesContainer}/>
-        <Route path='/movies/:original_title' render={({match}) => {
-          const movieToDisplay=this.props.movies.find(movie => movie.original_title === match.params.original_title);
+        <Route path='/favorites/' render={() => <FavoritesContainer checkFavorites={this.checkFavorites} />}/>
+        <Route path='/movies/:title' render={({match}) => {
+          const movieToDisplay=this.props.movies.find(movie => movie.title === match.params.title);
           return <MovieDetails {...movieToDisplay} checkFavorites={this.checkFavorites}/>;
         }}/>
         <Route path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
-        <Route path='/' component={CardContainer}/> 
+      <Route path='/' render={() => <CardContainer checkFavorites={this.checkFavorites}/>} />
       </div>
     );
   }
@@ -70,7 +83,7 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   addToFavorites: (movie) => dispatch(addFavorite(movie)),
-  removeFromFavorites: (movie) => dispatch(removeFavorite(movie))
+  updateFavorites: (movie) => dispatch(updateFavorites(movie))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

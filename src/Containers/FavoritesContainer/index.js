@@ -1,18 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import './styles.css';
 
 const FavoritesContainer = (props) => {
   const displayFavorites = props.favorites.map((favorite, index) => {
     return (
-      <Link to={`/favorites/${favorite.original_title}`} key={`${index} + ${favorite.original_title}`}>
-        <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${favorite.poster_path}`} width="200px"/>
-      </Link>
+      <div className='favorite' key={`${index} + ${favorite.title}`}>
+        <Link to={`/favorites/${favorite.title}`}>
+          <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${favorite.poster_path}`} width="200px"/>
+        </Link>
+        <button onClick={(event) => { props.checkFavorites(favorite.id, event); }}> **** </button>
+      </div>
     );
   });
 
   return (
-    <div>
+    <div className='favoritesContainer'>
       { displayFavorites }
     </div>
   );
