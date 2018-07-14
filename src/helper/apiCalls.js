@@ -66,12 +66,12 @@ export const sendFavoriteToDatabase = async (movie, userId) => {
     const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify({
-        'movie_id': movie.id, 
+        'movie_id': movie.movie_id, 
         'user_id': userId,
-        'title': movie.title, 
-        'poster_path': movie.movieImage, 
-        'release_date': movie.releaseDate, 
-        'vote_average': movie.rating, 
+        'original_title': movie.original_title, 
+        'poster_path': movie.poster_path, 
+        'release_date': movie.release_date, 
+        'vote_average': movie.vote_average, 
         'overview': movie.overview
       }),
       headers: {
