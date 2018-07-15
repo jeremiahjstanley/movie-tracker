@@ -1,0 +1,16 @@
+.app {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  text-align: center;
+}
+
+.app-header {
+  grid-column: 1/3;
+  background-color: white;
+  position: sticky;
+  height: 3rem;
+}
+
+.favorite {
+  border: 2px solid chartreuse;
+}
