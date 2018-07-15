@@ -1,5 +1,18 @@
 .cardContainer {
   display: flex;
-  justify-content: space-evenly;
   flex-wrap: wrap;
+  grid-column: 2;
+  justify-content: start;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.movie-card {
+  margin: 1rem;
+}
+
+.movie-image {
+  width: 10rem;
+  height: 15rem;
+  background-size: contain;
 }
