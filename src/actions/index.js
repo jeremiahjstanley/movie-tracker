@@ -13,11 +13,6 @@ export const updateFavorites = (favorites) => ({
   favorites
 });
 
-export const getSavedFavorites = (favorites) => ({
-  type: 'GET_SAVED_FAVORITES',
-  favorites
-});
-
 export const signUp = (userName, email, id) => ({
   type: 'SIGN_UP',
   userName,
