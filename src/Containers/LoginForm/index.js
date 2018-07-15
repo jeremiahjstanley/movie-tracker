@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logIn, logOut, getSavedFavorites } from '../../actions';
+import { logIn, logOut, updateFavorites } from '../../actions';
 import { fetchUser, getFavoritesFromDatabase } from '../../helper/apiCalls';
 
 class LoginForm extends Component {
@@ -27,7 +27,7 @@ class LoginForm extends Component {
     localStorage.removeItem('user');
     this.props.history.push('/');
   }
-  
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -39,7 +39,7 @@ class LoginForm extends Component {
     if (response) {
       const { email, name, id } = response.data;
       this.storeUser(email, name, id)
-      this.props.submitForm(email, name, id);
+      this.props.logInUser(email, name, id);
       const results = await getFavoritesFromDatabase(id);
       const favorites = results.data.map(favorite => ({...favorite, favorite: true}));
       this.props.getUserFavorites(favorites);
@@ -96,8 +96,8 @@ export const mapStateToProps = (state) => {
 
 export const mapStateToDispatch = (dispatch) => {
   return {
-    getUserFavorites: (favorites) => dispatch(getSavedFavorites(favorites)),
-    submitForm: (email, name, id) => dispatch(logIn(email, name, id)),
+    getUserFavorites: (favorites) => dispatch(updateFavorites(favorites)),
+    logInUser: (email, name, id) => dispatch(logIn(email, name, id)),
     logOutUser: () => dispatch(logOut())
   };
 };
