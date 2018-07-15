@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './styles.css';
+import PropTypes from 'prop-types'
 
 const FavoritesContainer = (props) => {
   const displayFavorites = props.favorites.map((favorite, index) => {
@@ -22,10 +23,15 @@ const FavoritesContainer = (props) => {
   );
 };
 
-
 export const mapStateToProps = (state) => ({
   favorites: state.favorites
 });
+
+FavoritesContainer.propTypes = {
+  checkFavorites: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  favorites: PropTypes.array.isRequired
+}
 
 
 export default connect(mapStateToProps)(FavoritesContainer);
