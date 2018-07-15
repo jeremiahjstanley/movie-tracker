@@ -3,8 +3,10 @@
 }
 
 .favoritesContainer {
+  grid-column: 1;
   display: flex;
   justify-content: space-evenly;
   max-width: 80%;
   overflow: scroll;
 }
+

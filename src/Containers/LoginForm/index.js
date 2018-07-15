@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logIn, logOut, updateFavorites } from '../../actions';
+import { NavLink } from 'react-router-dom';
+import { logIn, updateFavorites } from '../../actions';
 import { fetchUser, getFavoritesFromDatabase } from '../../helper/apiCalls';
 
 class LoginForm extends Component {
@@ -14,18 +15,9 @@ class LoginForm extends Component {
     };
   }
 
-
   storeUser = (email, name, id) => {
     const user = { email, name, id };
     localStorage.setItem('user', JSON.stringify(user));
-  }
-
-  logOut = () => {
-    const favorites = [];
-    this.props.getUserFavorites(favorites);
-    this.props.logOutUser();
-    localStorage.removeItem('user');
-    this.props.history.push('/');
   }
 
   handleChange = (event) => {
@@ -51,38 +43,32 @@ class LoginForm extends Component {
         errorMessage: 'Incorrect username or password'
       });
     }
-    
   }
 
   render() {
-    if (!this.props.email) {
-      return (
-        <form
-          onSubmit={ this.handleSubmit}>
-          <input
-            type='text'
-            name='email'
-            value={ this.state.email }
-            onChange={ this.handleChange }
-          />
-          <input
-            type='password'
-            name='password'
-            value={ this.state.password }
-            onChange={ this.handleChange }
-          />
-          <button>Login</button>
-          <h3> { this.state.errorMessage } </h3>
-        </form>
-      );
-    } else {
-      return (
-        <div>
-          <button
-            onClick={ this.logOut }> Logout </button>
-        </div>
-      );
-    }
+    return (
+      <form
+        onSubmit={ this.handleSubmit}
+        className='log-in-form'>
+        <input
+          type='text'
+          name='email'
+          value={ this.state.email }
+          onChange={ this.handleChange }
+        />
+        <input
+          type='password'
+          name='password'
+          value={ this.state.password }
+          onChange={ this.handleChange }
+        />
+        <button>Login</button>
+        <h3> { this.state.errorMessage } </h3>
+        <NavLink to='/signup'>
+          Don't have an account?
+        </NavLink>
+      </form>
+    );
   }
 }
 
@@ -98,7 +84,6 @@ export const mapStateToDispatch = (dispatch) => {
   return {
     getUserFavorites: (favorites) => dispatch(updateFavorites(favorites)),
     logInUser: (email, name, id) => dispatch(logIn(email, name, id)),
-    logOutUser: () => dispatch(logOut())
   };
 };
 

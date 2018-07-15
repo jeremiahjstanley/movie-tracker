@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { createUser } from '../../helper/apiCalls';
 import { signUp } from '../../actions';
+import './styles.css'
 
 class SignUpForm extends Component {
   constructor() {
@@ -34,7 +36,9 @@ class SignUpForm extends Component {
   render() {
     return (
       <form
-        onSubmit={this.handleSubmit}>
+        onSubmit={this.handleSubmit}
+        className='sign-up-form'
+      >
         <input
           type='text'
           name='name'
@@ -54,6 +58,9 @@ class SignUpForm extends Component {
           onChange={this.handleChange}
         />
         <button>Sign Up!</button>
+        <NavLink to='/login'>
+            Have an exisiting account? Login here.
+        </NavLink>
       </form>
     );
   }

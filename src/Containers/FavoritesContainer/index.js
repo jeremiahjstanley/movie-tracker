@@ -2,15 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './styles.css';
+import PropTypes from 'prop-types'
 
 const FavoritesContainer = (props) => {
   const displayFavorites = props.favorites.map((favorite, index) => {
     return (
-      <div className='favorite' key={`${index} + ${favorite.title}`}>
+      <div>
         <Link to={`/favorites/${favorite.title}`}>
-          <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${favorite.poster_path}`} width="200px"/>
+          <div 
+            className='favorite' 
+            key={`${index} + ${favorite.title}`}
+            style={ { backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${favorite.poster_path})` }}
+          >
+          </div>
         </Link>
-        <button onClick={(event) => { props.checkFavorites(favorite.id, event); }}> **** </button>
+        <button onClick={() => { props.checkFavorites(favorite.movie_id); }}> **** </button>
       </div>
     );
   });
@@ -22,10 +28,15 @@ const FavoritesContainer = (props) => {
   );
 };
 
-
 export const mapStateToProps = (state) => ({
   favorites: state.favorites
 });
+
+FavoritesContainer.propTypes = {
+  checkFavorites: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  favorites: PropTypes.array.isRequired
+}
 
 
 export default connect(mapStateToProps)(FavoritesContainer);

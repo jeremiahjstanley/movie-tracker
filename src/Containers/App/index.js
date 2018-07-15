@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import CardContainer from '../CardContainer';
-import './App.css';
-import { NavLink, Route, withRouter } from 'react-router-dom';
+import { NavLink, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import MovieDetails from '../MovieDetails';
+import { sendFavoriteToDatabase, deleteFavoriteFromDatabase, getFavoritesFromDatabase } from '../../helper/apiCalls';
+import { addFavorite, updateFavorites, logIn, logOut } from '../../actions';
+import FavoritesContainer from '../FavoritesContainer';
+import CardContainer from '../CardContainer';
 import LoginForm from '../LoginForm';
 import SignUpForm from '../SignUpForm';
-import FavoritesContainer from '../FavoritesContainer';
-import { addFavorite, updateFavorites, logIn } from '../../actions';
-import { sendFavoriteToDatabase, deleteFavoriteFromDatabase, getFavoritesFromDatabase } from '../../helper/apiCalls';
-
+import MovieDetails from '../MovieDetails';
+import './styles.css';
 
 class App extends Component {
 
@@ -28,9 +27,9 @@ class App extends Component {
     } 
   }
 
-  checkFavorites = (id, event) => { 
+  checkFavorites = (id) => { 
     const favorite = this.props.favorites.find(favorite => {
-      return favorite.id === id || favorite.movie_id === id; 
+      return favorite.movie_id === id || favorite.id === id; 
     });
     if (!favorite) {
       const movie = this.findMovie(id);
@@ -43,9 +42,9 @@ class App extends Component {
     }
   }
 
-
   findMovie = (id) => {
-    return this.props.movies.find(movie => movie.id === id);
+    console.log(id)
+    return this.props.movies.find(movie => movie.id === id || movie.movie_id === id);
   }
 
   addFavorite = (movie) => {
@@ -60,31 +59,39 @@ class App extends Component {
   removeFavorite = (movie) => {
     const newFavorites = this.props.favorites.filter(favorite => favorite.id !== movie.id);
     this.props.updateFavorites(newFavorites);
-    console.log(movie.id, movie.movie_id)
-    deleteFavoriteFromDatabase(movie.movie_id, this.props.users.id);
+    deleteFavoriteFromDatabase(movie.movie_id || movie.id, this.props.users.id);
   }
   
+  logOut = () => {
+    const favorites = [];
+    this.props.getUserFavorites(favorites);
+    this.props.logOutUser();
+    localStorage.removeItem('user');
+    this.props.history.push('/');
+  }
+
   render() {
     return (
-      <div className="App">
-
+      <div className="app">
         <header className="app-header">
-          <NavLink to='/login'>
-            Login/LogOut
+          <NavLink to='/'>
+            Home
           </NavLink>
-          <NavLink to='/signup'>
-            SignUp
+          <NavLink to='/login'>
+            { this.props.users.id ? <a onClick={ this.logOut }>Logout</a> : 'Login'}
           </NavLink>
           <NavLink to='/favorites'>
-            favorites
+            { this.props.favorites.length ? 'Favorites' : ''}
           </NavLink>
         </header>
+
         <Route path='/favorites/' render={() => <FavoritesContainer checkFavorites={this.checkFavorites} />}/>
         <Route path='/movies/:title' render={({match}) => {
           const movieToDisplay=this.props.movies.find(movie => movie.title === match.params.title);
           return <MovieDetails {...movieToDisplay} checkFavorites={this.checkFavorites}/>;
         }}/>
-        <Route path='/login' component={LoginForm}/>
+
+        <Route exact path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
       <Route path='/' render={() => <CardContainer checkFavorites={this.checkFavorites}/>} />
       </div>
@@ -100,7 +107,9 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   logInUser: (email, name, id) => dispatch(logIn(email, name, id)),
+  logOutUser: () => dispatch(logOut()),
   addToFavorites: (movie) => dispatch(addFavorite(movie)),
+  getUserFavorites: (favorites) => dispatch(updateFavorites(favorites)),
   updateFavorites: (movie) => dispatch(updateFavorites(movie)),
 });
 
