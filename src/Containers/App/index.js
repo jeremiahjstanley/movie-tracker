@@ -21,7 +21,7 @@ class App extends Component {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       const { email, name, id } = user;
-      this.props.submitForm(email, name, id);
+      this.props.logInUser(email, name, id);
       const results = await getFavoritesFromDatabase(id);
       const favorites = results.data.map(favorite => ({...favorite, favorite: true}));
       this.props.updateFavorites(favorites);
@@ -99,7 +99,7 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  submitForm: (email, name, id) => dispatch(logIn(email, name, id)),
+  logInUser: (email, name, id) => dispatch(logIn(email, name, id)),
   addToFavorites: (movie) => dispatch(addFavorite(movie)),
   updateFavorites: (movie) => dispatch(updateFavorites(movie)),
 });
