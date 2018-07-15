@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 40% 60%;
   text-align: center;
+  letter-spacing: .1em;
 }
 
 .app-header {
@@ -12,5 +13,14 @@
 }
 
 .favorite {
-  border: 2px solid chartreuse;
+  box-shadow: inset 0 0 1em .5em #B9090B;
+}
+
+button {
+  color: #F3F3F3;
+  background-color: #B9090B;
+  border: 0;
+  font-size: 1em;
+  padding: .5em;
+  font-weight: 100;
 }
