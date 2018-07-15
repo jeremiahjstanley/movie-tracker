@@ -8,6 +8,7 @@ import { addMovies } from '../../actions';
 import './styles.css';
 
 class CardContainer extends Component {
+
   componentDidMount = async () => {
     const movies = await fetchMovieData(apiKey);
     const cleanMovies = await movieCleaner(movies);
@@ -22,12 +23,16 @@ class CardContainer extends Component {
         }
       });
       return (
-        <div className={movie.favorite ? 'favorite': ''}key={`${index} + ${movie.title}`}>
+        <div className='movie-card'>
           <Link to={`/movies/${movie.title}`} >
-            <img src={`https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path}`} width="200px"/>
+          <div 
+            className={movie.favorite ? 'favorite movie-image': 'movie-image'}
+            key={`${index} + ${movie.title}`}
+            style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path})`}}>
+          </div> 
           </Link>
           <button onClick={(event) => {this.props.checkFavorites(movie.id, event)}}> **** </button>
-        </div>  
+        </div> 
       );
     });
   }
