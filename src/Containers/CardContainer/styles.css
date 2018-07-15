@@ -16,3 +16,7 @@
   height: 15rem;
   background-size: contain;
 }
+
+.movie-card button {
+  width: 100%; 
+}
