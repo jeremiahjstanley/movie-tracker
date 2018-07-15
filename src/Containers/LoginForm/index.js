@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logIn, logOut, getSavedFavorites } from '../../actions';
+import { logIn, logOut, updateFavorites } from '../../actions';
 import { fetchUser, getFavoritesFromDatabase } from '../../helper/apiCalls';
 
 class LoginForm extends Component {
@@ -14,6 +14,20 @@ class LoginForm extends Component {
     };
   }
 
+
+  storeUser = (email, name, id) => {
+    const user = { email, name, id };
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  logOut = () => {
+    const favorites = [];
+    this.props.getUserFavorites(favorites);
+    this.props.logOutUser();
+    localStorage.removeItem('user');
+    this.props.history.push('/');
+  }
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -23,9 +37,11 @@ class LoginForm extends Component {
     event.preventDefault();
     const response = await fetchUser(this.state.email.toLowerCase(), this.state.password);
     if (response) {
-      this.props.submitForm(response.data.email, response.data.name, response.data.id);
-      const results = await getFavoritesFromDatabase(response.data.id);
-      const favorites = results.data.map(favorite => ({...favorite, favorite:true}));
+      const { email, name, id } = response.data;
+      this.storeUser(email, name, id)
+      this.props.logInUser(email, name, id);
+      const results = await getFavoritesFromDatabase(id);
+      const favorites = results.data.map(favorite => ({...favorite, favorite: true}));
       this.props.getUserFavorites(favorites);
       this.props.history.push('/');
     } else {
@@ -56,14 +72,14 @@ class LoginForm extends Component {
             onChange={ this.handleChange }
           />
           <button>Login</button>
-          <h3> {this.state.errorMessage} </h3>
+          <h3> { this.state.errorMessage } </h3>
         </form>
       );
     } else {
       return (
         <div>
           <button
-            onClick={this.props.logOutUser}> Logout </button>
+            onClick={ this.logOut }> Logout </button>
         </div>
       );
     }
@@ -73,14 +89,15 @@ class LoginForm extends Component {
 export const mapStateToProps = (state) => {
   return {
     email: state.login.email,
-    name: state.login.name
+    name: state.login.name,
+    favorites: state.favorites
   };
 };
 
 export const mapStateToDispatch = (dispatch) => {
   return {
-    getUserFavorites: (favorites) => dispatch(getSavedFavorites(favorites)),
-    submitForm: (email, name, id) => dispatch(logIn(email, name, id)),
+    getUserFavorites: (favorites) => dispatch(updateFavorites(favorites)),
+    logInUser: (email, name, id) => dispatch(logIn(email, name, id)),
     logOutUser: () => dispatch(logOut())
   };
 };
