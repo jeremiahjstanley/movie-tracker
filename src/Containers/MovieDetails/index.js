@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import './styles.css'
 
 const MovieDetails = ({title, backdrop_path, release_date, vote_average, tagline, poster_path, overview, checkFavorites, id}) => { 
   return (
-    <div style={ { backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop_path})`, backgroundSize: 'contain' } }>
+    <div 
+      className='detail-card'
+      style={ { backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop_path})`} }
+    >
+    <div className='detail-text'>
       <h1>{title}</h1>
       <h3>{tagline}</h3>
       <p>{overview}</p>
@@ -13,6 +17,7 @@ const MovieDetails = ({title, backdrop_path, release_date, vote_average, tagline
       </button>
       <h4>{vote_average}</h4>
       <h4>{release_date}</h4>
+    </div>
     </div>
   );
 };
