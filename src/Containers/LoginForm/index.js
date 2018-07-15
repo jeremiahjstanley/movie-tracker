@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { logIn, updateFavorites } from '../../actions';
 import { fetchUser, getFavoritesFromDatabase } from '../../helper/apiCalls';
 
@@ -49,24 +49,37 @@ class LoginForm extends Component {
     return (
       <form
         onSubmit={ this.handleSubmit}
-        className='log-in-form'>
+        className='form'
+      >
+        <Link to='/' className='exit-form'>
+          X
+        </Link>
+        <h1 className='form-header'>Sign In</h1>
         <input
+          className='email-field'
+          aria-label='Please Enter Your Email'
+          placeholder='email'
           type='text'
           name='email'
           value={ this.state.email }
           onChange={ this.handleChange }
         />
         <input
+          className='password-field'
+          aria-label='Please Enter Your Password'
+          placeholder='password'
           type='password'
           name='password'
           value={ this.state.password }
           onChange={ this.handleChange }
         />
-        <button>Login</button>
+        <button aria-label='Sign in to your account'>
+          Login
+        </button>
         <h3> { this.state.errorMessage } </h3>
-        <NavLink to='/signup'>
+        <Link to='/signup'>
           Don't have an account?
-        </NavLink>
+        </Link>
       </form>
     );
   }
