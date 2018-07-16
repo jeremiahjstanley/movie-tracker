@@ -62,6 +62,7 @@ export class LoginForm extends Component {
           placeholder='email'
           type='text'
           name='email'
+          className='email-input'
           value={ this.state.email }
           onChange={ this.handleChange }
         />
@@ -71,6 +72,7 @@ export class LoginForm extends Component {
           placeholder='password'
           type='password'
           name='password'
+          className='password-input'
           value={ this.state.password }
           onChange={ this.handleChange }
         />

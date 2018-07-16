@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './styles.css';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
-const FavoritesContainer = (props) => {
+export const FavoritesContainer = (props) => {
   const displayFavorites = props.favorites.map((favorite, index) => {
     return (
       <div>
@@ -36,7 +36,7 @@ FavoritesContainer.propTypes = {
   checkFavorites: PropTypes.func.isRequired,
   dispatch: PropTypes.func.isRequired,
   favorites: PropTypes.array.isRequired
-}
+};
 
 
 export default connect(mapStateToProps)(FavoritesContainer);
