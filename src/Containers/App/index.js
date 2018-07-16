@@ -100,7 +100,7 @@ export const mapDispatchToProps = (dispatch) => ({
   logOutUser: () => dispatch(logOut()),
   addToFavorites: (movie) => dispatch(addFavorite(movie)),
   getUserFavorites: (favorites) => dispatch(updateFavorites(favorites)),
-  updateFavorites: (movie) => dispatch(updateFavorites(movie)),
+  updateFavorites: (movie) => dispatch(updateFavorites(movie))
 });
 
 App.propTypes = {
