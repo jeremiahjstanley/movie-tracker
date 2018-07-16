@@ -9,14 +9,13 @@ const MovieDetails = ({title, backdrop_path, release_date, vote_average, tagline
       style={ { backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop_path})`} }
     >
     <div className='detail-text'>
-      <h1>{title}</h1>
-      <h3>{tagline}</h3>
-      <p>{overview}</p>
+      <h1 className='detail-heading'>{title}</h1>
+      <h3 className='detail-heading'>{tagline}</h3>
+      <p className='detail-overview'>{overview}</p>
       <button className="favorite-button" onClick={()=>{ checkFavorites(id); }}>
-        Favorite
+        Add to Favorites
       </button>
-      <h4>{vote_average}</h4>
-      <h4>{release_date}</h4>
+      <h4 className='detail-heading detail-inline'>Rating: {vote_average} | Released: {release_date}</h4>
     </div>
     </div>
   );
