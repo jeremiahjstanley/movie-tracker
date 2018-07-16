@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import logo from './resources/logo.png'
 import './styles.css'
 
-class Header extends Component {
+export class Header extends Component {
 
   render() {
     return (
@@ -13,17 +13,17 @@ class Header extends Component {
         <img src={logo} className='logo' alt='Cage Tracker Logo'/>
         <ul className='navigation-links'>
           <li>
-            <NavLink to='/'>
+            <NavLink className='home-link' to='/'>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to='/login'>
-              { this.props.users.id ? <a onClick={ this.props.logOut }>Logout</a> : 'Login'}
+            <NavLink className='login-link' to='/login'>
+              { this.props.users.id ? <a className='log-out' onClick={ this.props.logOut }>Logout</a> : 'Login'}
             </NavLink>
           </li>
           <li>
-            <NavLink to='/favorites'>
+            <NavLink className='favorites-link' to='/favorites'>
               { this.props.favorites.length ? 'Favorites' : ''}
             </NavLink>
           </li>

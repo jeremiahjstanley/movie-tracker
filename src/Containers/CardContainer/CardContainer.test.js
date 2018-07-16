@@ -1,25 +1,55 @@
 import React from 'react';
-import { CardContainer } from './index.js';
+import { CardContainer, mapDispatchToProps } from './index.js';
 import { shallow, mount } from 'enzyme';
+import { fetchMovieData } from '../../helper/apiCalls';
+import { movieCleaner } from '../../helper/helper';
+import { addMovies } from '../../actions';
 
+jest.mock('../../helper/apiCalls')
+jest.mock('../../helper/helper')
 
 describe('CardContainer', () => {
-  it('should match the snapshot', () => {
-    const mockMovies = [{title:'ConAir', id:7, poster_path:'google.com'}];
-    const mockFavorites = [{title:'ConAir', movie_id:9}];
-    const wrapper = shallow(<CardContainer movies={mockMovies} favorites={mockFavorites} />, { disableLifecycleMethods: true });
+  let mockMovies;
+  let mockFavorites;
+  let mockCheckFavorites;
+  let wrapper;
 
+  beforeEach(() => {
+    mockMovies = [{title:'ConAir', id:7, poster_path:'google.com'}];
+    mockFavorites = [{title:'ConAir', movie_id:7}];
+    mockCheckFavorites = jest.fn();
+    wrapper = shallow(<CardContainer movies={mockMovies} favorites={mockFavorites} checkFavorites={mockCheckFavorites} />, { disableLifecycleMethods: true });
+  })
+
+  it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should invoke checkFavorites when favorite button is clicked', () => {
-    const mockMovies = [{ title: 'ConAir', id: 7, poster_path: 'google.com' }];
-    const mockFavorites = [{ title: 'ConAir', movie_id: 9 }];
-    const mockCheckFavorites = jest.fn();
-    const wrapper = shallow(<CardContainer movies={mockMovies} favorites={mockFavorites} checkFavorites={mockCheckFavorites} />, { disableLifecycleMethods: true });
-
     wrapper.find('button').simulate('click');
 
     expect(mockCheckFavorites).toHaveBeenCalled();
   });
+
+  it('when component is mounted, fetchMovieData is called with correct param', async () => {
+    wrapper = shallow(<CardContainer movies={mockMovies} favorites={mockFavorites} addMovies={jest.fn()}/>);
+
+    await expect(fetchMovieData).toHaveBeenCalled();
+  })
+
+  it('should add a favorite prop of true if the movie is in the favorites array', () => {
+    expect(mockMovies[0].favorite).toBe(true);
+  })
+
+  it.skip('calls dispatch with an addMovies action on cage load', () => {
+    wrapper = shallow(<CardContainer movies={mockMovies} favorites={mockFavorites} addMovies={jest.fn()}/>);
+    const mockDispatch = jest.fn();
+    const actionToDispatch = addMovies(mockMovies)
+
+    mapDispatchToProps(mockDispatch)
+
+    
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+
+  })
 });

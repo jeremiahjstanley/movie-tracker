@@ -32,7 +32,7 @@ export class CardContainer extends Component {
             style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path})`}}>
           </div> 
           </Link>
-          <button onClick={(event) => {this.props.checkFavorites(movie.id, event)}}>Favorite</button>
+          <button onClick={() => {this.props.checkFavorites(movie.id)}}>Favorite</button>
         </div> 
       );
     });
