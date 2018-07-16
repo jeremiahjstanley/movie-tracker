@@ -1,13 +1,13 @@
 .form {
   background-color: rgb(243, 243, 243, .8);
-  width: 30rem;
+  border: .25rem solid #B9090B;
   height: 30rem;
+  margin: auto;
+  width: 30rem;
   position: absolute;
   top: 5rem;
   left: 0;
   right: 0;
-  margin: auto;
-  border: .25rem solid #B9090B;
 }
 
 .form-header { 
@@ -18,7 +18,11 @@
 }
 
 .exit-form {
-  
+  border-radius: 20px;
+  border: 2px solid;
+  float: right;
+  margin: 1rem;
+  padding: .5rem .7rem;
 }
 
 input {
@@ -36,20 +40,15 @@ input::placeholder {
 }
 
 .form a {
-  text-decoration: none;
   color: #0080ff;
+  text-decoration: none;
 }
 
 .form button {
-  color: #F3F3F3;
-  letter-spacing: .1em;
-  background-color: #B9090B;
-  border: 0;
   display: block;
   font-size: 1.25em;
   font-weight: 200;
   margin: 2rem auto;
-  padding: .5rem;
   width: 60%; 
 }
 
