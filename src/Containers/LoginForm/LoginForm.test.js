@@ -1,6 +1,6 @@
 import React from 'react';
 import { LoginForm } from './index.js';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 
 describe('Login Form tests', () => {
@@ -28,14 +28,14 @@ describe('Login Form tests', () => {
     expect(wrapper.state('email')).toBe('NickCage@aol.com');
   });
 
-  it('should calls handleChange when the email field changes', () => {
-    const wrapper = shallow(<LoginForm />);
+  it('should invoke handleChange when the email field changes', () => {
+    const wrapper = mount(<LoginForm/>);
     const spy = spyOn(wrapper.instance(), 'handleChange');
     wrapper.instance().forceUpdate();
     const mockEvent = { target: { value: 'NickCage@aol.com', name: 'email' } };
     wrapper.find('.email-input').simulate('change', mockEvent);
 
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith();
   });
 
   // it('should calls handleChange when the password field changes', () => {

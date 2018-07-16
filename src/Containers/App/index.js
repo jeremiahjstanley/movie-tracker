@@ -12,7 +12,7 @@ import MovieDetails from '../MovieDetails';
 import Header from '../Header'
 import './styles.css';
 
-class App extends Component {
+export class App extends Component {
 
   componentDidMount() {
     this.getUser();
