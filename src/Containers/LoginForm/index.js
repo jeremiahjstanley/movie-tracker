@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { logIn, updateFavorites } from '../../actions';
 import { fetchUser, getFavoritesFromDatabase } from '../../helper/apiCalls';
 
@@ -98,6 +99,14 @@ export const mapStateToDispatch = (dispatch) => {
     getUserFavorites: (favorites) => dispatch(updateFavorites(favorites)),
     logInUser: (email, name, id) => dispatch(logIn(email, name, id)),
   };
+};
+
+LoginForm.propTypes = {
+  email: PropTypes.string,
+  name: PropTypes.string,
+  favorites: PropTypes.array.isRequired,
+  getUserFavorites: PropTypes.func.isRequired,
+  logInUser: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapStateToDispatch)(LoginForm);
