@@ -70,6 +70,7 @@ export const sendFavoriteToDatabase = async (movie, userId) => {
     }
   });
   const results = await response.json();
+  return results;
 };
 
 export const deleteFavoriteFromDatabase = async (movieId, userId) => {
@@ -78,4 +79,5 @@ export const deleteFavoriteFromDatabase = async (movieId, userId) => {
     method: 'DELETE'
   });
   const results = await response.json();
+  return results;
 };
