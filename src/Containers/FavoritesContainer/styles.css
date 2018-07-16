@@ -7,9 +7,9 @@
 .favorites-container {
   display: flex;
   justify-content: space-around;
+  margin: 1rem 0;
   max-width: 100%;
   overflow: scroll;
-
 }
 
 .favorites-container button {
