@@ -8,21 +8,21 @@ const FavoritesContainer = (props) => {
   const displayFavorites = props.favorites.map((favorite, index) => {
     return (
       <div>
-        <Link to={`/favorites/${favorite.title}`}>
+        <Link to={`/movies/${favorite.title}`}>
           <div 
-            className='favorite' 
+            className='favorite favorite-card' 
             key={`${index} + ${favorite.title}`}
             style={ { backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${favorite.poster_path})` }}
           >
           </div>
         </Link>
-        <button onClick={() => { props.checkFavorites(favorite.movie_id); }}> **** </button>
+        <button onClick={() => { props.checkFavorites(favorite.movie_id); }}>Unfavorite</button>
       </div>
     );
   });
 
   return (
-    <div className='favoritesContainer'>
+    <div className='favorites-container'>
       { displayFavorites }
     </div>
   );
