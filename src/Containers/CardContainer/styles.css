@@ -2,8 +2,8 @@
   display: flex;
   flex-wrap: wrap;
   grid-column: 2;
-  justify-content: start;
   height: 100vh;
+  justify-content: start;
   overflow: scroll;
 }
 
@@ -12,9 +12,9 @@
 }
 
 .movie-image {
-  width: 10rem;
-  height: 15rem;
   background-size: contain;
+  height: 15rem;
+  width: 10rem;
 }
 
 .movie-card button {
