@@ -1,14 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Favorites Container Test should match the snapshot 1`] = `
+exports[`CardContainer should match the snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Unknown
+  Symbol(enzyme.__unrendered__): <CardContainer
     favorites={
         Array [
             Object {
-              "favorite": true,
+              "movie_id": 9,
+              "title": "ConAir",
+            },
+          ]
+    }
+    movies={
+        Array [
+            Object {
+              "id": 7,
+              "poster_path": "google.com",
               "title": "ConAir",
             },
           ]
@@ -27,16 +36,18 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
-        <div>
+        <div
+          className="movie-card"
+>
           <Link
                     replace={false}
                     to="/movies/ConAir"
           >
                     <div
-                              className="favorite-card"
+                              className="movie-image"
                               style={
                                         Object {
-                                                  "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
+                                                  "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/google.com)",
                                                 }
                               }
                     />
@@ -44,17 +55,17 @@ ShallowWrapper {
           <button
                     onClick={[Function]}
           >
-                    Unfavorite
+                    Favorite
           </button>
 </div>,
       ],
-      "className": "favorites-container",
+      "className": "cardContainer",
     },
     "ref": null,
     "rendered": Array [
       Object {
         "instance": null,
-        "key": undefined,
+        "key": "[object Object]0",
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -63,10 +74,10 @@ ShallowWrapper {
               to="/movies/ConAir"
 >
               <div
-                            className="favorite-card"
+                            className="movie-image"
                             style={
                                           Object {
-                                                        "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
+                                                        "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/google.com)",
                                                       }
                             }
               />
@@ -74,9 +85,10 @@ ShallowWrapper {
             <button
               onClick={[Function]}
 >
-              Unfavorite
+              Favorite
 </button>,
           ],
+          "className": "movie-card",
         },
         "ref": null,
         "rendered": Array [
@@ -86,10 +98,10 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": <div
-                className="favorite-card"
+                className="movie-image"
                 style={
                                 Object {
-                                                "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
+                                                "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/google.com)",
                                               }
                 }
 />,
@@ -102,9 +114,9 @@ ShallowWrapper {
               "key": "0 + ConAir",
               "nodeType": "host",
               "props": Object {
-                "className": "favorite-card",
+                "className": "movie-image",
                 "style": Object {
-                  "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
+                  "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/google.com)",
                 },
               },
               "ref": null,
@@ -118,11 +130,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "Unfavorite",
+              "children": "Favorite",
               "onClick": [Function],
             },
             "ref": null,
-            "rendered": "Unfavorite",
+            "rendered": "Favorite",
             "type": "button",
           },
         ],
@@ -138,16 +150,18 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <div>
+          <div
+            className="movie-card"
+>
             <Link
                         replace={false}
                         to="/movies/ConAir"
             >
                         <div
-                                    className="favorite-card"
+                                    className="movie-image"
                                     style={
                                                 Object {
-                                                            "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
+                                                            "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/google.com)",
                                                           }
                                     }
                         />
@@ -155,17 +169,17 @@ ShallowWrapper {
             <button
                         onClick={[Function]}
             >
-                        Unfavorite
+                        Favorite
             </button>
 </div>,
         ],
-        "className": "favorites-container",
+        "className": "cardContainer",
       },
       "ref": null,
       "rendered": Array [
         Object {
           "instance": null,
-          "key": undefined,
+          "key": "[object Object]0",
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -174,10 +188,10 @@ ShallowWrapper {
                 to="/movies/ConAir"
 >
                 <div
-                                className="favorite-card"
+                                className="movie-image"
                                 style={
                                                 Object {
-                                                                "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
+                                                                "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/google.com)",
                                                               }
                                 }
                 />
@@ -185,9 +199,10 @@ ShallowWrapper {
               <button
                 onClick={[Function]}
 >
-                Unfavorite
+                Favorite
 </button>,
             ],
+            "className": "movie-card",
           },
           "ref": null,
           "rendered": Array [
@@ -197,10 +212,10 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": <div
-                  className="favorite-card"
+                  className="movie-image"
                   style={
                                     Object {
-                                                      "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
+                                                      "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/google.com)",
                                                     }
                   }
 />,
@@ -213,9 +228,9 @@ ShallowWrapper {
                 "key": "0 + ConAir",
                 "nodeType": "host",
                 "props": Object {
-                  "className": "favorite-card",
+                  "className": "movie-image",
                   "style": Object {
-                    "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
+                    "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/google.com)",
                   },
                 },
                 "ref": null,
@@ -229,11 +244,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": "Unfavorite",
+                "children": "Favorite",
                 "onClick": [Function],
               },
               "ref": null,
-              "rendered": "Unfavorite",
+              "rendered": "Favorite",
               "type": "button",
             },
           ],
@@ -249,6 +264,7 @@ ShallowWrapper {
         "enableComponentDidUpdateOnSetState": true,
       },
     },
+    "disableLifecycleMethods": true,
   },
 }
 `;

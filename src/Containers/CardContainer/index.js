@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { addMovies } from '../../actions';
 import './styles.css';
 
-class CardContainer extends Component {
+export class CardContainer extends Component {
 
   componentDidMount = async () => {
     const movies = await fetchMovieData(apiKey);

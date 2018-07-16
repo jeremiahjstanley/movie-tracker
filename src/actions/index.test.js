@@ -32,16 +32,6 @@ describe('action tests', () => {
     });
   });
 
-  describe('get saved favorites', () => {
-    it('should return an object with an array of favorites and a type of get saved favorite', () => {
-      const favorites = [{ title: 'Emperors New Groove' }, { title: 'Emperors New Groove' }];
-      const expected = { favorites, type: 'GET_SAVED_FAVORITES' };
-      const result = getSavedFavorites(favorites);
-
-      expect(result).toEqual(expected);
-    });
-  });
-
   describe('signUp', () => {
     it('should return an object with type of sign up, username, email and password', () => {
       const userName = 'LukeSkywalker';

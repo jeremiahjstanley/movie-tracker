@@ -12,10 +12,10 @@ import MovieDetails from '../MovieDetails';
 import Header from '../Header'
 import './styles.css';
 
-class App extends Component {
+export class App extends Component {
 
   componentDidMount() {
-    this.getUser()
+    this.getUser();
   }
 
   getUser = async () => {
@@ -100,7 +100,7 @@ export const mapDispatchToProps = (dispatch) => ({
   logOutUser: () => dispatch(logOut()),
   addToFavorites: (movie) => dispatch(addFavorite(movie)),
   getUserFavorites: (favorites) => dispatch(updateFavorites(favorites)),
-  updateFavorites: (movie) => dispatch(updateFavorites(movie)),
+  updateFavorites: (movie) => dispatch(updateFavorites(movie))
 });
 
 App.propTypes = {

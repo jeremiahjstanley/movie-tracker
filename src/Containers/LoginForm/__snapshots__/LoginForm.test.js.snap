@@ -1,0 +1,355 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Form tests should match the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <LoginForm />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <Link
+          className="exit-form"
+          replace={false}
+          to="/"
+>
+          X
+</Link>,
+        <h1
+          className="form-header"
+>
+          Sign In
+</h1>,
+        <input
+          aria-label="Please Enter Your Email"
+          className="email-input"
+          name="email"
+          onChange={[Function]}
+          placeholder="email"
+          type="text"
+          value=""
+/>,
+        <input
+          aria-label="Please Enter Your Password"
+          className="password-input"
+          name="password"
+          onChange={[Function]}
+          placeholder="password"
+          type="password"
+          value=""
+/>,
+        <button
+          aria-label="Sign in to your account"
+>
+          Login
+</button>,
+        <h3>
+           
+          
+           
+</h3>,
+        <Link
+          replace={false}
+          to="/signup"
+>
+          Don't have an account?
+</Link>,
+      ],
+      "className": "form login-form",
+      "onSubmit": [Function],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "X",
+          "className": "exit-form",
+          "replace": false,
+          "to": "/",
+        },
+        "ref": null,
+        "rendered": "X",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Sign In",
+          "className": "form-header",
+        },
+        "ref": null,
+        "rendered": "Sign In",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-label": "Please Enter Your Email",
+          "className": "email-input",
+          "name": "email",
+          "onChange": [Function],
+          "placeholder": "email",
+          "type": "text",
+          "value": "",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "input",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-label": "Please Enter Your Password",
+          "className": "password-input",
+          "name": "password",
+          "onChange": [Function],
+          "placeholder": "password",
+          "type": "password",
+          "value": "",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "input",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-label": "Sign in to your account",
+          "children": "Login",
+        },
+        "ref": null,
+        "rendered": "Login",
+        "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            " ",
+            "",
+            " ",
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          " ",
+          "",
+          " ",
+        ],
+        "type": "h3",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Don't have an account?",
+          "replace": false,
+          "to": "/signup",
+        },
+        "ref": null,
+        "rendered": "Don't have an account?",
+        "type": [Function],
+      },
+    ],
+    "type": "form",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <Link
+            className="exit-form"
+            replace={false}
+            to="/"
+>
+            X
+</Link>,
+          <h1
+            className="form-header"
+>
+            Sign In
+</h1>,
+          <input
+            aria-label="Please Enter Your Email"
+            className="email-input"
+            name="email"
+            onChange={[Function]}
+            placeholder="email"
+            type="text"
+            value=""
+/>,
+          <input
+            aria-label="Please Enter Your Password"
+            className="password-input"
+            name="password"
+            onChange={[Function]}
+            placeholder="password"
+            type="password"
+            value=""
+/>,
+          <button
+            aria-label="Sign in to your account"
+>
+            Login
+</button>,
+          <h3>
+             
+            
+             
+</h3>,
+          <Link
+            replace={false}
+            to="/signup"
+>
+            Don't have an account?
+</Link>,
+        ],
+        "className": "form login-form",
+        "onSubmit": [Function],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "X",
+            "className": "exit-form",
+            "replace": false,
+            "to": "/",
+          },
+          "ref": null,
+          "rendered": "X",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Sign In",
+            "className": "form-header",
+          },
+          "ref": null,
+          "rendered": "Sign In",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-label": "Please Enter Your Email",
+            "className": "email-input",
+            "name": "email",
+            "onChange": [Function],
+            "placeholder": "email",
+            "type": "text",
+            "value": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "input",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-label": "Please Enter Your Password",
+            "className": "password-input",
+            "name": "password",
+            "onChange": [Function],
+            "placeholder": "password",
+            "type": "password",
+            "value": "",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "input",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-label": "Sign in to your account",
+            "children": "Login",
+          },
+          "ref": null,
+          "rendered": "Login",
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              " ",
+              "",
+              " ",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            " ",
+            "",
+            " ",
+          ],
+          "type": "h3",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Don't have an account?",
+            "replace": false,
+            "to": "/signup",
+          },
+          "ref": null,
+          "rendered": "Don't have an account?",
+          "type": [Function],
+        },
+      ],
+      "type": "form",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

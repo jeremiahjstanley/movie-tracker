@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { logIn, updateFavorites } from '../../actions';
 import { fetchUser, getFavoritesFromDatabase } from '../../helper/apiCalls';
 
-class LoginForm extends Component {
+export class LoginForm extends Component {
   constructor() {
     super();
 
@@ -50,7 +50,7 @@ class LoginForm extends Component {
     return (
       <form
         onSubmit={ this.handleSubmit}
-        className='form'
+        className='form login-form'
       >
         <Link to='/' className='exit-form'>
           X
@@ -62,6 +62,7 @@ class LoginForm extends Component {
           placeholder='email'
           type='text'
           name='email'
+          className='email-input'
           value={ this.state.email }
           onChange={ this.handleChange }
         />
@@ -71,6 +72,7 @@ class LoginForm extends Component {
           placeholder='password'
           type='password'
           name='password'
+          className='password-input'
           value={ this.state.password }
           onChange={ this.handleChange }
         />
