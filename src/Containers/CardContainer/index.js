@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { fetchMovieData } from '../../helper/apiCalls';
 import { apiKey } from '../../helper/apiKey';
 import { movieCleaner } from '../../helper/helper';
@@ -23,7 +24,7 @@ class CardContainer extends Component {
         }
       });
       return (
-        <div className='movie-card'>
+        <div className='movie-card' key={movie + index}>
           <Link to={`/movies/${movie.title}`} >
           <div 
             className={movie.favorite ? 'favorite movie-image': 'movie-image'}
@@ -55,5 +56,10 @@ export const mapDispatchToProps = (dispatch) => ({
   addMovies: (movies) => dispatch(addMovies(movies))
 });
 
+CardContainer.propTypes = {
+  movies: PropTypes.array.isRequired,
+  favorites: PropTypes.array.isRequired,
+  addMovies: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);
