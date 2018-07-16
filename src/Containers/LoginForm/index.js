@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { logIn, updateFavorites } from '../../actions';
 import { fetchUser, getFavoritesFromDatabase } from '../../helper/apiCalls';
+import { Link, withRouter } from 'react-router-dom';
 
 export class LoginForm extends Component {
   constructor() {
@@ -30,13 +30,7 @@ export class LoginForm extends Component {
     event.preventDefault();
     const response = await fetchUser(this.state.email.toLowerCase(), this.state.password);
     if (response) {
-      const { email, name, id } = response.data;
-      this.storeUser(email, name, id)
-      this.props.logInUser(email, name, id);
-      const results = await getFavoritesFromDatabase(id);
-      const favorites = results.data.map(favorite => ({...favorite, favorite: true}));
-      this.props.getUserFavorites(favorites);
-      this.props.history.push('/');
+      this.handleUpdate(response);
     } else {
       this.setState({
         email: '',
@@ -44,6 +38,16 @@ export class LoginForm extends Component {
         errorMessage: 'Incorrect username or password'
       });
     }
+  }
+
+  handleUpdate = async (response) => {
+    const { email, name, id } = response.data;
+    this.storeUser(email, name, id);
+    this.props.logInUser(email, name, id);
+    const results = await getFavoritesFromDatabase(id);
+    const favorites = results.data.map(favorite => ({ ...favorite, favorite: true }));
+    this.props.getUserFavorites(favorites);
+    this.props.history.push('/');
   }
 
   render() {
@@ -62,7 +66,6 @@ export class LoginForm extends Component {
           placeholder='email'
           type='text'
           name='email'
-          className='email-input'
           value={ this.state.email }
           onChange={ this.handleChange }
         />
@@ -96,10 +99,10 @@ export const mapStateToProps = (state) => {
   };
 };
 
-export const mapStateToDispatch = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
   return {
     getUserFavorites: (favorites) => dispatch(updateFavorites(favorites)),
-    logInUser: (email, name, id) => dispatch(logIn(email, name, id)),
+    logInUser: (email, name, id) => dispatch(logIn(email, name, id))
   };
 };
 
@@ -111,4 +114,4 @@ LoginForm.propTypes = {
   logInUser: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps, mapStateToDispatch)(LoginForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm));
