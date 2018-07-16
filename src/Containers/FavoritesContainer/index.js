@@ -16,7 +16,7 @@ const FavoritesContainer = (props) => {
           >
           </div>
         </Link>
-        <button onClick={() => { props.checkFavorites(favorite.movie_id); }}>Unfavorite</button>
+        <button onClick={() => { props.checkFavorites(favorite.movie_id || favorite.id); }}>Unfavorite</button>
       </div>
     );
   });
