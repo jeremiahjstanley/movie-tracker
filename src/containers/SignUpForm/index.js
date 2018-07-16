@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createUser } from '../../helper/apiCalls';
 import { signUp } from '../../actions';
-import './styles.css'
+import './styles.css';
 
-class SignUpForm extends Component {
+export class SignUpForm extends Component {
   constructor() {
     super();
 
@@ -58,6 +58,7 @@ class SignUpForm extends Component {
           placeholder='email'
           type='email'
           name='email'
+          className='email-input'
           value={this.state.email}
           onChange={this.handleChange}
         />
@@ -67,6 +68,7 @@ class SignUpForm extends Component {
           placeholder='password'
           type='password'
           name='password'
+          className='password-input'
           value={this.state.password}
           onChange={this.handleChange}
         />

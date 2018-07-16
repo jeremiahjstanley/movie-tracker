@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { logIn, updateFavorites } from '../../actions';
 import { fetchUser, getFavoritesFromDatabase } from '../../helper/apiCalls';
 
-class LoginForm extends Component {
+export class LoginForm extends Component {
   constructor() {
     super();
 

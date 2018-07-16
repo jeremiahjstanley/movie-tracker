@@ -36,109 +36,38 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": Array [
-        <h1>
-          ConAir
-</h1>,
-        <h3>
-          welcome to cage tracker
-</h3>,
-        <p>
-          welcome to cage tracker
-</p>,
-        <button
-          className="favorite-button"
-          onClick={[Function]}
+      "children": <div
+        className="detail-text"
 >
-          Favorite
-</button>,
+        <h1>
+                ConAir
+        </h1>
+        <h3>
+                welcome to cage tracker
+        </h3>
+        <p>
+                welcome to cage tracker
+        </p>
+        <button
+                className="favorite-button"
+                onClick={[Function]}
+        >
+                Favorite
+        </button>
         <h4>
-          10
-</h4>,
+                10
+        </h4>
         <h4>
-          yesterday
-</h4>,
-      ],
+                yesterday
+        </h4>
+</div>,
+      "className": "detail-card",
       "style": Object {
         "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/nickcage.com)",
-        "backgroundSize": "contain",
       },
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "ConAir",
-        },
-        "ref": null,
-        "rendered": "ConAir",
-        "type": "h1",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "welcome to cage tracker",
-        },
-        "ref": null,
-        "rendered": "welcome to cage tracker",
-        "type": "h3",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "welcome to cage tracker",
-        },
-        "ref": null,
-        "rendered": "welcome to cage tracker",
-        "type": "p",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "Favorite",
-          "className": "favorite-button",
-          "onClick": [Function],
-        },
-        "ref": null,
-        "rendered": "Favorite",
-        "type": "button",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "10",
-        },
-        "ref": null,
-        "rendered": "10",
-        "type": "h4",
-      },
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": "yesterday",
-        },
-        "ref": null,
-        "rendered": "yesterday",
-        "type": "h4",
-      },
-    ],
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
+    "rendered": Object {
       "instance": null,
       "key": undefined,
       "nodeType": "host",
@@ -166,10 +95,7 @@ ShallowWrapper {
             yesterday
 </h4>,
         ],
-        "style": Object {
-          "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/nickcage.com)",
-          "backgroundSize": "contain",
-        },
+        "className": "detail-text",
       },
       "ref": null,
       "rendered": Array [
@@ -242,6 +168,150 @@ ShallowWrapper {
           "type": "h4",
         },
       ],
+      "type": "div",
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="detail-text"
+>
+          <h1>
+                    ConAir
+          </h1>
+          <h3>
+                    welcome to cage tracker
+          </h3>
+          <p>
+                    welcome to cage tracker
+          </p>
+          <button
+                    className="favorite-button"
+                    onClick={[Function]}
+          >
+                    Favorite
+          </button>
+          <h4>
+                    10
+          </h4>
+          <h4>
+                    yesterday
+          </h4>
+</div>,
+        "className": "detail-card",
+        "style": Object {
+          "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/nickcage.com)",
+        },
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h1>
+              ConAir
+</h1>,
+            <h3>
+              welcome to cage tracker
+</h3>,
+            <p>
+              welcome to cage tracker
+</p>,
+            <button
+              className="favorite-button"
+              onClick={[Function]}
+>
+              Favorite
+</button>,
+            <h4>
+              10
+</h4>,
+            <h4>
+              yesterday
+</h4>,
+          ],
+          "className": "detail-text",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "ConAir",
+            },
+            "ref": null,
+            "rendered": "ConAir",
+            "type": "h1",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "welcome to cage tracker",
+            },
+            "ref": null,
+            "rendered": "welcome to cage tracker",
+            "type": "h3",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "welcome to cage tracker",
+            },
+            "ref": null,
+            "rendered": "welcome to cage tracker",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Favorite",
+              "className": "favorite-button",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "Favorite",
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "10",
+            },
+            "ref": null,
+            "rendered": "10",
+            "type": "h4",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "yesterday",
+            },
+            "ref": null,
+            "rendered": "yesterday",
+            "type": "h4",
+          },
+        ],
+        "type": "div",
+      },
       "type": "div",
     },
   ],
