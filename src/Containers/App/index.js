@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { NavLink, Route, Redirect, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { sendFavoriteToDatabase, deleteFavoriteFromDatabase, getFavoritesFromDatabase } from '../../helper/apiCalls';
 import { addFavorite, updateFavorites, logIn, logOut } from '../../actions';
 import FavoritesContainer from '../FavoritesContainer';
@@ -101,5 +102,16 @@ export const mapDispatchToProps = (dispatch) => ({
   getUserFavorites: (favorites) => dispatch(updateFavorites(favorites)),
   updateFavorites: (movie) => dispatch(updateFavorites(movie)),
 });
+
+App.propTypes = {
+  logInUser: PropTypes.func.isRequired,
+  logOutUser: PropTypes.func.isRequired,
+  addToFavorites: PropTypes.func.isRequired,
+  getUserFavorites: PropTypes.func.isRequired,
+  updateFavorites: PropTypes.func.isRequired,
+  movies: PropTypes.array.isRequired,
+  users: PropTypes.object,
+  favorites: PropTypes.array.isRequired
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
