@@ -2,9 +2,10 @@
   background-position: top;
   background-repeat: no-repeat;
   background-size: contain;
-  grid-column: 1;
-  margin: 1rem auto;
-  width: 80%;
+  float: left;
+  margin: 1rem 3rem;
+  max-width: 30rem;
+  width: 50%;
 }
 
 .detail-text {
