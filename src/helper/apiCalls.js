@@ -79,5 +79,6 @@ export const deleteFavoriteFromDatabase = async (movieId, userId) => {
     method: 'DELETE'
   });
   const results = await response.json();
+  console.log(results);
   return results;
 };
