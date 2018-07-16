@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header should match the snapshot 1`] = `
+exports[`Header should match the snapshot when there is a user 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
@@ -491,6 +491,434 @@ ShallowWrapper {
                 },
                 "ref": null,
                 "rendered": "Favorites",
+                "type": [Function],
+              },
+              "type": "li",
+            },
+          ],
+          "type": "ul",
+        },
+      ],
+      "type": "header",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`Header should match the snapshot when there is no user 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Header
+    favorites={Array []}
+    logOut={[Function]}
+    users={Object {}}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <img
+          alt="Cage Tracker Logo"
+          className="logo"
+          src="logo.png"
+/>,
+        <ul
+          className="navigation-links"
+>
+          <li>
+                    <NavLink
+                              activeClassName="active"
+                              aria-current="page"
+                              className="home-link"
+                              to="/"
+                    >
+                              Home
+                    </NavLink>
+          </li>
+          <li>
+                    <NavLink
+                              activeClassName="active"
+                              aria-current="page"
+                              className="login-link"
+                              to="/login"
+                    >
+                              Login
+                    </NavLink>
+          </li>
+          <li>
+                    <NavLink
+                              activeClassName="active"
+                              aria-current="page"
+                              className="favorites-link"
+                              to="/favorites"
+                    />
+          </li>
+</ul>,
+      ],
+      "className": "app-header",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "alt": "Cage Tracker Logo",
+          "className": "logo",
+          "src": "logo.png",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": "img",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <li>
+              <NavLink
+                            activeClassName="active"
+                            aria-current="page"
+                            className="home-link"
+                            to="/"
+              >
+                            Home
+              </NavLink>
+</li>,
+            <li>
+              <NavLink
+                            activeClassName="active"
+                            aria-current="page"
+                            className="login-link"
+                            to="/login"
+              >
+                            Login
+              </NavLink>
+</li>,
+            <li>
+              <NavLink
+                            activeClassName="active"
+                            aria-current="page"
+                            className="favorites-link"
+                            to="/favorites"
+              />
+</li>,
+          ],
+          "className": "navigation-links",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <NavLink
+                activeClassName="active"
+                aria-current="page"
+                className="home-link"
+                to="/"
+>
+                Home
+</NavLink>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "activeClassName": "active",
+                "aria-current": "page",
+                "children": "Home",
+                "className": "home-link",
+                "to": "/",
+              },
+              "ref": null,
+              "rendered": "Home",
+              "type": [Function],
+            },
+            "type": "li",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <NavLink
+                activeClassName="active"
+                aria-current="page"
+                className="login-link"
+                to="/login"
+>
+                Login
+</NavLink>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "activeClassName": "active",
+                "aria-current": "page",
+                "children": "Login",
+                "className": "login-link",
+                "to": "/login",
+              },
+              "ref": null,
+              "rendered": "Login",
+              "type": [Function],
+            },
+            "type": "li",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <NavLink
+                activeClassName="active"
+                aria-current="page"
+                className="favorites-link"
+                to="/favorites"
+/>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "activeClassName": "active",
+                "aria-current": "page",
+                "children": "",
+                "className": "favorites-link",
+                "to": "/favorites",
+              },
+              "ref": null,
+              "rendered": "",
+              "type": [Function],
+            },
+            "type": "li",
+          },
+        ],
+        "type": "ul",
+      },
+    ],
+    "type": "header",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <img
+            alt="Cage Tracker Logo"
+            className="logo"
+            src="logo.png"
+/>,
+          <ul
+            className="navigation-links"
+>
+            <li>
+                        <NavLink
+                                    activeClassName="active"
+                                    aria-current="page"
+                                    className="home-link"
+                                    to="/"
+                        >
+                                    Home
+                        </NavLink>
+            </li>
+            <li>
+                        <NavLink
+                                    activeClassName="active"
+                                    aria-current="page"
+                                    className="login-link"
+                                    to="/login"
+                        >
+                                    Login
+                        </NavLink>
+            </li>
+            <li>
+                        <NavLink
+                                    activeClassName="active"
+                                    aria-current="page"
+                                    className="favorites-link"
+                                    to="/favorites"
+                        />
+            </li>
+</ul>,
+        ],
+        "className": "app-header",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "alt": "Cage Tracker Logo",
+            "className": "logo",
+            "src": "logo.png",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "img",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <li>
+                <NavLink
+                                activeClassName="active"
+                                aria-current="page"
+                                className="home-link"
+                                to="/"
+                >
+                                Home
+                </NavLink>
+</li>,
+              <li>
+                <NavLink
+                                activeClassName="active"
+                                aria-current="page"
+                                className="login-link"
+                                to="/login"
+                >
+                                Login
+                </NavLink>
+</li>,
+              <li>
+                <NavLink
+                                activeClassName="active"
+                                aria-current="page"
+                                className="favorites-link"
+                                to="/favorites"
+                />
+</li>,
+            ],
+            "className": "navigation-links",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <NavLink
+                  activeClassName="active"
+                  aria-current="page"
+                  className="home-link"
+                  to="/"
+>
+                  Home
+</NavLink>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "activeClassName": "active",
+                  "aria-current": "page",
+                  "children": "Home",
+                  "className": "home-link",
+                  "to": "/",
+                },
+                "ref": null,
+                "rendered": "Home",
+                "type": [Function],
+              },
+              "type": "li",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <NavLink
+                  activeClassName="active"
+                  aria-current="page"
+                  className="login-link"
+                  to="/login"
+>
+                  Login
+</NavLink>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "activeClassName": "active",
+                  "aria-current": "page",
+                  "children": "Login",
+                  "className": "login-link",
+                  "to": "/login",
+                },
+                "ref": null,
+                "rendered": "Login",
+                "type": [Function],
+              },
+              "type": "li",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <NavLink
+                  activeClassName="active"
+                  aria-current="page"
+                  className="favorites-link"
+                  to="/favorites"
+/>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "activeClassName": "active",
+                  "aria-current": "page",
+                  "children": "",
+                  "className": "favorites-link",
+                  "to": "/favorites",
+                },
+                "ref": null,
+                "rendered": "",
                 "type": [Function],
               },
               "type": "li",

@@ -42,9 +42,9 @@ describe('CardContainer', () => {
   });
 
   it.only('calls dispatch with an addMovies action on page load', async () => {
-    const mockAddMovies = jest.fn()
+    const mockAddMovies = jest.fn();
     wrapper = await shallow(<CardContainer movies={mockMovies} favorites={mockFavorites} addMovies={mockAddMovies}/>);
-    await wrapper.update()
+    await wrapper.update();
     expect(mockAddMovies).toHaveBeenCalledTimes(1);
   });
 });

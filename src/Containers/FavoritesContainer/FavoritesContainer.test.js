@@ -5,9 +5,9 @@ import { FavoritesContainer } from './';
 
 describe('Favorites Container Test', () => {
 
-  it('should match the snapshot', () => {
-    const mockFavorites = [{favorite:true, title:'ConAir'}];
-    const wrapper = shallow(<FavoritesContainer favorites={mockFavorites}/>);
+  it('should match the snapshot when there are no favorites', () => {
+    const mockFavorites = [];
+    const wrapper = shallow(<FavoritesContainer favorites={mockFavorites} />);
     
     expect(wrapper).toMatchSnapshot();
   });
