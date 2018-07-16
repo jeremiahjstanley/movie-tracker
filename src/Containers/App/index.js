@@ -8,6 +8,7 @@ import CardContainer from '../CardContainer';
 import LoginForm from '../LoginForm';
 import SignUpForm from '../SignUpForm';
 import MovieDetails from '../MovieDetails';
+import Header from '../Header'
 import './styles.css';
 
 class App extends Component {
@@ -43,7 +44,6 @@ class App extends Component {
   }
 
   findMovie = (id) => {
-    console.log(id)
     return this.props.movies.find(movie => movie.id === id || movie.movie_id === id);
   }
 
@@ -73,18 +73,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <header className="app-header">
-          <NavLink to='/'>
-            Home
-          </NavLink>
-          <NavLink to='/login'>
-            { this.props.users.id ? <a onClick={ this.logOut }>Logout</a> : 'Login'}
-          </NavLink>
-          <NavLink to='/favorites'>
-            { this.props.favorites.length ? 'Favorites' : ''}
-          </NavLink>
-        </header>
-
+        <Header logOut={this.logOut}/>
         <Route path='/favorites/' render={() => <FavoritesContainer checkFavorites={this.checkFavorites} />}/>
         <Route path='/movies/:title' render={({match}) => {
           const movieToDisplay=this.props.movies.find(movie => movie.title === match.params.title);
