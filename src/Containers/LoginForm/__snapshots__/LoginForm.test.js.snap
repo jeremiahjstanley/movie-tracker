@@ -32,7 +32,7 @@ ShallowWrapper {
 </h1>,
         <input
           aria-label="Please Enter Your Email"
-          className="email-input"
+          className="email-field"
           name="email"
           onChange={[Function]}
           placeholder="email"
@@ -102,7 +102,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "aria-label": "Please Enter Your Email",
-          "className": "email-input",
+          "className": "email-field",
           "name": "email",
           "onChange": [Function],
           "placeholder": "email",
@@ -198,7 +198,7 @@ ShallowWrapper {
 </h1>,
           <input
             aria-label="Please Enter Your Email"
-            className="email-input"
+            className="email-field"
             name="email"
             onChange={[Function]}
             placeholder="email"
@@ -268,7 +268,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "aria-label": "Please Enter Your Email",
-            "className": "email-input",
+            "className": "email-field",
             "name": "email",
             "onChange": [Function],
             "placeholder": "email",

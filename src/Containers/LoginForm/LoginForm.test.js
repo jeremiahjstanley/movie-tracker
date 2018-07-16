@@ -1,6 +1,7 @@
 import React from 'react';
-import { LoginForm } from './index.js';
+import { LoginForm, mapStateToProps, mapDispatchToProps } from './index.js';
 import { shallow, mount } from 'enzyme';
+import { BrowserRouter, Link, withRouter } from 'react-router-dom';
 
 
 describe('Login Form tests', () => {
@@ -29,7 +30,7 @@ describe('Login Form tests', () => {
   });
 
   it('should invoke handleChange when the email field changes', () => {
-    const wrapper = mount(<LoginForm/>);
+    const wrapper = mount(withRouter(<LoginForm />), { disableLifecycleMethods: true });
     const spy = spyOn(wrapper.instance(), 'handleChange');
     wrapper.instance().forceUpdate();
     const mockEvent = { target: { value: 'NickCage@aol.com', name: 'email' } };
@@ -37,6 +38,8 @@ describe('Login Form tests', () => {
 
     expect(spy).toHaveBeenCalledWith();
   });
+
+  
 
   // it('should calls handleChange when the password field changes', () => {
   //   const wrapper = shallow(<LoginForm />);
@@ -52,5 +55,20 @@ describe('Login Form tests', () => {
     
   //   expect('').toEqual('');
   // });
+
+
+  describe('mapStateToProps', () => {
+    it('should return an object with the email, name and favorites array', () => {
+      const mockState = { "favorites": [{ "title": "Con Air" }], "login": { "email": "nickcage@aol.com", "name": "Nick Cage" } };
+      const expected = { "email": "nickcage@aol.com", "favorites": [{ "title": "Con Air" }], "name": "Nick Cage" };
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+
+  });
 
 });

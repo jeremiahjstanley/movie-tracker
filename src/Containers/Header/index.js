@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import logo from './resources/logo.png'
-import './styles.css'
+import logo from './resources/logo.png';
+import './styles.css';
 
 export class Header extends Component {
 
   render() {
     return (
-        <header className='app-header'>
+      <header className='app-header'>
         <img src={logo} className='logo' alt='Cage Tracker Logo'/>
         <ul className='navigation-links'>
           <li>
@@ -28,8 +28,8 @@ export class Header extends Component {
             </NavLink>
           </li>
         </ul>
-    </header>
-    )
+      </header>
+    );
   }
 }
 

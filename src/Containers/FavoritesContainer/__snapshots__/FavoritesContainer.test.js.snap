@@ -1,18 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Favorites Container Test should match the snapshot 1`] = `
+exports[`Favorites Container Test should match the snapshot when there are no favorites 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Unknown
-    favorites={
-        Array [
-            Object {
-              "favorite": true,
-              "title": "ConAir",
-            },
-          ]
-    }
+    favorites={Array []}
 />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -26,109 +19,11 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": Array [
-        <div>
-          <Link
-                    replace={false}
-                    to="/movies/ConAir"
-          >
-                    <div
-                              className="favorite-card"
-                              style={
-                                        Object {
-                                                  "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
-                                                }
-                              }
-                    />
-          </Link>
-          <button
-                    onClick={[Function]}
-          >
-                    Unfavorite
-          </button>
-</div>,
-      ],
+      "children": Array [],
       "className": "favorites-container",
     },
     "ref": null,
-    "rendered": Array [
-      Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "host",
-        "props": Object {
-          "children": Array [
-            <Link
-              replace={false}
-              to="/movies/ConAir"
->
-              <div
-                            className="favorite-card"
-                            style={
-                                          Object {
-                                                        "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
-                                                      }
-                            }
-              />
-</Link>,
-            <button
-              onClick={[Function]}
->
-              Unfavorite
-</button>,
-          ],
-        },
-        "ref": null,
-        "rendered": Array [
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "class",
-            "props": Object {
-              "children": <div
-                className="favorite-card"
-                style={
-                                Object {
-                                                "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
-                                              }
-                }
-/>,
-              "replace": false,
-              "to": "/movies/ConAir",
-            },
-            "ref": null,
-            "rendered": Object {
-              "instance": null,
-              "key": "0 + ConAir",
-              "nodeType": "host",
-              "props": Object {
-                "className": "favorite-card",
-                "style": Object {
-                  "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
-                },
-              },
-              "ref": null,
-              "rendered": null,
-              "type": "div",
-            },
-            "type": [Function],
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "Unfavorite",
-              "onClick": [Function],
-            },
-            "ref": null,
-            "rendered": "Unfavorite",
-            "type": "button",
-          },
-        ],
-        "type": "div",
-      },
-    ],
+    "rendered": Array [],
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -137,109 +32,11 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": Array [
-          <div>
-            <Link
-                        replace={false}
-                        to="/movies/ConAir"
-            >
-                        <div
-                                    className="favorite-card"
-                                    style={
-                                                Object {
-                                                            "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
-                                                          }
-                                    }
-                        />
-            </Link>
-            <button
-                        onClick={[Function]}
-            >
-                        Unfavorite
-            </button>
-</div>,
-        ],
+        "children": Array [],
         "className": "favorites-container",
       },
       "ref": null,
-      "rendered": Array [
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": Array [
-              <Link
-                replace={false}
-                to="/movies/ConAir"
->
-                <div
-                                className="favorite-card"
-                                style={
-                                                Object {
-                                                                "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
-                                                              }
-                                }
-                />
-</Link>,
-              <button
-                onClick={[Function]}
->
-                Unfavorite
-</button>,
-            ],
-          },
-          "ref": null,
-          "rendered": Array [
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "class",
-              "props": Object {
-                "children": <div
-                  className="favorite-card"
-                  style={
-                                    Object {
-                                                      "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
-                                                    }
-                  }
-/>,
-                "replace": false,
-                "to": "/movies/ConAir",
-              },
-              "ref": null,
-              "rendered": Object {
-                "instance": null,
-                "key": "0 + ConAir",
-                "nodeType": "host",
-                "props": Object {
-                  "className": "favorite-card",
-                  "style": Object {
-                    "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
-                  },
-                },
-                "ref": null,
-                "rendered": null,
-                "type": "div",
-              },
-              "type": [Function],
-            },
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "Unfavorite",
-                "onClick": [Function],
-              },
-              "ref": null,
-              "rendered": "Unfavorite",
-              "type": "button",
-            },
-          ],
-          "type": "div",
-        },
-      ],
+      "rendered": Array [],
       "type": "div",
     },
   ],

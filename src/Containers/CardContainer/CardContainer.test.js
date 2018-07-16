@@ -5,8 +5,8 @@ import { fetchMovieData } from '../../helper/apiCalls';
 import { movieCleaner } from '../../helper/helper';
 import { addMovies } from '../../actions';
 
-jest.mock('../../helper/apiCalls')
-jest.mock('../../helper/helper')
+jest.mock('../../helper/apiCalls');
+jest.mock('../../helper/helper');
 
 describe('CardContainer', () => {
   let mockMovies;
@@ -35,21 +35,16 @@ describe('CardContainer', () => {
     wrapper = shallow(<CardContainer movies={mockMovies} favorites={mockFavorites} addMovies={jest.fn()}/>);
 
     await expect(fetchMovieData).toHaveBeenCalled();
-  })
+  });
 
   it('should add a favorite prop of true if the movie is in the favorites array', () => {
     expect(mockMovies[0].favorite).toBe(true);
-  })
+  });
 
-  it.skip('calls dispatch with an addMovies action on cage load', () => {
-    wrapper = shallow(<CardContainer movies={mockMovies} favorites={mockFavorites} addMovies={jest.fn()}/>);
-    const mockDispatch = jest.fn();
-    const actionToDispatch = addMovies(mockMovies)
-
-    mapDispatchToProps(mockDispatch)
-
-    
-    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
-
-  })
+  it.only('calls dispatch with an addMovies action on page load', async () => {
+    const mockAddMovies = jest.fn();
+    wrapper = await shallow(<CardContainer movies={mockMovies} favorites={mockFavorites} addMovies={mockAddMovies}/>);
+    await wrapper.update();
+    expect(mockAddMovies).toHaveBeenCalledTimes(1);
+  });
 });
