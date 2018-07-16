@@ -16,7 +16,7 @@ describe('SignUp Form tests', () => {
   });
 
   it('should invoke handleChange on change of the name field', () => {
-    const wrapper = mount(<SignUpForm />);
+    const wrapper = shallow(<SignUpForm />);
     const spy = spyOn(wrapper.instance(), 'handleChange');
     wrapper.instance().forceUpdate();
     const mockEvent = { target: { value: 'Nick Cage', name: 'name' } };

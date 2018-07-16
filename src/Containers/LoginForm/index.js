@@ -50,7 +50,7 @@ export class LoginForm extends Component {
     return (
       <form
         onSubmit={ this.handleSubmit}
-        className='form'
+        className='form login-form'
       >
         <Link to='/' className='exit-form'>
           X

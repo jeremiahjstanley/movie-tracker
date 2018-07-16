@@ -13,4 +13,12 @@ describe('Login Form tests', () => {
     };
     expect(wrapper.state()).toEqual(expected);
   });
+
+  it('should update the state when handleChange is invoked', () => {
+    const wrapper = shallow(<LoginForm />);
+
+    const mockEvent = { target: { value: 'NickCage@aol.com', name: 'email' } };
+    wrapper.instance().handleChange(mockEvent);
+    expect(wrapper.state('email')).toBe('NickCage@aol.com');
+  });
 });

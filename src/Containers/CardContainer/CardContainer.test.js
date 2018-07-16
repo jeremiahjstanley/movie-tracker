@@ -1,16 +1,12 @@
 import React from 'react';
-import CardContainer from './';
+import { CardContainer } from './index.js';
 import { shallow, mount } from 'enzyme';
-import { createStore } from 'redux';
 
-const store = createStore(jest.fn().mockImplementation(() => {
-  let state = {movies: []};
-}))
 
 describe('CardContainer', () => {
   it('should match the snapshot', () => {
-    const wrapper = mount(<CardContainer store={store} />)
+    const wrapper = shallow(<CardContainer />);
 
-    expect(wrapper).toMatchSnapshot()
-  })
-})
+    expect(wrapper).toMatchSnapshot();
+  });
+});
