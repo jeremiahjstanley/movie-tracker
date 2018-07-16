@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { createUser } from '../../helper/apiCalls';
 import { signUp } from '../../actions';
 import './styles.css'
@@ -91,6 +92,12 @@ export const mapStateToDispatch = (dispatch) => {
   return {
     submitForm: (email, name, id) => dispatch(signUp(email, name, id))
   };
+};
+
+SignUpForm.propTypes = {
+  email: PropTypes.string,
+  name: PropTypes.string,
+  submitForm: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapStateToDispatch)(SignUpForm);
