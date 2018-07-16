@@ -20,7 +20,7 @@ describe('SignUp Form tests', () => {
     const spy = spyOn(wrapper.instance(), 'handleChange');
     wrapper.instance().forceUpdate();
     const mockEvent = { target: { value: 'Nick Cage', name: 'name' } };
-    wrapper.find('.name-input').simulate('change', mockEvent);
+    wrapper.find('.name-field').simulate('change', mockEvent);
 
     expect(spy).toHaveBeenCalled();
   });

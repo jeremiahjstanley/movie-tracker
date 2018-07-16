@@ -39,25 +39,33 @@ ShallowWrapper {
       "children": <div
         className="detail-text"
 >
-        <h1>
+        <h1
+                className="detail-heading"
+        >
                 ConAir
         </h1>
-        <h3>
+        <h3
+                className="detail-heading"
+        >
                 welcome to cage tracker
         </h3>
-        <p>
+        <p
+                className="detail-overview"
+        >
                 welcome to cage tracker
         </p>
         <button
                 className="favorite-button"
                 onClick={[Function]}
         >
-                Favorite
+                Add to Favorites
         </button>
-        <h4>
+        <h4
+                className="detail-heading detail-inline"
+        >
+                Rating: 
                 10
-        </h4>
-        <h4>
+                 | Released: 
                 yesterday
         </h4>
 </div>,
@@ -73,25 +81,33 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
-          <h1>
+          <h1
+            className="detail-heading"
+>
             ConAir
 </h1>,
-          <h3>
+          <h3
+            className="detail-heading"
+>
             welcome to cage tracker
 </h3>,
-          <p>
+          <p
+            className="detail-overview"
+>
             welcome to cage tracker
 </p>,
           <button
             className="favorite-button"
             onClick={[Function]}
 >
-            Favorite
+            Add to Favorites
 </button>,
-          <h4>
+          <h4
+            className="detail-heading detail-inline"
+>
+            Rating: 
             10
-</h4>,
-          <h4>
+             | Released: 
             yesterday
 </h4>,
         ],
@@ -105,6 +121,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "ConAir",
+            "className": "detail-heading",
           },
           "ref": null,
           "rendered": "ConAir",
@@ -116,6 +133,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "welcome to cage tracker",
+            "className": "detail-heading",
           },
           "ref": null,
           "rendered": "welcome to cage tracker",
@@ -127,6 +145,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "welcome to cage tracker",
+            "className": "detail-overview",
           },
           "ref": null,
           "rendered": "welcome to cage tracker",
@@ -137,12 +156,12 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "Favorite",
+            "children": "Add to Favorites",
             "className": "favorite-button",
             "onClick": [Function],
           },
           "ref": null,
-          "rendered": "Favorite",
+          "rendered": "Add to Favorites",
           "type": "button",
         },
         Object {
@@ -150,21 +169,21 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "10",
+            "children": Array [
+              "Rating: ",
+              "10",
+              " | Released: ",
+              "yesterday",
+            ],
+            "className": "detail-heading detail-inline",
           },
           "ref": null,
-          "rendered": "10",
-          "type": "h4",
-        },
-        Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "host",
-          "props": Object {
-            "children": "yesterday",
-          },
-          "ref": null,
-          "rendered": "yesterday",
+          "rendered": Array [
+            "Rating: ",
+            "10",
+            " | Released: ",
+            "yesterday",
+          ],
           "type": "h4",
         },
       ],
@@ -181,25 +200,33 @@ ShallowWrapper {
         "children": <div
           className="detail-text"
 >
-          <h1>
+          <h1
+                    className="detail-heading"
+          >
                     ConAir
           </h1>
-          <h3>
+          <h3
+                    className="detail-heading"
+          >
                     welcome to cage tracker
           </h3>
-          <p>
+          <p
+                    className="detail-overview"
+          >
                     welcome to cage tracker
           </p>
           <button
                     className="favorite-button"
                     onClick={[Function]}
           >
-                    Favorite
+                    Add to Favorites
           </button>
-          <h4>
+          <h4
+                    className="detail-heading detail-inline"
+          >
+                    Rating: 
                     10
-          </h4>
-          <h4>
+                     | Released: 
                     yesterday
           </h4>
 </div>,
@@ -215,25 +242,33 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": Array [
-            <h1>
+            <h1
+              className="detail-heading"
+>
               ConAir
 </h1>,
-            <h3>
+            <h3
+              className="detail-heading"
+>
               welcome to cage tracker
 </h3>,
-            <p>
+            <p
+              className="detail-overview"
+>
               welcome to cage tracker
 </p>,
             <button
               className="favorite-button"
               onClick={[Function]}
 >
-              Favorite
+              Add to Favorites
 </button>,
-            <h4>
+            <h4
+              className="detail-heading detail-inline"
+>
+              Rating: 
               10
-</h4>,
-            <h4>
+               | Released: 
               yesterday
 </h4>,
           ],
@@ -247,6 +282,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "ConAir",
+              "className": "detail-heading",
             },
             "ref": null,
             "rendered": "ConAir",
@@ -258,6 +294,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "welcome to cage tracker",
+              "className": "detail-heading",
             },
             "ref": null,
             "rendered": "welcome to cage tracker",
@@ -269,6 +306,7 @@ ShallowWrapper {
             "nodeType": "host",
             "props": Object {
               "children": "welcome to cage tracker",
+              "className": "detail-overview",
             },
             "ref": null,
             "rendered": "welcome to cage tracker",
@@ -279,12 +317,12 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "Favorite",
+              "children": "Add to Favorites",
               "className": "favorite-button",
               "onClick": [Function],
             },
             "ref": null,
-            "rendered": "Favorite",
+            "rendered": "Add to Favorites",
             "type": "button",
           },
           Object {
@@ -292,21 +330,21 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "10",
+              "children": Array [
+                "Rating: ",
+                "10",
+                " | Released: ",
+                "yesterday",
+              ],
+              "className": "detail-heading detail-inline",
             },
             "ref": null,
-            "rendered": "10",
-            "type": "h4",
-          },
-          Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "host",
-            "props": Object {
-              "children": "yesterday",
-            },
-            "ref": null,
-            "rendered": "yesterday",
+            "rendered": Array [
+              "Rating: ",
+              "10",
+              " | Released: ",
+              "yesterday",
+            ],
             "type": "h4",
           },
         ],

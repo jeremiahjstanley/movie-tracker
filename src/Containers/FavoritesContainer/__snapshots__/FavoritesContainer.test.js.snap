@@ -30,10 +30,10 @@ ShallowWrapper {
         <div>
           <Link
                     replace={false}
-                    to="/favorites/ConAir"
+                    to="/movies/ConAir"
           >
                     <div
-                              className="favorite"
+                              className="favorite-card"
                               style={
                                         Object {
                                                   "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
@@ -44,11 +44,11 @@ ShallowWrapper {
           <button
                     onClick={[Function]}
           >
-                     **** 
+                    Unfavorite
           </button>
 </div>,
       ],
-      "className": "favoritesContainer",
+      "className": "favorites-container",
     },
     "ref": null,
     "rendered": Array [
@@ -60,10 +60,10 @@ ShallowWrapper {
           "children": Array [
             <Link
               replace={false}
-              to="/favorites/ConAir"
+              to="/movies/ConAir"
 >
               <div
-                            className="favorite"
+                            className="favorite-card"
                             style={
                                           Object {
                                                         "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
@@ -74,7 +74,7 @@ ShallowWrapper {
             <button
               onClick={[Function]}
 >
-               **** 
+              Unfavorite
 </button>,
           ],
         },
@@ -86,7 +86,7 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": <div
-                className="favorite"
+                className="favorite-card"
                 style={
                                 Object {
                                                 "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
@@ -94,7 +94,7 @@ ShallowWrapper {
                 }
 />,
               "replace": false,
-              "to": "/favorites/ConAir",
+              "to": "/movies/ConAir",
             },
             "ref": null,
             "rendered": Object {
@@ -102,7 +102,7 @@ ShallowWrapper {
               "key": "0 + ConAir",
               "nodeType": "host",
               "props": Object {
-                "className": "favorite",
+                "className": "favorite-card",
                 "style": Object {
                   "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
                 },
@@ -118,11 +118,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": " **** ",
+              "children": "Unfavorite",
               "onClick": [Function],
             },
             "ref": null,
-            "rendered": " **** ",
+            "rendered": "Unfavorite",
             "type": "button",
           },
         ],
@@ -141,10 +141,10 @@ ShallowWrapper {
           <div>
             <Link
                         replace={false}
-                        to="/favorites/ConAir"
+                        to="/movies/ConAir"
             >
                         <div
-                                    className="favorite"
+                                    className="favorite-card"
                                     style={
                                                 Object {
                                                             "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
@@ -155,11 +155,11 @@ ShallowWrapper {
             <button
                         onClick={[Function]}
             >
-                         **** 
+                        Unfavorite
             </button>
 </div>,
         ],
-        "className": "favoritesContainer",
+        "className": "favorites-container",
       },
       "ref": null,
       "rendered": Array [
@@ -171,10 +171,10 @@ ShallowWrapper {
             "children": Array [
               <Link
                 replace={false}
-                to="/favorites/ConAir"
+                to="/movies/ConAir"
 >
                 <div
-                                className="favorite"
+                                className="favorite-card"
                                 style={
                                                 Object {
                                                                 "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
@@ -185,7 +185,7 @@ ShallowWrapper {
               <button
                 onClick={[Function]}
 >
-                 **** 
+                Unfavorite
 </button>,
             ],
           },
@@ -197,7 +197,7 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": <div
-                  className="favorite"
+                  className="favorite-card"
                   style={
                                     Object {
                                                       "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
@@ -205,7 +205,7 @@ ShallowWrapper {
                   }
 />,
                 "replace": false,
-                "to": "/favorites/ConAir",
+                "to": "/movies/ConAir",
               },
               "ref": null,
               "rendered": Object {
@@ -213,7 +213,7 @@ ShallowWrapper {
                 "key": "0 + ConAir",
                 "nodeType": "host",
                 "props": Object {
-                  "className": "favorite",
+                  "className": "favorite-card",
                   "style": Object {
                     "backgroundImage": "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/undefined)",
                   },
@@ -229,11 +229,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": " **** ",
+                "children": "Unfavorite",
                 "onClick": [Function],
               },
               "ref": null,
-              "rendered": " **** ",
+              "rendered": "Unfavorite",
               "type": "button",
             },
           ],

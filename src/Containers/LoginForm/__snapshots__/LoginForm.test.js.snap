@@ -18,21 +18,39 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": Array [
+        <Link
+          className="exit-form"
+          replace={false}
+          to="/"
+>
+          X
+</Link>,
+        <h1
+          className="form-header"
+>
+          Sign In
+</h1>,
         <input
+          aria-label="Please Enter Your Email"
           className="email-input"
           name="email"
           onChange={[Function]}
+          placeholder="email"
           type="text"
           value=""
 />,
         <input
+          aria-label="Please Enter Your Password"
           className="password-input"
           name="password"
           onChange={[Function]}
+          placeholder="password"
           type="password"
           value=""
 />,
-        <button>
+        <button
+          aria-label="Sign in to your account"
+>
           Login
 </button>,
         <h3>
@@ -40,15 +58,14 @@ ShallowWrapper {
           
            
 </h3>,
-        <NavLink
-          activeClassName="active"
-          aria-current="page"
+        <Link
+          replace={false}
           to="/signup"
 >
           Don't have an account?
-</NavLink>,
+</Link>,
       ],
-      "className": "log-in-form",
+      "className": "form login-form",
       "onSubmit": [Function],
     },
     "ref": null,
@@ -56,11 +73,39 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "X",
+          "className": "exit-form",
+          "replace": false,
+          "to": "/",
+        },
+        "ref": null,
+        "rendered": "X",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
         "nodeType": "host",
         "props": Object {
+          "children": "Sign In",
+          "className": "form-header",
+        },
+        "ref": null,
+        "rendered": "Sign In",
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "aria-label": "Please Enter Your Email",
           "className": "email-input",
           "name": "email",
           "onChange": [Function],
+          "placeholder": "email",
           "type": "text",
           "value": "",
         },
@@ -73,9 +118,11 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
+          "aria-label": "Please Enter Your Password",
           "className": "password-input",
           "name": "password",
           "onChange": [Function],
+          "placeholder": "password",
           "type": "password",
           "value": "",
         },
@@ -88,6 +135,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "host",
         "props": Object {
+          "aria-label": "Sign in to your account",
           "children": "Login",
         },
         "ref": null,
@@ -116,11 +164,10 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "function",
+        "nodeType": "class",
         "props": Object {
-          "activeClassName": "active",
-          "aria-current": "page",
           "children": "Don't have an account?",
+          "replace": false,
           "to": "/signup",
         },
         "ref": null,
@@ -137,21 +184,39 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": Array [
+          <Link
+            className="exit-form"
+            replace={false}
+            to="/"
+>
+            X
+</Link>,
+          <h1
+            className="form-header"
+>
+            Sign In
+</h1>,
           <input
+            aria-label="Please Enter Your Email"
             className="email-input"
             name="email"
             onChange={[Function]}
+            placeholder="email"
             type="text"
             value=""
 />,
           <input
+            aria-label="Please Enter Your Password"
             className="password-input"
             name="password"
             onChange={[Function]}
+            placeholder="password"
             type="password"
             value=""
 />,
-          <button>
+          <button
+            aria-label="Sign in to your account"
+>
             Login
 </button>,
           <h3>
@@ -159,15 +224,14 @@ ShallowWrapper {
             
              
 </h3>,
-          <NavLink
-            activeClassName="active"
-            aria-current="page"
+          <Link
+            replace={false}
             to="/signup"
 >
             Don't have an account?
-</NavLink>,
+</Link>,
         ],
-        "className": "log-in-form",
+        "className": "form login-form",
         "onSubmit": [Function],
       },
       "ref": null,
@@ -175,11 +239,39 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "X",
+            "className": "exit-form",
+            "replace": false,
+            "to": "/",
+          },
+          "ref": null,
+          "rendered": "X",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
           "nodeType": "host",
           "props": Object {
+            "children": "Sign In",
+            "className": "form-header",
+          },
+          "ref": null,
+          "rendered": "Sign In",
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "aria-label": "Please Enter Your Email",
             "className": "email-input",
             "name": "email",
             "onChange": [Function],
+            "placeholder": "email",
             "type": "text",
             "value": "",
           },
@@ -192,9 +284,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
+            "aria-label": "Please Enter Your Password",
             "className": "password-input",
             "name": "password",
             "onChange": [Function],
+            "placeholder": "password",
             "type": "password",
             "value": "",
           },
@@ -207,6 +301,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
+            "aria-label": "Sign in to your account",
             "children": "Login",
           },
           "ref": null,
@@ -235,11 +330,10 @@ ShallowWrapper {
         Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {
-            "activeClassName": "active",
-            "aria-current": "page",
             "children": "Don't have an account?",
+            "replace": false,
             "to": "/signup",
           },
           "ref": null,

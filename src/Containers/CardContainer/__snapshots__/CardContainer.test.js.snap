@@ -55,7 +55,7 @@ ShallowWrapper {
           <button
                     onClick={[Function]}
           >
-                     **** 
+                    Favorite
           </button>
 </div>,
       ],
@@ -65,7 +65,7 @@ ShallowWrapper {
     "rendered": Array [
       Object {
         "instance": null,
-        "key": undefined,
+        "key": "[object Object]0",
         "nodeType": "host",
         "props": Object {
           "children": Array [
@@ -85,7 +85,7 @@ ShallowWrapper {
             <button
               onClick={[Function]}
 >
-               **** 
+              Favorite
 </button>,
           ],
           "className": "movie-card",
@@ -130,11 +130,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": " **** ",
+              "children": "Favorite",
               "onClick": [Function],
             },
             "ref": null,
-            "rendered": " **** ",
+            "rendered": "Favorite",
             "type": "button",
           },
         ],
@@ -169,7 +169,7 @@ ShallowWrapper {
             <button
                         onClick={[Function]}
             >
-                         **** 
+                        Favorite
             </button>
 </div>,
         ],
@@ -179,7 +179,7 @@ ShallowWrapper {
       "rendered": Array [
         Object {
           "instance": null,
-          "key": undefined,
+          "key": "[object Object]0",
           "nodeType": "host",
           "props": Object {
             "children": Array [
@@ -199,7 +199,7 @@ ShallowWrapper {
               <button
                 onClick={[Function]}
 >
-                 **** 
+                Favorite
 </button>,
             ],
             "className": "movie-card",
@@ -244,11 +244,11 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": " **** ",
+                "children": "Favorite",
                 "onClick": [Function],
               },
               "ref": null,
-              "rendered": " **** ",
+              "rendered": "Favorite",
               "type": "button",
             },
           ],
