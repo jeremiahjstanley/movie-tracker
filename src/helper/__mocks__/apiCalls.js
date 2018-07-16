@@ -1,2 +1,2 @@
-export const fetchMovieData = jest.fn()
+export const fetchMovieData = jest.fn();
 

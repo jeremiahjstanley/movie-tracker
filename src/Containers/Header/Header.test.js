@@ -15,7 +15,7 @@ describe('Header', () => {
   })
 
   it('should call logOut when logOut button is clicked', () => {
-    wrapper.find('.log-out').simulate('click')
-    expect(mockLogOut).toHaveBeenCalled()
+    wrapper.find('.log-out').simulate('click');
+    expect(mockLogOut).toHaveBeenCalled();
   })
 })

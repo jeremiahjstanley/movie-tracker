@@ -26,11 +26,11 @@ export class CardContainer extends Component {
       return (
         <div className='movie-card' key={movie + index}>
           <Link to={`/movies/${movie.title}`} >
-          <div 
-            className={movie.favorite ? 'favorite movie-image': 'movie-image'}
-            key={`${index} + ${movie.title}`}
-            style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path})`}}>
-          </div> 
+            <div 
+              className={movie.favorite ? 'favorite movie-image': 'movie-image'}
+              key={`${index} + ${movie.title}`}
+              style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path})`}}>
+            </div> 
           </Link>
           <button onClick={() => {this.props.checkFavorites(movie.id)}}>Favorite</button>
         </div> 
