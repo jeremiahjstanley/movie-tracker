@@ -1,0 +1,20 @@
+  
+.navigation-links {
+  display: inherit;
+  list-style: none;
+  margin-right: 2rem;
+  text-align: right;
+}
+
+.app-header a {
+  color: #F3F3F3;
+  font-weight: 300;
+  margin: .75rem;
+  text-decoration: none;
+}
+
+.logo {
+  height: 4rem;
+  margin-left: 4.5rem;
+  width: 12rem;
+}
