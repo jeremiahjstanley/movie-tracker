@@ -5,15 +5,31 @@
   width: 80%;
   background-repeat: no-repeat;
   background-position: top;
-  min-width: 30rem;
 }
 
 .detail-text {
-  color: #EEE;
-  font-family: Helvetica;
-  flex-direction: column;
-  justify-content: flex-end;
   display: flex;
-  height: 60rem;
-  background: linear-gradient(rgba(255, 255, 255, 0), #111 75%);
+  flex-direction: column;
+  color: #F3F3F3;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  height: 80vh;
+  background: linear-gradient(rgba(255, 255, 255, 0), #111 60%);
+  padding: 2rem;
+ justify-content: flex-end;
+
 }
+
+.detail-heading {
+  font-weight: 300;
+}
+
+.detail-overview {
+  font-weight: 300;
+  text-align: justify;
+}
+
+.favorite-button {
+  width: 100%; 
+  align-content: space-around;
+}
+
