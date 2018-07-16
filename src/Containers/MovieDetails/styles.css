@@ -1,19 +1,36 @@
 .detail-card {
-  background-size: contain;
-  margin: 1rem auto;
-  grid-column: 1;
-  width: 80%;
-  background-repeat: no-repeat;
   background-position: top;
-  min-width: 30rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  float: left;
+  margin: 1rem 3rem;
+  max-width: 30rem;
+  width: 50%;
 }
 
 .detail-text {
-  color: #EEE;
-  font-family: Helvetica;
-  flex-direction: column;
-  justify-content: flex-end;
+  background: linear-gradient(rgba(255, 255, 255, 0), #111 60%);
+  color: #F3F3F3;
   display: flex;
-  height: 60rem;
-  background: linear-gradient(rgba(255, 255, 255, 0), #111 75%);
+  flex-direction: column;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  height: 80vh;
+  padding: 2rem;
+ justify-content: flex-end;
+
 }
+
+.detail-heading {
+  font-weight: 300;
+}
+
+.detail-overview {
+  font-weight: 300;
+  text-align: justify;
+}
+
+.favorite-button {
+  align-content: space-around;
+  width: 100%; 
+}
+

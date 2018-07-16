@@ -1,10 +1,54 @@
-.sign-up-form {
-  background-color: rgb(255, 255, 255, .8);
-  width: 30rem;
+.form {
+  background-color: rgb(243, 243, 243, .8);
+  border: .25rem solid #B9090B;
   height: 30rem;
+  margin: auto;
+  width: 30rem;
   position: absolute;
   top: 5rem;
   left: 0;
   right: 0;
-  margin: auto;
 }
+
+.form-header { 
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  padding-left: 5rem;
+  text-align: left;
+}
+
+.exit-form {
+  border-radius: 20px;
+  border: 2px solid;
+  float: right;
+  margin: 1rem;
+  padding: .5rem .7rem;
+}
+
+input {
+  color: #BBBDBF;
+  display: block;
+  font-size: 1em;
+  font-weight: 200;
+  margin: 2rem auto;
+  padding: .5rem;
+  width: 60%;
+}
+
+input::placeholder {
+  padding-left: .25rem;
+}
+
+.form a {
+  color: #0080ff;
+  text-decoration: none;
+}
+
+.form button {
+  display: block;
+  font-size: 1.25em;
+  font-weight: 200;
+  margin: 2rem auto;
+  width: 60%; 
+}
+

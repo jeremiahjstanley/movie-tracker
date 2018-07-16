@@ -1,12 +1,17 @@
-.favorites {
-  border: 2px solid chartreuse;
+.favorite-card {
+  background-size: contain;
+  height: 30rem;
+  width: 20rem;
 }
 
-.favoritesContainer {
-  grid-column: 1;
+.favorites-container {
   display: flex;
-  justify-content: space-evenly;
-  max-width: 80%;
+  justify-content: space-around;
+  margin: 1rem 0;
+  max-width: 100%;
   overflow: scroll;
 }
 
+.favorites-container button {
+  width: 100%;
+}

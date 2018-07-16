@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { fetchMovieData } from '../../helper/apiCalls';
 import { apiKey } from '../../helper/apiKey';
 import { movieCleaner } from '../../helper/helper';
@@ -18,12 +19,12 @@ class CardContainer extends Component {
   moviesToDisplay = (movies) => {
     return movies.map((movie, index) => {
       this.props.favorites.forEach(favorite => {
-        if (favorite.movie_id === movie.id) {
+        if (favorite.movie_id === movie.id || favorite.id === movie.id) {
           movie.favorite = true;
         }
       });
       return (
-        <div className='movie-card'>
+        <div className='movie-card' key={movie + index}>
           <Link to={`/movies/${movie.title}`} >
           <div 
             className={movie.favorite ? 'favorite movie-image': 'movie-image'}
@@ -31,7 +32,7 @@ class CardContainer extends Component {
             style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path})`}}>
           </div> 
           </Link>
-          <button onClick={(event) => {this.props.checkFavorites(movie.id, event)}}> **** </button>
+          <button onClick={(event) => {this.props.checkFavorites(movie.id, event)}}>Favorite</button>
         </div> 
       );
     });
@@ -55,5 +56,10 @@ export const mapDispatchToProps = (dispatch) => ({
   addMovies: (movies) => dispatch(addMovies(movies))
 });
 
+CardContainer.propTypes = {
+  movies: PropTypes.array.isRequired,
+  favorites: PropTypes.array.isRequired,
+  addMovies: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);
