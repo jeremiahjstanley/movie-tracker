@@ -18,7 +18,7 @@ class CardContainer extends Component {
   moviesToDisplay = (movies) => {
     return movies.map((movie, index) => {
       this.props.favorites.forEach(favorite => {
-        if (favorite.movie_id === movie.id) {
+        if (favorite.movie_id === movie.id || favorite.id === movie.id) {
           movie.favorite = true;
         }
       });
