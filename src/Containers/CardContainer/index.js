@@ -17,6 +17,7 @@ export class CardContainer extends Component {
   }
 
   moviesToDisplay = (movies) => {
+    console.log(this.props)
     return movies.map((movie, index) => {
       this.props.favorites.forEach(favorite => {
         if (favorite.movie_id === movie.id || favorite.id === movie.id) {
@@ -32,7 +33,9 @@ export class CardContainer extends Component {
               style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/${movie.poster_path})`}}>
             </div> 
           </Link>
-          <button onClick={() => {this.props.checkFavorites(movie.id)}}>Favorite</button>
+          <button 
+            disabled={!this.props.favorites.length}
+            onClick={() => {this.props.checkFavorites(movie.id)}}>Favorite</button>
         </div> 
       );
     });
