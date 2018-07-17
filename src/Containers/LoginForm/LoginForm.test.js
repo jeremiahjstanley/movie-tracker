@@ -4,6 +4,9 @@ import { shallow, mount } from 'enzyme';
 import { BrowserRouter as Router }from 'react-router-dom';
 import { logIn, updateFavorites, getUserFavorites } from '../../actions';
 import { getFavoritesFromDatabase } from '../../helper/apiCalls'
+import localStorage from './localStorage';
+
+window.localStorage = localStorage;
 
 jest.mock('../../helper/apiCalls')
 
@@ -75,11 +78,11 @@ describe('Login Form tests', () => {
     expect(spy).toHaveBeenCalledWith(mockEvent);
   });
 
-  it.skip('should invoke storeUser with the correct arguments when the form is submitted', async () => {
-    await wrapper.instance().handleUpdate(mockResponse)
-    // this is where we need to mock local storage //
+  it('should invoke storeUser with the correct arguments when the form is submitted', async () => {
+    const mockStoreUser = jest.fn()
+    await wrapper.instance().storeUser('nick@msn.com', 'Nick', 2)
 
-    expect(mockLogInUser).toHaveBeenCalledWith('nick@msn.com', 'Nick', 2);
+    expect(localStorage.store).toEqual({ user: '{"email":"nick@msn.com","name":"Nick","id":2}' });
   });
 
   it('should invoke logInUser with the correct arguments when the form is submitted', async () => {
