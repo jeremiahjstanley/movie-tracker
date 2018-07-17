@@ -34,7 +34,7 @@ export class CardContainer extends Component {
             </div> 
           </Link>
           <button 
-            disabled={!this.props.favorites.length}
+            disabled={!this.props.user.email}
             onClick={() => {this.props.checkFavorites(movie.id)}}>Favorite</button>
         </div> 
       );
@@ -51,6 +51,7 @@ export class CardContainer extends Component {
 }
 
 export const mapStateToProps = (state) => ({
+  user: state.login,
   movies: state.movies,
   favorites: state.favorites
 });
