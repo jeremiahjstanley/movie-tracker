@@ -1,7 +1,8 @@
 import React from 'react';
-import { SignUpForm, mapStateToProps } from './index.js';
-import { shallow, mount } from 'enzyme';
+import { SignUpForm, mapStateToProps, mapDispatchToProps } from './index.js';
+import { shallow } from 'enzyme';
 import { createUser } from '../../helper/apiCalls';
+import { signUp } from '../../actions';
 
 jest.mock('../../helper/apiCalls');
 
@@ -75,10 +76,25 @@ describe('SignUp Form tests', () => {
     });
     const mockEvent = { preventDefault: jest.fn() };
 
-    wrapper.instance().handleSubmit(mockEvent);
-    wrapper.update();
-
+    await wrapper.instance().handleSubmit(mockEvent);
     expect(mockSubmitForm).toHaveBeenCalled();
+  });
+
+  it('should reset state to empty strings after form is submitted', async () => {
+    const mockSubmitForm = jest.fn();
+    const expected = {name: '', email: '', password: ''};
+    wrapper = shallow(<SignUpForm submitForm={mockSubmitForm} />);
+    wrapper.setState({
+      email: 'nick@msn.com',
+      name: 'nick',
+      password: 'unleashthecage'
+    });
+    const mockEvent = { preventDefault: jest.fn() };
+
+    await wrapper.instance().handleSubmit(mockEvent);
+    const results = wrapper.state();
+
+    expect(results).toEqual(expected);
   });
 
   describe('mapStateToProps', () => {
@@ -91,33 +107,15 @@ describe('SignUp Form tests', () => {
     });
   });
 
+  describe('mapDispatchToProps', () => {
+    it('calls dispatch when the form is submitted to log the user in', () => {
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const actionToDispatch = signUp('nickcage@aol.com', 'Nick', 1);
+      mappedProps.submitForm('nickcage@aol.com', 'Nick', 1);
 
-  it.skip('should invoke handleChange on change of the name field', () => {
-    const spy = spyOn(wrapper.instance(), 'handleChange');
-    wrapper.instance().forceUpdate();
-    const mockEvent = { target: { value: 'Nick Cage', name: 'name' } };
-    wrapper.find('.name-field').simulate('change', mockEvent);
-
-    expect(spy).toHaveBeenCalled();
-  });
-
-  it.skip('should invoke handleChange on change of the email field', () => {
-    const spy = spyOn(wrapper.instance(), 'handleChange');
-    wrapper.instance().forceUpdate();
-    const mockEvent = { target: { value: 'nickcage@aol.com' } };
-    wrapper.find('.email-input').simulate('change', mockEvent);
-
-    expect(spy).toHaveBeenCalled();
-  });
-
-  it.skip('should invoke handleChange on change of the password field', () => {
-    const spy = spyOn(wrapper.instance(), 'handleChange');
-    wrapper.instance().forceUpdate();
-    const mockEvent = { target: { value: 'password' } };
-    wrapper.find('.password-input').simulate('change', mockEvent);
-    wrapper.instance().forceUpdate();
-
-    expect(spy).toHaveBeenCalled();
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
   });
 
 });

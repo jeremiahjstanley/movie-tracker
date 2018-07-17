@@ -90,7 +90,7 @@ export const mapStateToProps = (state) => {
   };
 };
 
-export const mapStateToDispatch = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
   return {
     submitForm: (email, name, id) => dispatch(signUp(email, name, id))
   };
@@ -102,4 +102,4 @@ SignUpForm.propTypes = {
   submitForm: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapStateToDispatch)(SignUpForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);
