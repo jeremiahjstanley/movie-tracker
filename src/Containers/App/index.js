@@ -35,6 +35,7 @@ export class App extends Component {
     });
     if (!favorite) {
       const movie = this.findMovie(id);
+      console.log(movie)
       movie.favorite = true;
       this.addFavorite(movie);
     } else {
@@ -45,6 +46,7 @@ export class App extends Component {
   }
 
   findMovie = (id) => {
+    console.log(id)
     return this.props.movies.find(movie => movie.id === id || movie.movie_id === id);
   }
 
