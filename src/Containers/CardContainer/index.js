@@ -17,7 +17,6 @@ export class CardContainer extends Component {
   }
 
   moviesToDisplay = (movies) => {
-    console.log(this.props)
     return movies.map((movie, index) => {
       this.props.favorites.forEach(favorite => {
         if (favorite.movie_id === movie.id || favorite.id === movie.id) {
@@ -34,7 +33,7 @@ export class CardContainer extends Component {
             </div> 
           </Link>
           <button 
-            disabled={!this.props.user.email}
+            // disabled={!this.props.user.email}
             onClick={() => {this.props.checkFavorites(movie.id)}}>Favorite</button>
         </div> 
       );
