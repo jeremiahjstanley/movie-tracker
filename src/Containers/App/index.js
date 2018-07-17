@@ -71,6 +71,7 @@ export class App extends Component {
     this.props.logOutUser();
     localStorage.removeItem('user');
     this.props.history.push('/');
+    this.props.movies.forEach(movie => movie.favorite = false);
   }
 
   render() {
