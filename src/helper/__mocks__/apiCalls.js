@@ -9,3 +9,5 @@ export const getFavoritesFromDatabase = jest.fn().mockImplementation(() => ({
 export const createUser = jest.fn().mockImplementation(() => ({
   id: 2
 }));
+
+export const sendFavoriteToDatabase = jest.fn()
