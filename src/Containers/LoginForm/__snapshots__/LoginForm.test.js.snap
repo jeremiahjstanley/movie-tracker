@@ -4,7 +4,11 @@ exports[`Login Form tests should match the snapshot 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <LoginForm />,
+  Symbol(enzyme.__unrendered__): <LoginForm
+    getUserFavorites={[Function]}
+    history={Array []}
+    logInUser={[Function]}
+/>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -50,6 +54,7 @@ ShallowWrapper {
 />,
         <button
           aria-label="Sign in to your account"
+          className="login-button"
 >
           Login
 </button>,
@@ -137,6 +142,7 @@ ShallowWrapper {
         "props": Object {
           "aria-label": "Sign in to your account",
           "children": "Login",
+          "className": "login-button",
         },
         "ref": null,
         "rendered": "Login",
@@ -216,6 +222,7 @@ ShallowWrapper {
 />,
           <button
             aria-label="Sign in to your account"
+            className="login-button"
 >
             Login
 </button>,
@@ -303,6 +310,7 @@ ShallowWrapper {
           "props": Object {
             "aria-label": "Sign in to your account",
             "children": "Login",
+            "className": "login-button",
           },
           "ref": null,
           "rendered": "Login",
