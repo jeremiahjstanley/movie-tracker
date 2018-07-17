@@ -17,6 +17,7 @@ ShallowWrapper {
     }
     getUserFavorites={[Function]}
     history={Array []}
+    logInUser={[Function]}
     logOutUser={[Function]}
     movies={
         Array [

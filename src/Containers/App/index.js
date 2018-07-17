@@ -24,9 +24,11 @@ export class App extends Component {
     console.log(user)
     if (user) {
       const { email, name, id } = user;
+      console.log(this.props.logInUser)
       this.props.logInUser(email, name, id);
       const results = await getFavoritesFromDatabase(id);
       const favorites = results.data.map(favorite => ({...favorite, favorite: true}));
+      console.log(favorites)
       this.props.updateFavorites(favorites);
     } 
   }
