@@ -18,7 +18,7 @@ export class LoginForm extends Component {
 
   storeUser = (email, name, id) => {
     const user = { email, name, id };
-    localStorage.setItem('user', JSON.stringify(user));
+    // localStorage.setItem('user', JSON.stringify(user));
   }
 
   handleChange = (event) => {
@@ -79,7 +79,10 @@ export class LoginForm extends Component {
           value={ this.state.password }
           onChange={ this.handleChange }
         />
-        <button aria-label='Sign in to your account'>
+        <button 
+          className='login-button'
+          aria-label='Sign in to your account'
+        >
           Login
         </button>
         <h3> { this.state.errorMessage } </h3>
