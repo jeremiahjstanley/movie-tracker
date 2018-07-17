@@ -25,6 +25,11 @@ ShallowWrapper {
               "poster_path": "google.com",
               "title": "ConAir",
             },
+            Object {
+              "id": 8,
+              "poster_path": "bing.com",
+              "title": "FaceOff",
+            },
           ]
     }
     updateFavorites={[Function]}
