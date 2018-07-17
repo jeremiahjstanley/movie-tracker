@@ -28,7 +28,8 @@
       "!src/setupTests.js",
       "!src/helper/apiKey.js",
       "!src/registerServiceWorker.js",
-      "!src/reducers/index.js"
+      "!src/reducers/index.js",
+      "!src/Containers/LoginForm/localStorage.js"
     ]
   }
 }
