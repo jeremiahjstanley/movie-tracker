@@ -58,9 +58,7 @@ export class App extends Component {
   }
 
   removeFavorite = (movie) => {
-    console.log(this.props);
     const newFavorites = this.props.favorites.filter(favorite => favorite.id !== movie.id);
-    console.log('newFavorites', newFavorites);
     this.props.updateFavorites(newFavorites);
     deleteFavoriteFromDatabase(movie.movie_id || movie.id, this.props.users.id);
   }
