@@ -18,7 +18,7 @@ export class LoginForm extends Component {
 
   storeUser = (email, name, id) => {
     const user = { email, name, id };
-    // localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   handleChange = (event) => {
