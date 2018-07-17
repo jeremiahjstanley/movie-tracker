@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardContainer, mapDispatchToProps } from './index.js';
+import { CardContainer, mapStateToProps, mapDispatchToProps } from './index.js';
 import { shallow, mount } from 'enzyme';
 import { fetchMovieData } from '../../helper/apiCalls';
 import { movieCleaner } from '../../helper/helper';
@@ -12,13 +12,24 @@ describe('CardContainer', () => {
   let mockMovies;
   let mockFavorites;
   let mockCheckFavorites;
+  let mockAddMovies
+  let mockUser;
   let wrapper;
 
   beforeEach(() => {
     mockMovies = [{title:'ConAir', id:7, poster_path:'google.com'}];
     mockFavorites = [{title:'ConAir', movie_id:7}];
+    mockUser = {email: 'nick@cage.com', name: 'Nick', id: 2}
     mockCheckFavorites = jest.fn();
-    wrapper = shallow(<CardContainer movies={mockMovies} favorites={mockFavorites} checkFavorites={mockCheckFavorites} />, { disableLifecycleMethods: true });
+    mockAddMovies = jest.fn();
+    wrapper = shallow(
+      <CardContainer 
+        movies={mockMovies} 
+        favorites={mockFavorites} 
+        addMovies={mockAddMovies}
+        checkFavorites={mockCheckFavorites}
+        user={mockUser}
+        />);
   })
 
   it('should match the snapshot', () => {
@@ -41,10 +52,22 @@ describe('CardContainer', () => {
     expect(mockMovies[0].favorite).toBe(true);
   });
 
-  it.only('calls dispatch with an addMovies action on page load', async () => {
-    const mockAddMovies = jest.fn();
-    wrapper = await shallow(<CardContainer movies={mockMovies} favorites={mockFavorites} addMovies={mockAddMovies}/>);
-    await wrapper.update();
-    expect(mockAddMovies).toHaveBeenCalledTimes(1);
+  describe('mapStateToProps', () => {
+    it('should return an object with user object, movies array, and favorites array', () => {
+      const mockState = { login: {email: 'nick@cage.com', name: 'Nick', id: 2}, favorites: [{title: 'Con Air'}], movies: [{title: 'Con Air'}]};
+      const expected = {favorites: [{title: 'Con Air'}], movies: [{title: 'Con Air'}], user: {email: 'nick@cage.com', id: 2, name: 'Nick'}}
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('calls dispatch with an addMovies action on page load', async () => {
+      const mockAddMovies = jest.fn();
+      wrapper = await shallow(<CardContainer movies={mockMovies} favorites={mockFavorites} addMovies={mockAddMovies}/>);
+      await wrapper.update();
+      expect(mockAddMovies).toHaveBeenCalled();
+    });
   });
 });
