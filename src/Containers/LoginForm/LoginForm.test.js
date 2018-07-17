@@ -83,7 +83,7 @@ describe('Login Form tests', () => {
   });
 
   it('should invoke logInUser with the correct arguments when the form is submitted', async () => {
-    await wrapper.instance().handleUpdate(mockResponse)
+    await wrapper.instance().handleUpdate(mockResponse);
 
     expect(mockLogInUser).toHaveBeenCalledWith('nick@msn.com', 'Nick', 2);
   });
