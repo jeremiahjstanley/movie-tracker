@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from './index.js';
+import { Header, mapStateToProps } from './index.js';
 import { shallow } from 'enzyme';
 
 describe('Header', () => {
@@ -25,5 +25,15 @@ describe('Header', () => {
   it('should call logOut when logOut button is clicked', () => {
     wrapper.find('.log-out').simulate('click');
     expect(mockLogOut).toHaveBeenCalled();
+  });
+
+  describe('mapStateToProps', () => {
+    it('should return an object with user object and favorites array', () => {
+      const mockState = { login: { email: 'nickcage@aol.com', name: 'Nick Cage' },  favorites: []};
+      const expected = {favorites: [], users: {email: 'nickcage@aol.com', name: 'Nick Cage'}};
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    });
   });
 });

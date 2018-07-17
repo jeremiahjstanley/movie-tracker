@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { FavoritesContainer } from './';
+import { FavoritesContainer, mapStateToProps } from './index';
 
 
 describe('Favorites Container Test', () => {
@@ -38,6 +38,16 @@ describe('Favorites Container Test', () => {
     wrapper.find('button').simulate('click');
 
     expect(mockCheckFavorites).toHaveBeenCalledWith(5);
+  });
+
+  describe('mapStateToProps', () => {
+    it('should return an object with user object and favorites array', () => {
+      const mockState = { favorites: [{title: 'Con Air'}]};
+      const expected = {favorites: [{title: 'Con Air'}]}
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    });
   });
 
 });
