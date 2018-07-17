@@ -30,15 +30,17 @@ export class App extends Component {
   }
 
   checkFavorites = (id) => { 
+    if(!this.props.users.email) {
+      return this.props.history.push('/login');
+    }
     const favorite = this.props.favorites.find(favorite => {
       return favorite.movie_id === id || favorite.id === id; 
     });
+    const movie = this.findMovie(id);
     if (!favorite) {
-      const movie = this.findMovie(id);
       movie.favorite = true;
       this.addFavorite(movie);
     } else {
-      const movie = this.findMovie(id);
       movie.favorite = false;
       this.removeFavorite(favorite);
     }
@@ -49,12 +51,8 @@ export class App extends Component {
   }
 
   addFavorite = (movie) => {
-    if (this.props.users.email) {
-      this.props.addToFavorites({...movie, favorite: true});
-      sendFavoriteToDatabase(movie, this.props.users.id);
-    } else {
-      this.props.history.push('/login');
-    }
+    this.props.addToFavorites({...movie, favorite: true});
+    sendFavoriteToDatabase(movie, this.props.users.id);
   }
 
   removeFavorite = (movie) => {
