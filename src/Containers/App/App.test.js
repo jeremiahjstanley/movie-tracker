@@ -1,6 +1,7 @@
 import React from 'react';
-import { App } from '../App';
 import { shallow } from 'enzyme';
+import { logIn, logOut, addFavorite, updateFavorites, getUserFavorites } from '../../actions';
+import { App, mapStateToProps, mapDispatchToProps } from '../App';
 import { sendFavoriteToDatabase, deleteFavoriteFromDatabase } from '../../helper/apiCalls';
 
 jest.mock('../../helper/apiCalls');
@@ -13,6 +14,8 @@ describe('App tests', () => {
     let mockUpdateFavorites;
     let mockAddToFavorites;
     let mockHistory;
+    let mockGetUserFavorites;
+    let mockLogOutUser;
 
   beforeEach(() => {
     mockMovies = [{ title: 'ConAir', id: 7, poster_path: 'google.com' }];
@@ -21,6 +24,8 @@ describe('App tests', () => {
     mockUpdateFavorites = jest.fn()
     mockAddToFavorites = jest.fn()
     mockHistory = []
+    mockGetUserFavorites = jest.fn()
+    mockLogOutUser = jest.fn()
 
     wrapper = shallow(
       <App 
@@ -30,12 +35,14 @@ describe('App tests', () => {
         updateFavorites={mockUpdateFavorites}
         addToFavorites={mockAddToFavorites}
         history={mockHistory}
+        getUserFavorites={mockGetUserFavorites}
+        logOutUser={mockLogOutUser}
       />
     )
   })
 
   it('should match the snapshot', () => {
-
+    expect(wrapper).toMatchSnapshot();
   })
 
   it('should invoke getUser method on cage load', () => {
@@ -43,10 +50,6 @@ describe('App tests', () => {
     wrapper.instance()
 
     expect(spy).toHaveBeenCalled()
-  })
-
-  it('should set the user in local storage', () => {
-
   })
 
   it('should check to see if the user has favorites', () => {
@@ -107,35 +110,117 @@ describe('App tests', () => {
         updateFavorites={mockUpdateFavorites}
         addToFavorites={mockAddToFavorites}
         history={mockHistory}
-      />)
+      />);
     const expected = {favorite: true, id: 8, poster_path: 'bing.com', title: 'Face/Off'}
     
-    wrapper.instance().addFavorite(expected)
+    wrapper.instance().addFavorite(expected);
 
-    expect(mockHistory).toEqual(['/login'])
+    expect(mockHistory).toEqual(['/login']);
   })
 
   it('should remove a movie from the favorites array', () => {
     const expected = {favorite: true, id: 8, poster_path: 'bing.com', title: 'Face/Off'}
     
-    wrapper.instance().removeFavorite(expected)
+    wrapper.instance().removeFavorite(expected);
 
-    expect(mockUpdateFavorites).toHaveBeenCalledWith(expected)
+    expect(mockUpdateFavorites).toHaveBeenCalledWith(mockFavorites);
   })
 
   it('should deleted a unfavorited movie from the database', () => {
     const expected = {favorite: true, id: 8, poster_path: 'bing.com', title: 'Face/Off'}
     
-    wrapper.instance().addFavorite(expected)
+    wrapper.instance().addFavorite(expected);
 
     expect(deleteFavoriteFromDatabase).toHaveBeenCalledWith(expected.id, mockUser.id)
   })
-  // it.only('should invoke deleteFavorite if the id is found', () => {
-  //   
-  //   const wrapper = shallow(<App favorites={mockFavorites} movies={mockMovies} updateFavorites={jest.fn()} users={mockUser}/>, { disableLifecycleMethods: true });
 
-  //   const results = wrapper.instance().checkFavorites(7);
+  it('should call getUserFavorites with an empty array ', () => {
+    wrapper.instance().logOut();
 
-  //   expect(wrapper.instance().removeFavorite()).toHaveBeenCalled();
-  // });
+    expect(mockGetUserFavorites).toHaveBeenCalledWith([]);
+  })
+
+  it('should call logOutUser', () => {
+    wrapper.instance().logOut()
+
+    expect(mockLogOutUser).toHaveBeenCalled();
+  })
+
+  it('should redirect the user to the home screen', () => {
+    wrapper.instance().logOut()
+
+    expect(mockHistory).toEqual(['/']);
+  })
+
+  describe('mapStateToProps', () => {
+    it('should return an object with user object and favorites array', () => {
+      const mockState = { login: { email: 'nickcage@aol.com', name: 'Nick Cage', id: 1}, movies: [], favorites: []};
+      const expected = {favorites: [], movies: [], users: {email: 'nickcage@aol.com', id: 1, name: 'Nick Cage'}}
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('calls dispatch when the form is submitted to log the user in', () => { 
+      const mockGetUserFavorites = jest.fn();
+      const mockLogInUser = jest.fn();
+
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch)
+      const actionToDispatch = logIn('nickcage@aol.com', 'Nick', 1)
+      mappedProps.logInUser('nickcage@aol.com', 'Nick', 1)
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
+
+    it('calls dispatch when the user clicks the logOut link', () => { 
+      const mockGetUserFavorites = jest.fn();
+      const mockLogInUser = jest.fn();
+
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch)
+      const actionToDispatch = logOut()
+      mappedProps.logOutUser()
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
+
+    it('calls dispatch when adds a favorite', () => { 
+      const mockGetUserFavorites = jest.fn();
+      const mockLogInUser = jest.fn();
+
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch)
+      const actionToDispatch = addFavorite({title: 'Con Air'})
+      mappedProps.addToFavorites({title: 'Con Air'})
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
+
+    it('calls dispatch when the form is submitted to retrieve the users favorites', () => { 
+      const mockGetUserFavorites = jest.fn();
+      const mockLogInUser = jest.fn();
+
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch)
+      const actionToDispatch = updateFavorites(['Con Air'])
+      mappedProps.getUserFavorites(['Con Air'])
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
+
+    it('calls dispatch when a movie is favorited/unfavorited to update the favorites in the store', () => { 
+      const mockGetUserFavorites = jest.fn();
+      const mockLogInUser = jest.fn();
+
+      const mockDispatch = jest.fn();
+      const mappedProps = mapDispatchToProps(mockDispatch)
+      const actionToDispatch = updateFavorites(['Con Air'])
+      mappedProps.updateFavorites(['Con Air'])
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+    })
+  });
 });
