@@ -1,8 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { logIn, logOut, addFavorite, updateFavorites, getUserFavorites } from '../../actions';
 import { App, mapStateToProps, mapDispatchToProps } from '../App';
-import { sendFavoriteToDatabase, deleteFavoriteFromDatabase } from '../../helper/apiCalls';
+import { getFavoritiesFromDatabase, sendFavoriteToDatabase, deleteFavoriteFromDatabase } from '../../helper/apiCalls';
+import { BrowserRouter } from 'react-router-dom';
+// import localStorage from './localStorage';
+
+// window.localStorage = localStorage;
 
 jest.mock('../../helper/apiCalls');
 
@@ -18,7 +22,7 @@ describe('App tests', () => {
     let mockLogOutUser;
 
   beforeEach(() => {
-    mockMovies = [{ title: 'ConAir', id: 7, poster_path: 'google.com' }];
+    mockMovies = [{ title: 'ConAir', id: 7, poster_path: 'google.com' }, { title: 'FaceOff', id: 8, poster_path: 'bing.com' }];
     mockFavorites = [{ title: 'ConAir', movie_id: 7, id:7 }];
     mockUser = {email: 'nick@cage.com', name: 'Nick', id:2};
     mockUpdateFavorites = jest.fn()
@@ -28,6 +32,7 @@ describe('App tests', () => {
     mockLogOutUser = jest.fn()
 
     wrapper = shallow(
+      // <BrowserRouter>
       <App 
         favorites={mockFavorites}
         movies={mockMovies}
@@ -38,42 +43,47 @@ describe('App tests', () => {
         getUserFavorites={mockGetUserFavorites}
         logOutUser={mockLogOutUser}
       />
+      // </BrowserRouter>
     )
   })
 
   it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  })
+  });
 
-  it('should invoke getUser method on cage load', () => {
+  it('should invoke getUser method on page load', async () => {
     const spy = spyOn(wrapper.instance(), 'getUser');
-    wrapper.instance()
+    
+    wrapper.unmount()
+    // wrapper.shallow()
+    // wrapper.mount()
+    // wrapper.instance().getUser()
 
-    expect(spy).toHaveBeenCalled()
-  })
+    await expect(spy).toHaveBeenCalled()
+  });
 
-  it('should check to see if the user has favorites', () => {
-    wrapper.instance().checkFavorites(7)
+  it('should check to see if the user has favorites', async () => {
+    wrapper.instance().getUser(7)
 
     const spy = spyOn(wrapper.instance(), 'findMovie');
 
-    expect(spy).toHaveBeenCalledWith(7)
+    await expect(spy).toHaveBeenCalledWith(7)
   })
 
-  it('should check to see if the user has favorites', () => {
-    wrapper.instance().checkFavorites(7)
+  it.only('should add a movie to the users favorites', async () => {
+    wrapper.instance().checkFavorites(8)
 
     const spy = spyOn(wrapper.instance(), 'addFavorite');
     
-    expect(spy).toHaveBeenCalled()
+    await expect(spy).toHaveBeenCalled()
   })
 
-  it('should check to see if the user has favorites', () => {
+  it('should remove a movie from the users favorites', async () => {
     wrapper.instance().checkFavorites(7)
 
     const spy = spyOn(wrapper.instance(), 'removeFavorite');
     
-    expect(spy).toHaveBeenCalled()
+    await expect(spy).toHaveBeenCalled()
   })
 
   it('should find a movie', () => {
@@ -82,6 +92,14 @@ describe('App tests', () => {
     const expected = {id: 7, poster_path: 'google.com', title: 'ConAir'}
     
     expect(results).toEqual(expected)
+  })
+
+  it('should check for a favorite movie', () => {
+    const expected = {favorite: true, id: 9, poster_path: 'bing.com', title: 'Face/Off'}
+    
+    wrapper.instance().checkFavorites(9)
+
+    expect(mockAddToFavorites).toHaveBeenCalledWith(expected)
   })
 
   it('should add a movie to the favorites array', () => {
