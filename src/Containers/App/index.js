@@ -19,7 +19,9 @@ export class App extends Component {
   }
 
   getUser = async () => {
+    console.log('getUser: not called')
     const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user)
     if (user) {
       const { email, name, id } = user;
       this.props.logInUser(email, name, id);
@@ -30,27 +32,27 @@ export class App extends Component {
   }
 
   checkFavorites = (id) => { 
+    console.log('checkFavorites: not called')
     const favorite = this.props.favorites.find(favorite => {
       return favorite.movie_id === id || favorite.id === id; 
     });
+    const movie = this.findMovie(id);
     if (!favorite) {
-      const movie = this.findMovie(id);
-      console.log(movie)
       movie.favorite = true;
       this.addFavorite(movie);
     } else {
-      const movie = this.findMovie(id);
       movie.favorite = false;
       this.removeFavorite(favorite);
     }
   }
 
   findMovie = (id) => {
-    console.log(id)
+    console.log('findMovie: not called')
     return this.props.movies.find(movie => movie.id === id || movie.movie_id === id);
   }
 
   addFavorite = (movie) => {
+    console.log('addFavorite: not called')
     if (this.props.users.email) {
       this.props.addToFavorites({...movie, favorite: true});
       sendFavoriteToDatabase(movie, this.props.users.id);
