@@ -44,23 +44,13 @@ describe('App tests', () => {
         logOutUser={mockLogOutUser}
         logInUser={mockLogInUser}
         logIn={mockLogIn}
-      />
-    )
-  })
+      />,
+      { disableLifecycleMethods: true }
+    );
+  });
 
   it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
-  });
-
-  it.skip('should invoke getUser method on page load', async () => {
-    const spy = spyOn(wrapper.instance(), 'getUser');
-    
-    wrapper.unmount()
-    // wrapper.shallow()
-    // wrapper.mount()
-    // wrapper.instance().getUser()
-
-    await expect(spy).toHaveBeenCalled()
   });
 
   it.skip('should log in a user, if present in localStorage', async () => {
@@ -87,7 +77,7 @@ describe('App tests', () => {
     await expect(mockUpdateFavorites).toHaveBeenCalled()
   })
 
-  it.skip('should check to see if the user has favorites', () => {
+  test.skip('should check to see if the user has favorites', () => {
     wrapper.instance().checkFavorites(7)
 
     const spy = spyOn(wrapper.instance(), 'findMovie');
@@ -95,7 +85,7 @@ describe('App tests', () => {
     expect(spy).toHaveBeenCalledWith(7)
   })
 
-  it.skip('should add a movie to the users favorites', () => {
+  test.skip('should add a movie to the users favorites', () => {
     wrapper.instance().checkFavorites(8)
 
     const spy = spyOn(wrapper.instance(), 'addFavorite');
@@ -103,7 +93,7 @@ describe('App tests', () => {
     expect(spy).toHaveBeenCalled()
   })
 
-  it.skip('should remove a movie from the users favorites', () => {
+  test.skip('should remove a movie from the users favorites', () => {
     wrapper.instance().checkFavorites(7)
 
     const spy = spyOn(wrapper.instance(), 'removeFavorite');
@@ -119,7 +109,7 @@ describe('App tests', () => {
     expect(results).toEqual(expected)
   })
 
-  it('should check for a favorite movie', () => {
+  it('should favorite a movie', () => {
     const expected = {favorite: true, id: 9, poster_path: 'bing.com', title: 'Face/Off'}
     
     wrapper.instance().checkFavorites(8)
@@ -130,9 +120,9 @@ describe('App tests', () => {
   it('should add a movie to the favorites array', () => {
     const expected = {favorite: true, id: 8, poster_path: 'bing.com', title: 'Face/Off'}
     
-    wrapper.instance().addFavorite(expected)
+    wrapper.instance().addFavorite(expected);
 
-    expect(mockAddToFavorites).toHaveBeenCalledWith(expected)
+    expect(mockAddToFavorites).toHaveBeenCalledWith(expected);
   })
 
   it('should store the users favorites in the database', () => {
@@ -160,6 +150,14 @@ describe('App tests', () => {
     expect(mockHistory).toEqual(['/login']);
   })
 
+  it('should unfavorite a movie', () => {
+    const noFavorites = []
+
+    wrapper.instance().checkFavorites(7);
+
+    expect(mockUpdateFavorites).toHaveBeenCalledWith(noFavorites);
+  })
+
   it('should remove a movie from the favorites array', () => {
     const expected = {favorite: true, id: 8, poster_path: 'bing.com', title: 'Face/Off'}
     
@@ -171,7 +169,7 @@ describe('App tests', () => {
   it('should deleted a unfavorited movie from the database', () => {
     const expected = {favorite: true, id: 8, poster_path: 'bing.com', title: 'Face/Off'}
     
-    wrapper.instance().addFavorite(expected);
+    wrapper.instance().removeFavorite(expected);
 
     expect(deleteFavoriteFromDatabase).toHaveBeenCalledWith(expected.id, mockUser.id)
   })
