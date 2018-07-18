@@ -48,8 +48,46 @@ describe('CardContainer', () => {
     await expect(fetchMovieData).toHaveBeenCalled();
   });
 
-  it('should add a favorite prop of true if the movie is in the favorites array', () => {
+  it('should add a favorite prop of true if the movie is in the favorites array with an movie_id property', () => {
     expect(mockMovies[0].favorite).toBe(true);
+  });
+
+  it('should add a favorite prop of true if the movie is in the favorites array with an id property', () => {
+    mockFavorites = [{title:'ConAir', id:7}];
+
+    wrapper = shallow(
+      <CardContainer 
+        movies={mockMovies} 
+        favorites={mockFavorites} 
+        addMovies={mockAddMovies}
+        checkFavorites={mockCheckFavorites}
+        user={mockUser}
+        />);
+
+    expect(mockMovies[0].favorite).toBe(true);
+  });
+
+  it('should add a favorite class to the movie if it is in the favorites array', () => {
+    const expected = wrapper.find('.favorite').length
+
+    expect(expected).toBe(1);
+  });
+
+  it('should add a movie-image class to all movies in the container', () => {
+    mockMovies = [{title:'ConAir', id:7, poster_path:'google.com'}, {title:'National Treasure', id:8, poster_path:'bing.com'}];
+    
+    wrapper = shallow(
+      <CardContainer 
+        movies={mockMovies} 
+        favorites={mockFavorites} 
+        addMovies={mockAddMovies}
+        checkFavorites={mockCheckFavorites}
+        user={mockUser}
+        />);
+
+    const expected = wrapper.find('.movie-image').length
+
+    expect(expected).toBe(2);
   });
 
   describe('mapStateToProps', () => {
