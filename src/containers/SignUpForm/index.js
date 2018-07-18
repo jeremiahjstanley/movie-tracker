@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createUser } from '../../helper/apiCalls';
-import { signUp } from '../../actions';
+import { signUp, logIn } from '../../actions';
 import './styles.css';
 
 export class SignUpForm extends Component {
@@ -25,9 +25,12 @@ export class SignUpForm extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await createUser(this.state.name, this.state.email, this.state.password);
+    const { name, email, password} = this.state;
+    const response = await createUser(name, email, password);
     if (response) {
-      this.props.submitForm(this.state.name, this.state.email, response.id);
+      this.props.logInUser(name, email, response.id)
+      this.props.history.push('/')
+      this.props.submitForm(name, email, response.id);
       this.setState({
         email: '',
         name: '',
@@ -101,6 +104,7 @@ export const mapStateToProps = (state) => {
 
 export const mapDispatchToProps = (dispatch) => {
   return {
+    logInUser: (email, name, id) => dispatch(logIn(email, name, id)),
     submitForm: (email, name, id) => dispatch(signUp(email, name, id))
   };
 };
