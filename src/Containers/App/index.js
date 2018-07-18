@@ -19,14 +19,12 @@ export class App extends Component {
   }
 
   getUser = async () => {
-    console.log('getUser: not called')
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       const { email, name, id } = user;
       this.props.logInUser(email, name, id);
       const results = await getFavoritesFromDatabase(id);
       const favorites = results.data.map(favorite => ({...favorite, favorite: true}));
-      console.log(favorites)
       this.props.updateFavorites(favorites);
     } 
   }
@@ -49,7 +47,6 @@ export class App extends Component {
   }
 
   findMovie = (id) => {
-    console.log('findMovie: not called')
     return this.props.movies.find(movie => movie.id === id || movie.movie_id === id);
   }
 
