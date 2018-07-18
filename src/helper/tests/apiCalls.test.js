@@ -20,7 +20,7 @@ describe('API Calls', () => {
     });
   });
 
-  describe('FetchUserData', () => {
+  describe('fetchUser', () => {
     it('should fetch a user', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true, 
@@ -31,6 +31,30 @@ describe('API Calls', () => {
       const results = await fetchUser('tim@aol.com', 'password');
       const expected = { "results": { "email": "tim@aol.com", "id": 2, "password": "password" } };
       expect(results).toEqual(expected);
+    });
+
+    it('throws an error if the status is not ok', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.reject({
+        statusd: 500
+      }));
+
+      const result = await fetchUser('Nick@jaol.edu', 'number1cage');
+      const expected = undefined;
+
+      
+      expect(result).toEqual(expected); 
+    });
+
+    it('throws an error if the status is not ok', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.reject({
+        statusd: 500
+      }));
+
+      const result = await createUser('Nick', 'Nick@jaol.edu', 'number1cage');
+      const expected = undefined;
+
+      
+      expect(result).toEqual(expected); 
     });
   });
 

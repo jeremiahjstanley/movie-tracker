@@ -21,28 +21,30 @@ export const fetchUser = async (email, password) => {
     const results = await response.json();
     return await results;
   } catch (error) {
-    return;
+    Error(error);
   }
 };
 
 export const createUser = async (name, email, password) => {
   const url = 'http://localhost:3000/api/users/new';
-  const response = await fetch(url, {
-    method: 'POST',
-    body: JSON.stringify({
-      name,
-      email,
-      password
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-  const results = await response.json();
-  if (results.error) {
-    return;
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        name,
+        email,
+        password
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const results = await response.json();
+    return await results;
+  } catch (error) {
+    Error(error)
   }
-  return await results;
+
 };
 
 export const getFavoritesFromDatabase = async (userId) => {
