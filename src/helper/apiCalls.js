@@ -27,22 +27,20 @@ export const fetchUser = async (email, password) => {
 
 export const createUser = async (name, email, password) => {
   const url = 'http://localhost:3000/api/users/new';
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        name,
-        email,
-        password
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const results = await response.json();
-    return await results;
-  } catch (error) {
-    Error(error)
+  const response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify({
+      name,
+      email,
+      password
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  const results = await response.json();
+  if (results.error) {
+    throw Error('failure to create user');
   }
 };
 

@@ -43,7 +43,7 @@ describe('Favorites Container Test', () => {
   describe('mapStateToProps', () => {
     it('should return an object with user object and favorites array', () => {
       const mockState = { favorites: [{title: 'Con Air'}]};
-      const expected = {favorites: [{title: 'Con Air'}]}
+      const expected = {favorites: [{title: 'Con Air'}]};
       const mappedProps = mapStateToProps(mockState);
 
       expect(mappedProps).toEqual(expected);

@@ -1,1 +1,1 @@
-export const movieCleaner = jest.fn()
+export const movieCleaner = jest.fn();

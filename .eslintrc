@@ -44,7 +44,6 @@
         "allowSingleLine": true
       }
     ],
-    "camelcase": "warn",
     "comma-dangle": [
       "error",
       "never"
@@ -84,7 +83,7 @@
     ],
     "max-len": [
       "warn",
-      120
+      1020
     ],
     "no-duplicate-imports": "error",
     "id-length": "error",

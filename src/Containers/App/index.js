@@ -19,20 +19,18 @@ export class App extends Component {
   }
 
   getUser = async () => {
-    console.log('getUser: not called')
     const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       const { email, name, id } = user;
       this.props.logInUser(email, name, id);
       const results = await getFavoritesFromDatabase(id);
       const favorites = results.data.map(favorite => ({...favorite, favorite: true}));
-      console.log(favorites)
       this.props.updateFavorites(favorites);
     } 
   }
 
   checkFavorites = (id) => { 
-    if(!this.props.users.email) {
+    if (!this.props.users.email) {
       return this.props.history.push('/login');
     }
     const favorite = this.props.favorites.find(favorite => {
@@ -49,7 +47,6 @@ export class App extends Component {
   }
 
   findMovie = (id) => {
-    console.log('findMovie: not called')
     return this.props.movies.find(movie => movie.id === id || movie.movie_id === id);
   }
 
@@ -85,7 +82,7 @@ export class App extends Component {
 
         <Route exact path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
-      <Route path='/' render={() => <CardContainer checkFavorites={this.checkFavorites}/>} />
+        <Route path='/' render={() => <CardContainer checkFavorites={this.checkFavorites}/>} />
       </div>
     );
   }
@@ -113,7 +110,8 @@ App.propTypes = {
   updateFavorites: PropTypes.func.isRequired,
   movies: PropTypes.array.isRequired,
   users: PropTypes.object,
-  favorites: PropTypes.array.isRequired
+  favorites: PropTypes.array.isRequired,
+  history: PropTypes.object
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

@@ -1,4 +1,4 @@
-import { addFavorite, updateFavorites, getSavedFavorites, signUp, logIn, logOut, addMovies } from './';
+import { addFavorite, updateFavorites, signUp, logIn, logOut, addMovies } from './';
 
 describe('action tests', () => {
 
