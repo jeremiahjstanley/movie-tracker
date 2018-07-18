@@ -8,7 +8,7 @@ import FavoritesContainer from '../FavoritesContainer';
 import CardContainer from '../CardContainer';
 import LoginForm from '../LoginForm';
 import SignUpForm from '../SignUpForm';
-import MovieDetails from '../MovieDetails';
+import MovieDetails from '../../Components/MovieDetails';
 import Header from '../Header';
 import './styles.css';
 
