@@ -35,7 +35,7 @@ describe('API Calls', () => {
 
     it('throws an error if the status is not ok', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.reject({
-        statusd: 500
+        status: 500
       }));
 
       const result = await fetchUser('Nick@jaol.edu', 'number1cage');
@@ -47,7 +47,7 @@ describe('API Calls', () => {
 
     it('throws an error if the status is not ok', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.reject({
-        statusd: 500
+        status: 500
       }));
 
       const result = await createUser('Nick', 'Nick@jaol.edu', 'number1cage');
