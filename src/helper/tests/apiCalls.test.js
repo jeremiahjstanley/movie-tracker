@@ -34,6 +34,23 @@ describe('API Calls', () => {
     });
 
 
+    it('throws an error if the status is not ok', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.reject({
+        status: 500
+      }));
+
+      const result = await fetchUser('Nick@jaol.edu', 'number1cage');
+      const expected = undefined;
+
+      
+      expect(result).toEqual(expected); 
+    });
+
+    it('throws an error if the status is not ok', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.reject({
+        status: 500
+      }));
+
     it('should return an error message if the user fetch fails', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.reject(Error('failure to fetch user')))
 
