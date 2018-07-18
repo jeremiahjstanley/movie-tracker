@@ -31,10 +31,14 @@ export class SignUpForm extends Component {
       this.setState({
         email: '',
         name: '',
-        password: ''
+        password: '',
+        errorMessage: ''
       });
     } else {
-      this.setState({ errorMessage: 'Email address already in use. '})
+      this.setState({ 
+        email: '',
+        name: '',
+        errorMessage: 'Email address already in use.'})
     }
   }
 

@@ -18,11 +18,12 @@ describe('SignUp Form tests', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should have a default state of email, name and password, all empty strings', () => {
+  it('should have a default state of email, name, password, and errorMessage all empty strings', () => {
     const expected = {
       email: '',
       name: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     };
 
     expect(wrapper.state()).toEqual(expected);
@@ -82,7 +83,7 @@ describe('SignUp Form tests', () => {
 
   it('should reset state to empty strings after form is submitted', async () => {
     const mockSubmitForm = jest.fn();
-    const expected = {name: '', email: '', password: ''};
+    const expected = {name: '', email: '', password: '', errorMessage: ''};
     wrapper = shallow(<SignUpForm submitForm={mockSubmitForm} />);
     wrapper.setState({
       email: 'nick@msn.com',

@@ -47,6 +47,11 @@ describe('API Calls', () => {
 
       expect(results).toEqual(expected);
     });
+
+    it('should return an error when there is no response', () => {
+      window.fetch = jest.fn().mockImplementationOnce(() => Promise.reject())
+
+    })
   });
 
   describe('getFavoritesFromDatabase', () => {
