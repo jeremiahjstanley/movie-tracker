@@ -7,7 +7,7 @@ const initialState = [{
   release_date: "1992-09-18",
   tagline: "Martin just wanted a nice, quiet family vacation. Instead, he got... Captain Ron",
   title: "Captain Ron"
-}]
+}];
 
 
 export const moviesReducer = (state = initialState, action) => {
