@@ -18,3 +18,29 @@
   margin-left: 3rem;
   width: 12rem;
 }
+
+@media screen and (max-width: 600px) {
+
+  .cardContainer {
+    margin: 0 auto;
+  }
+
+  .navigation-links {
+    margin: inherit 0 inherit 0;
+    text-align: center;
+  }
+
+  ul { 
+    padding: 0;
+    margin-left: 1rem; 
+  }
+
+  li {
+    display: inline;
+  }
+
+  .logo {
+    margin-left: 0rem;
+  }
+
+}

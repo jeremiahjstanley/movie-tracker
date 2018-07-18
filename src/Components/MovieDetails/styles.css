@@ -16,7 +16,7 @@
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   height: 80vh;
   padding: 2rem;
- justify-content: flex-end;
+  justify-content: flex-end;
 
 }
 
@@ -34,3 +34,34 @@
   width: 100%; 
 }
 
+@media screen and (max-width: 1000px) {
+
+  .detail-card {
+    width: 40%;
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+
+  .detail-card {
+    margin: 0 auto;
+    float: none;
+    width: 100%;
+    max-width: 35rem;
+  }
+
+    .detail-overview {
+    font-size: 1rem;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+
+    .detail-overview {
+    font-size: .75rem;
+  }
+
+}

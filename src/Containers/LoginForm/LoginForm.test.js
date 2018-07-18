@@ -80,6 +80,15 @@ describe('Login Form tests', () => {
     expect(spy).toHaveBeenCalledWith(mockEvent);
   });
 
+  it.skip('should invoke handleUpdate when the form is submitted and fetch is successful', async() => {    
+    const spy = spyOn(wrapper.instance(), 'handleUpdate');
+    const mockEvent = { preventDefault: jest.fn() };
+    const submitButton = wrapper.find('.login-form');
+    submitButton.simulate('submit', mockEvent);
+
+    await expect(spy).toHaveBeenCalled();
+  });
+
   it('should invoke fetchUser with the correct params when handleSubmit is called', async () => {
     const mockEvent = { preventDefault: jest.fn() };
     await wrapper.instance().handleSubmit(mockEvent);
