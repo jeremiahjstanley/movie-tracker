@@ -21,3 +21,12 @@
 .movie-card button {
   width: 100%; 
 }
+
+@media screen and (max-width: 800px) {
+
+  .cardContainer {
+    justify-content: space-evenly;
+    margin: 0;
+  }
+
+}
