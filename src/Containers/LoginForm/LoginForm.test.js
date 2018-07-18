@@ -3,7 +3,7 @@ import { LoginForm, mapStateToProps, mapDispatchToProps } from './index.js';
 import { shallow, mount } from 'enzyme';
 import { BrowserRouter as Router }from 'react-router-dom';
 import { logIn, updateFavorites, getUserFavorites } from '../../actions';
-import { getFavoritesFromDatabase } from '../../helper/apiCalls'
+import { getFavoritesFromDatabase, fetchUser } from '../../helper/apiCalls'
 import localStorage from './localStorage';
 
 window.localStorage = localStorage;
@@ -64,7 +64,8 @@ describe('Login Form tests', () => {
     expect(spy).toHaveBeenCalledWith();
   });
 
-  it('should invoke handleSubmit when the form is submitted', () => {    const spy = spyOn(wrapper.instance(), 'handleSubmit')
+  it('should invoke handleSubmit when the form is submitted', () => {    
+    const spy = spyOn(wrapper.instance(), 'handleSubmit')
     wrapper.setState({
       email: 'nick@msn.com',
       password: 'unleashthecage',
@@ -77,6 +78,13 @@ describe('Login Form tests', () => {
 
     expect(spy).toHaveBeenCalledWith(mockEvent);
   });
+
+  it('should invoke fetchUser with the correct params when handleSubmit is called', async () => {
+    const mockEvent = { preventDefault: jest.fn() }
+    await wrapper.instance().handleSubmit(mockEvent)
+
+    expect(fetchUser).toHaveBeenCalled()
+  })
 
   it('should invoke storeUser with the correct arguments when the form is submitted', async () => {
     const mockStoreUser = jest.fn()

@@ -11,3 +11,5 @@ export const createUser = jest.fn().mockImplementation(() => ({
 }));
 
 export const sendFavoriteToDatabase = jest.fn()
+
+export const fetchUser = jest.fn()
