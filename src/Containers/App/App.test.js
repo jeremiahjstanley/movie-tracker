@@ -120,7 +120,7 @@ describe('App tests', () => {
 
   it('should add a movie to the favorites array', () => {
     const expected = {favorite: true, id: 8, poster_path: 'bing.com', title: 'Face/Off'};
-    
+
     wrapper.instance().addFavorite(expected);
 
     expect(mockAddToFavorites).toHaveBeenCalledWith(expected);
@@ -250,7 +250,6 @@ describe('App tests', () => {
       mappedProps.getUserFavorites(['Con Air']);
 
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-    })
     });
 
     it('calls dispatch when a movie is favorited/unfavorited to update the favorites in the store', () => { 
@@ -266,3 +265,10 @@ describe('App tests', () => {
     });
   });
 });
+
+
+
+
+
+
+

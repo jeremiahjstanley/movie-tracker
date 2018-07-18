@@ -41,7 +41,7 @@ ShallowWrapper {
 />,
         <input
           aria-label="Please Enter Your Email"
-          className="email-input"
+          className="email-field"
           name="email"
           onChange={[Function]}
           placeholder="email"
@@ -50,7 +50,7 @@ ShallowWrapper {
 />,
         <input
           aria-label="Please Enter Your Password"
-          className="password-input"
+          className="password-field"
           name="password"
           onChange={[Function]}
           placeholder="password"
@@ -128,7 +128,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "aria-label": "Please Enter Your Email",
-          "className": "email-input",
+          "className": "email-field",
           "name": "email",
           "onChange": [Function],
           "placeholder": "email",
@@ -145,7 +145,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "aria-label": "Please Enter Your Password",
-          "className": "password-input",
+          "className": "password-field",
           "name": "password",
           "onChange": [Function],
           "placeholder": "password",
@@ -233,7 +233,7 @@ ShallowWrapper {
 />,
           <input
             aria-label="Please Enter Your Email"
-            className="email-input"
+            className="email-field"
             name="email"
             onChange={[Function]}
             placeholder="email"
@@ -242,7 +242,7 @@ ShallowWrapper {
 />,
           <input
             aria-label="Please Enter Your Password"
-            className="password-input"
+            className="password-field"
             name="password"
             onChange={[Function]}
             placeholder="password"
@@ -320,7 +320,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "aria-label": "Please Enter Your Email",
-            "className": "email-input",
+            "className": "email-field",
             "name": "email",
             "onChange": [Function],
             "placeholder": "email",
@@ -337,7 +337,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "aria-label": "Please Enter Your Password",
-            "className": "password-input",
+            "className": "password-field",
             "name": "password",
             "onChange": [Function],
             "placeholder": "password",

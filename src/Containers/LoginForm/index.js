@@ -75,6 +75,7 @@ export class LoginForm extends Component {
           placeholder='password'
           type='password'
           name='password'
+          className='password-input'
           value={ this.state.password }
           onChange={ this.handleChange }
         />
@@ -113,8 +114,7 @@ LoginForm.propTypes = {
   name: PropTypes.string,
   favorites: PropTypes.array.isRequired,
   getUserFavorites: PropTypes.func.isRequired,
-  logInUser: PropTypes.func.isRequired,
-  history: PropTypes.object
+  logInUser: PropTypes.func.isRequired
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm));
