@@ -5,6 +5,7 @@
   justify-content: start;
   margin-left: 2rem;
   overflow: scroll;
+  padding-top: 3.5rem;
 }
 
 .movie-card {
