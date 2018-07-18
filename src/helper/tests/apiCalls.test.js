@@ -35,6 +35,7 @@ describe('API Calls', () => {
   });
 
   describe('createUser', () => {
+
     it('should create a new user', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,
@@ -49,12 +50,13 @@ describe('API Calls', () => {
     });
 
     it('should return an error when there is no response', () => {
-      window.fetch = jest.fn().mockImplementationOnce(() => Promise.reject())
+      window.fetch = jest.fn().mockImplementationOnce(() => Promise.reject());
 
-    })
+    });
   });
 
   describe('getFavoritesFromDatabase', () => {
+
     it('should fetch all your favorite Nicolas Cage movies', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,
@@ -70,6 +72,7 @@ describe('API Calls', () => {
   });
 
   describe('sendFavoriteToDatabase', () => {
+
     it('should send all your favorite Nicolas Cage movies and return new favorite id', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,
@@ -84,6 +87,7 @@ describe('API Calls', () => {
   });
 
   describe('deleteFavoriteFromDatabase', () => {
+
     it('should send all your favorite Nicolas Cage movies and return new favorite id', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,

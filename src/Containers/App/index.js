@@ -30,7 +30,7 @@ export class App extends Component {
   }
 
   checkFavorites = (id) => { 
-    if(!this.props.users.email) {
+    if (!this.props.users.email) {
       return this.props.history.push('/login');
     }
     const favorite = this.props.favorites.find(favorite => {
@@ -82,7 +82,7 @@ export class App extends Component {
 
         <Route exact path='/login' component={LoginForm}/>
         <Route path='/signup' component={SignUpForm}/>
-      <Route path='/' render={() => <CardContainer checkFavorites={this.checkFavorites}/>} />
+        <Route path='/' render={() => <CardContainer checkFavorites={this.checkFavorites}/>} />
       </div>
     );
   }
@@ -110,7 +110,8 @@ App.propTypes = {
   updateFavorites: PropTypes.func.isRequired,
   movies: PropTypes.array.isRequired,
   users: PropTypes.object,
-  favorites: PropTypes.array.isRequired
+  favorites: PropTypes.array.isRequired,
+  history: PropTypes.object
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

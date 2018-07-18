@@ -33,7 +33,7 @@ export class CardContainer extends Component {
             </div> 
           </Link>
           <button 
-            onClick={() => {this.props.checkFavorites(movie.id)}}>Favorite</button>
+            onClick={() => { this.props.checkFavorites(movie.id); }}>Favorite</button>
         </div> 
       );
     });
@@ -62,6 +62,7 @@ CardContainer.propTypes = {
   movies: PropTypes.array.isRequired,
   favorites: PropTypes.array.isRequired,
   addMovies: PropTypes.func.isRequired,
+  checkFavorites: PropTypes.func
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);
