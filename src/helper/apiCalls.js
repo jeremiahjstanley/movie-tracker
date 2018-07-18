@@ -21,7 +21,7 @@ export const fetchUser = async (email, password) => {
     const results = await response.json();
     return await results;
   } catch (error) {
-    return;
+      throw Error('failure to fetch user');
   }
 };
 
@@ -40,7 +40,7 @@ export const createUser = async (name, email, password) => {
   });
   const results = await response.json();
   if (results.error) {
-    return;
+    throw Error('failure to create user');
   }
   return await results;
 };
