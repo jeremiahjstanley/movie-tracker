@@ -11,6 +11,7 @@ export class Header extends Component {
     return (
       <header className='app-header'>
         <img src={logo} className='logo' alt='Cage Tracker Logo'/>
+        <p className='user-name'>{this.props.users.name ? `Hey! Welcome to Cage Tracker ${this.props.users.name}!!` : ''}</p>
         <ul className='navigation-links'>
           <li>
             <NavLink className='home-link' to='/'>
