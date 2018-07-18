@@ -24,3 +24,13 @@ button {
   padding: .5em;
 }
 
+@media screen and (max-width: 600px) {
+
+    .app-header {
+    background-color: #111;
+    display: block;
+    width: 100%;
+  }
+
+}
+

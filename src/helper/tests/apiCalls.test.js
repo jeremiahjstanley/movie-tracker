@@ -32,6 +32,13 @@ describe('API Calls', () => {
       const expected = { "results": { "email": "tim@aol.com", "id": 2, "password": "password" } };
       expect(results).toEqual(expected);
     });
+
+    it('should return an error message if the user fetch fails', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.reject(Error('failure to fetch user')))
+
+      await expect(fetchUser('nick@cage.com', 'caseyP0e')).rejects.toEqual(Error('failure to fetch user'))
+    });
+
   });
 
   describe('createUser', () => {
@@ -49,9 +56,11 @@ describe('API Calls', () => {
       expect(results).toEqual(expected);
     });
 
-    it('should return an error when there is no response', () => {
-      window.fetch = jest.fn().mockImplementationOnce(() => Promise.reject());
 
+    it('should return an error if the create user fetch fails', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.reject(Error('failure to create user')))
+
+      await expect(createUser('Nicolas', 'nick@cage.com', 'caseyP0e')).rejects.toEqual(Error('failure to create user'))
     });
   });
 

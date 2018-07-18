@@ -12,4 +12,7 @@ export const createUser = jest.fn().mockImplementation(() => ({
 
 export const sendFavoriteToDatabase = jest.fn();
 
-export const fetchUser = jest.fn();
+export const fetchUser = jest.fn().mockImplementation(() => ({
+  data: {email: 'nick@cage.com', id: 2}
+}));
+
