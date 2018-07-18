@@ -40,7 +40,8 @@ export const mapStateToProps = (state) => ({
 
 Header.propTypes = {
   users: PropTypes.object,
-  favorites: PropTypes.array.isRequired
+  favorites: PropTypes.array.isRequired,
+  logOut: PropTypes.func
 };
 
 
