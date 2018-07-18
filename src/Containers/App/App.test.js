@@ -251,6 +251,7 @@ describe('App tests', () => {
 
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     })
+    });
 
     it('calls dispatch when a movie is favorited/unfavorited to update the favorites in the store', () => { 
       const mockGetUserFavorites = jest.fn();

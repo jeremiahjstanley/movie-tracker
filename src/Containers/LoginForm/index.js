@@ -31,7 +31,7 @@ export class LoginForm extends Component {
     const response = await fetchUser(this.state.email.toLowerCase(), this.state.password);
     if (response) {
       this.handleUpdate(response);
-    } else {
+    } else if (!response) {
       this.setState({
         email: '',
         password: '',
@@ -75,7 +75,6 @@ export class LoginForm extends Component {
           placeholder='password'
           type='password'
           name='password'
-          className='password-input'
           value={ this.state.password }
           onChange={ this.handleChange }
         />
@@ -114,7 +113,8 @@ LoginForm.propTypes = {
   name: PropTypes.string,
   favorites: PropTypes.array.isRequired,
   getUserFavorites: PropTypes.func.isRequired,
-  logInUser: PropTypes.func.isRequired
+  logInUser: PropTypes.func.isRequired,
+  history: PropTypes.object
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm));

@@ -34,11 +34,12 @@ export class SignUpForm extends Component {
         password: '',
         errorMessage: ''
       });
-    } else {
+    }
+    if (response.error) {
       this.setState({ 
         email: '',
         name: '',
-        errorMessage: 'Email address already in use.'})
+        errorMessage: 'Email address already in use.'});
     }
   }
 
@@ -67,7 +68,6 @@ export class SignUpForm extends Component {
           placeholder='email'
           type='email'
           name='email'
-          className='email-input'
           value={this.state.email}
           onChange={this.handleChange}
         />
@@ -77,7 +77,6 @@ export class SignUpForm extends Component {
           placeholder='password'
           type='password'
           name='password'
-          className='password-input'
           value={this.state.password}
           onChange={this.handleChange}
         />
@@ -109,7 +108,7 @@ export const mapDispatchToProps = (dispatch) => {
 SignUpForm.propTypes = {
   email: PropTypes.string,
   name: PropTypes.string,
-  submitForm: PropTypes.func.isRequired,
+  submitForm: PropTypes.func
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);

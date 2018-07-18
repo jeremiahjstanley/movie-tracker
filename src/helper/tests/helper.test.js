@@ -1,7 +1,7 @@
 import { movieCleaner } from '../helper.js';
 
-
 describe('Helper Tests', () => {
+
   it('should return an array of movies', () => {
     const mockFetchResults = {results: [
       {
@@ -42,8 +42,26 @@ describe('Helper Tests', () => {
         "overview": "Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth.",
         "release_date": "1999-03-30"
       }]};
-      const result = movieCleaner(mockFetchResults);
-    const expected = [{ "backdrop_path": "/umC04Cozevu8nn3JTDJ1pc7PVTn.jpg", "id": 245891, "overview": "Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him.", "poster_path": "/5vHssUeVe25bMrof1HyaPyWgaP.jpg", "release_date": "2014-10-22", "tagline": undefined, "title": "John Wick", "vote_average": 7 }, { "backdrop_path": "/7u3pxc0K1wx32IleAkLv78MKgrw.jpg", "id": 603, "overview": "Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth.", "poster_path": "/hEpWvX6Bp79eLxY1kX5ZZJcme5U.jpg", "release_date": "1999-03-30", "tagline": undefined, "title": "The Matrix", "vote_average": 8 }]
-      expect(result).toEqual(expected);
+    const result = movieCleaner(mockFetchResults);
+    const expected = [
+      { "backdrop_path": "/umC04Cozevu8nn3JTDJ1pc7PVTn.jpg", 
+        "id": 245891, 
+        "overview": "Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him.", 
+        "poster_path": "/5vHssUeVe25bMrof1HyaPyWgaP.jpg", 
+        "release_date": "2014-10-22", 
+        "tagline": undefined, 
+        "title": 
+        "John Wick", 
+        "vote_average": 7 }, 
+      { "backdrop_path": "/7u3pxc0K1wx32IleAkLv78MKgrw.jpg", 
+        "id": 603, 
+        "overview": "Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth.", 
+        "poster_path": "/hEpWvX6Bp79eLxY1kX5ZZJcme5U.jpg", 
+        "release_date": "1999-03-30", 
+        "tagline": undefined, 
+        "title": "The Matrix", 
+        "vote_average": 8 }];
+
+    expect(result).toEqual(expected);
   });
 });
