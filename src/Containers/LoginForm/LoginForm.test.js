@@ -1,21 +1,21 @@
 import React from 'react';
 import { LoginForm, mapStateToProps, mapDispatchToProps } from './index.js';
 import { shallow, mount } from 'enzyme';
-import { BrowserRouter as Router }from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { logIn, updateFavorites, getUserFavorites } from '../../actions';
-import { getFavoritesFromDatabase, fetchUser } from '../../helper/apiCalls'
+import { getFavoritesFromDatabase, fetchUser } from '../../helper/apiCalls';
 import localStorage from './localStorage';
 
 window.localStorage = localStorage;
 
-jest.mock('../../helper/apiCalls')
+jest.mock('../../helper/apiCalls');
 
 describe('Login Form tests', () => {
   let wrapper;
   let mockGetUserFavorites;
   let mockLogInUser;
   let mockHistory;
-  let mockResponse
+  let mockResponse;
 
   beforeEach(() => {
 
@@ -26,21 +26,22 @@ describe('Login Form tests', () => {
       data: {
         name: 'Nick',
         email: 'nick@msn.com',
-        id: 2,
-    }}
+        id: 2
+      }};
     wrapper = shallow(
       <LoginForm 
         getUserFavorites={mockGetUserFavorites}
         logInUser={mockLogInUser} 
         history={mockHistory}/>
-      );
+    );
   });
 
   it('should match the snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should have a default state of email, password and error message, all empty strings', () => {    const expected = {
+  it('should have a default state of email, password and error message, all empty strings', () => {    
+    const expected = {
       email: '',
       password: '',
       errorMessage: ''
@@ -65,31 +66,39 @@ describe('Login Form tests', () => {
   });
 
   it('should invoke handleSubmit when the form is submitted', () => {    
-    const spy = spyOn(wrapper.instance(), 'handleSubmit')
+    const spy = spyOn(wrapper.instance(), 'handleSubmit');
     wrapper.setState({
       email: 'nick@msn.com',
-      password: 'unleashthecage',
-    })
+      password: 'unleashthecage'
+    });
 
-    const mockEvent = { preventDefault: jest.fn() }
+    const mockEvent = { preventDefault: jest.fn() };
 
-    const submitButton = wrapper.find('.login-form')
-    submitButton.simulate('submit', mockEvent)
+    const submitButton = wrapper.find('.login-form');
+    submitButton.simulate('submit', mockEvent);
 
     expect(spy).toHaveBeenCalledWith(mockEvent);
   });
 
-  it('should invoke fetchUser with the correct params when handleSubmit is called', async () => {
-    const mockEvent = { preventDefault: jest.fn() }
-    await wrapper.instance().handleSubmit(mockEvent)
+  it.skip('should invoke handleUpdate when the form is submitted and fetch is successful', async() => {    
+    const spy = spyOn(wrapper.instance(), 'handleUpdate');
+    const mockEvent = { preventDefault: jest.fn() };
+    const submitButton = wrapper.find('.login-form');
+    submitButton.simulate('submit', mockEvent);
 
-    expect(fetchUser).toHaveBeenCalled()
-  })
+    await expect(spy).toHaveBeenCalled();
+  });
+
+  it('should invoke fetchUser with the correct params when handleSubmit is called', async () => {
+    const mockEvent = { preventDefault: jest.fn() };
+    await wrapper.instance().handleSubmit(mockEvent);
+
+    expect(fetchUser).toHaveBeenCalled();
+  });
 
 
   it('should invoke storeUser with the correct arguments when the form is submitted', async () => {
-    const mockStoreUser = jest.fn()
-    await wrapper.instance().storeUser('nick@msn.com', 'Nick', 2)
+    await wrapper.instance().storeUser('nick@msn.com', 'Nick', 2);
 
     expect(localStorage.store).toEqual({ user: '{"email":"nick@msn.com","name":"Nick","id":2}' });
   });
@@ -101,27 +110,27 @@ describe('Login Form tests', () => {
   });
 
   it('should fetch the users favorites from the database when the form is submitted', async () => {
-    await wrapper.instance().handleUpdate(mockResponse)
+    await wrapper.instance().handleUpdate(mockResponse);
 
     expect(getFavoritesFromDatabase).toHaveBeenCalledWith(2);
   });
 
   it('should invoke getUserFavorites when the form is submitted', async () => {
-    await wrapper.instance().handleUpdate(mockResponse)
+    await wrapper.instance().handleUpdate(mockResponse);
 
     expect(mockGetUserFavorites).toHaveBeenCalled();
   });
 
   it('should invoke apply a favorite property to the favorite movies returned from the database when the form is submitted', async () => {
-    const mockArray = [{favorite: true, title: "Con Air"}, {favorite: true, title: "Face/Off"}, {favorite: true, title: "Captain Ron"}]
+    const mockArray = [{favorite: true, title: "Con Air"}, {favorite: true, title: "Face/Off"}, {favorite: true, title: "Captain Ron"}];
 
-    await wrapper.instance().handleUpdate(mockResponse)
+    await wrapper.instance().handleUpdate(mockResponse);
 
     expect(mockGetUserFavorites).toHaveBeenCalledWith(mockArray);
   });
 
   it('should redirect the user when the form is submitted', async () => {
-    await wrapper.instance().handleUpdate(mockResponse)
+    await wrapper.instance().handleUpdate(mockResponse);
 
     expect(mockHistory).toEqual(['/']);
   });
@@ -142,24 +151,24 @@ describe('Login Form tests', () => {
       const mockLogInUser = jest.fn();
 
       const mockDispatch = jest.fn();
-      const mappedProps = mapDispatchToProps(mockDispatch)
-      const actionToDispatch = logIn('nickcage@aol.com', 'Nick', 1)
-      mappedProps.logInUser('nickcage@aol.com', 'Nick', 1)
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const actionToDispatch = logIn('nickcage@aol.com', 'Nick', 1);
+      mappedProps.logInUser('nickcage@aol.com', 'Nick', 1);
 
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
-    })
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
 
     it('calls dispatch when the form is submitted to retrieve the users favorites', () => { 
       const mockGetUserFavorites = jest.fn();
       const mockLogInUser = jest.fn();
 
       const mockDispatch = jest.fn();
-      const mappedProps = mapDispatchToProps(mockDispatch)
-      const actionToDispatch = updateFavorites(['Con Air'])
-      mappedProps.getUserFavorites(['Con Air'])
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      const actionToDispatch = updateFavorites(['Con Air']);
+      mappedProps.getUserFavorites(['Con Air']);
 
-      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
-    })
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
   });
 
 });

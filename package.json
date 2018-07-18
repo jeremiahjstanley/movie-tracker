@@ -11,12 +11,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "eslint": "./node_modules/eslint/bin/eslint.js ./src/**/*.js"
   },
   "devDependencies": {
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-15": "^1.0.6",
     "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^5.1.0",
     "jest-localstorage-mock": "^2.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",

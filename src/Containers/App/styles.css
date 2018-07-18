@@ -6,9 +6,9 @@
 .app-header {
   background-color: #111;
   display: flex;
-  height: 3rem;
+  width: 100%;
   justify-content: space-between;
-  position: sticky;
+  position: fixed;
 }
 
 .favorite {
@@ -22,5 +22,15 @@ button {
   font-size: 1em;
   font-weight: 100;
   padding: .5em;
+}
+
+@media screen and (max-width: 600px) {
+
+    .app-header {
+    background-color: #111;
+    display: block;
+    width: 100%;
+  }
+
 }
 

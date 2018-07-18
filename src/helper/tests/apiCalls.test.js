@@ -33,6 +33,7 @@ describe('API Calls', () => {
       expect(results).toEqual(expected);
     });
 
+
     it('throws an error if the status is not ok', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.reject({
         status: 500
@@ -50,15 +51,15 @@ describe('API Calls', () => {
         status: 500
       }));
 
-      const result = await createUser('Nick', 'Nick@jaol.edu', 'number1cage');
-      const expected = undefined;
+    it('should return an error message if the user fetch fails', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.reject(Error('failure to fetch user')))
 
-      
-      expect(result).toEqual(expected); 
+      await expect(fetchUser('nick@cage.com', 'caseyP0e')).rejects.toEqual(Error('failure to fetch user'))
     });
   });
 
   describe('createUser', () => {
+
     it('should create a new user', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,
@@ -72,13 +73,16 @@ describe('API Calls', () => {
       expect(results).toEqual(expected);
     });
 
-    it('should return an error when there is no response', () => {
-      window.fetch = jest.fn().mockImplementationOnce(() => Promise.reject())
 
-    })
+    it('should return an error if the create user fetch fails', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.reject(Error('failure to create user')))
+
+      await expect(createUser('Nicolas', 'nick@cage.com', 'caseyP0e')).rejects.toEqual(Error('failure to create user'))
+    });
   });
 
   describe('getFavoritesFromDatabase', () => {
+
     it('should fetch all your favorite Nicolas Cage movies', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,
@@ -94,6 +98,7 @@ describe('API Calls', () => {
   });
 
   describe('sendFavoriteToDatabase', () => {
+
     it('should send all your favorite Nicolas Cage movies and return new favorite id', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,
@@ -108,6 +113,7 @@ describe('API Calls', () => {
   });
 
   describe('deleteFavoriteFromDatabase', () => {
+
     it('should send all your favorite Nicolas Cage movies and return new favorite id', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,

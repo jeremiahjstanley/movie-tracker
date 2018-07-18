@@ -8,7 +8,7 @@ describe('Header', () => {
 
   beforeEach(() => {
     mockLogOut = jest.fn();
-    wrapper = shallow(<Header users={{ id: 7 }} favorites={['Happy birthday Casey Poe']} logOut={ mockLogOut } />)
+    wrapper = shallow(<Header users={{ id: 7 }} favorites={['Happy birthday Casey Poe']} logOut={ mockLogOut } />);
   });
 
   it('should match the snapshot when there is a user', () => {

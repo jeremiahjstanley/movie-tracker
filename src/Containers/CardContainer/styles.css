@@ -5,6 +5,7 @@
   justify-content: start;
   margin-left: 2rem;
   overflow: scroll;
+  padding-top: 3.5rem;
 }
 
 .movie-card {
@@ -19,4 +20,13 @@
 
 .movie-card button {
   width: 100%; 
+}
+
+@media screen and (max-width: 800px) {
+
+  .cardContainer {
+    justify-content: space-evenly;
+    margin: 0;
+  }
+
 }

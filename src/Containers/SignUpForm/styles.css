@@ -52,3 +52,18 @@ input::placeholder {
   width: 60%; 
 }
 
+@media screen and (max-width: 600px) {
+
+  .form {
+    height: 20rem;
+    top: 7rem;
+    width: 100%;
+  }
+
+  input {
+    margin: .5rem auto;
+    padding: .5rem;
+    width: 90%;
+  }
+
+}
