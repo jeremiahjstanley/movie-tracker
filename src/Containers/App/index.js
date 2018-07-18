@@ -21,18 +21,20 @@ export class App extends Component {
   getUser = async () => {
     console.log('getUser: not called')
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user)
     if (user) {
       const { email, name, id } = user;
       this.props.logInUser(email, name, id);
       const results = await getFavoritesFromDatabase(id);
       const favorites = results.data.map(favorite => ({...favorite, favorite: true}));
+      console.log(favorites)
       this.props.updateFavorites(favorites);
     } 
   }
 
   checkFavorites = (id) => { 
-    console.log('checkFavorites: not called')
+    if(!this.props.users.email) {
+      return this.props.history.push('/login');
+    }
     const favorite = this.props.favorites.find(favorite => {
       return favorite.movie_id === id || favorite.id === id; 
     });
@@ -52,13 +54,8 @@ export class App extends Component {
   }
 
   addFavorite = (movie) => {
-    console.log('addFavorite: not called')
-    if (this.props.users.email) {
-      this.props.addToFavorites({...movie, favorite: true});
-      sendFavoriteToDatabase(movie, this.props.users.id);
-    } else {
-      this.props.history.push('/login');
-    }
+    this.props.addToFavorites({...movie, favorite: true});
+    sendFavoriteToDatabase(movie, this.props.users.id);
   }
 
   removeFavorite = (movie) => {
