@@ -13,7 +13,8 @@ export class SignUpForm extends Component {
     this.state = {
       email: '',
       name: '',
-      password: ''
+      password: '',
+      errorMessage: ''
     };
   }
 
@@ -25,12 +26,16 @@ export class SignUpForm extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const response = await createUser(this.state.name, this.state.email, this.state.password);
-    this.props.submitForm(this.state.name, this.state.email, response.id);
-    this.setState({
-      email: '',
-      name: '',
-      password: ''
-    });
+    if (response) {
+      this.props.submitForm(this.state.name, this.state.email, response.id);
+      this.setState({
+        email: '',
+        name: '',
+        password: ''
+      });
+    } else {
+      this.setState({ errorMessage: 'Email address already in use. '})
+    }
   }
 
   render() {
@@ -75,6 +80,7 @@ export class SignUpForm extends Component {
         <button aria-label='Sign up for account'>
           Sign Up!
         </button>
+        <h3> { this.state.errorMessage } </h3>
         <Link to='/login'>
             Have an exisiting account? Login here.
         </Link>
