@@ -1,9 +1,8 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import { logIn, logOut, addFavorite, updateFavorites, getUserFavorites } from '../../actions';
+import { shallow } from 'enzyme';
+import { logIn, logOut, addFavorite, updateFavorites } from '../../actions';
 import { App, mapStateToProps, mapDispatchToProps } from '../App';
 import { getFavoritesFromDatabase, sendFavoriteToDatabase, deleteFavoriteFromDatabase } from '../../helper/apiCalls';
-import { BrowserRouter } from 'react-router-dom';
 
 jest.mock('../../helper/apiCalls');
 
@@ -21,7 +20,9 @@ describe('App tests', () => {
   let mockLogIn;
 
   beforeEach(() => {
-    mockMovies = [{ title: 'ConAir', id: 7, poster_path: 'google.com' }, { title: 'FaceOff', id: 8, poster_path: 'bing.com' }];
+    mockMovies = [
+      { title: 'ConAir', id: 7, poster_path: 'google.com' }, 
+      { title: 'FaceOff', id: 8, poster_path: 'bing.com' }];
     mockFavorites = [{ title: 'ConAir', movie_id: 7, id:7 }];
     mockUser = {email: 'nick@cage.com', name: 'Nick', id:2};
     mockUpdateFavorites = jest.fn();
@@ -249,6 +250,7 @@ describe('App tests', () => {
       mappedProps.getUserFavorites(['Con Air']);
 
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    })
     });
 
     it('calls dispatch when a movie is favorited/unfavorited to update the favorites in the store', () => { 
