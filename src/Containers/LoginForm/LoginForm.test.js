@@ -96,6 +96,14 @@ describe('Login Form tests', () => {
     expect(fetchUser).toHaveBeenCalled();
   });
 
+  // it('handleUpdate is called with the correct params', async () => {
+  //   // const mockEvent = { preventDefault: jest.fn() }
+  //   const mockResponse = { data: { email: 'nick@msn.com', name: 'Nick', id: 2, password: 'password' } }
+  //   await wrapper.instance().handleUpdate(mockResponse)
+
+  //   expect(handleUpdate).toHaveBeenCalled()
+  // })
+
   it('should invoke storeUser with the correct arguments when the form is submitted', async () => {
     await wrapper.instance().storeUser('nick@msn.com', 'Nick', 2);
 

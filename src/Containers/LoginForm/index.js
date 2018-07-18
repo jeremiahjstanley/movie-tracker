@@ -31,7 +31,7 @@ export class LoginForm extends Component {
     const response = await fetchUser(this.state.email.toLowerCase(), this.state.password);
     if (response) {
       this.handleUpdate(response);
-    } else {
+    } else if (!response) {
       this.setState({
         email: '',
         password: '',

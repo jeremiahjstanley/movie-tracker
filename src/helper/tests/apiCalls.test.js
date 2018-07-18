@@ -20,7 +20,7 @@ describe('API Calls', () => {
     });
   });
 
-  describe('FetchUserData', () => {
+  describe('fetchUser', () => {
     it('should fetch a user', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true, 
@@ -33,12 +33,12 @@ describe('API Calls', () => {
       expect(results).toEqual(expected);
     });
 
+
     it('should return an error message if the user fetch fails', async () => {
       window.fetch = jest.fn().mockImplementation(() => Promise.reject(Error('failure to fetch user')))
 
       await expect(fetchUser('nick@cage.com', 'caseyP0e')).rejects.toEqual(Error('failure to fetch user'))
     });
-
   });
 
   describe('createUser', () => {
