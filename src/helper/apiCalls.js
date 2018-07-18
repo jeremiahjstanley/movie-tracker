@@ -17,7 +17,7 @@ export const fetchUser = async (email, password) => {
       headers: {
         'Content-Type': 'application/json'
       }
-    });
+    });                                                     
     const results = await response.json();
     return await results;
   } catch (error) {
@@ -44,7 +44,6 @@ export const createUser = async (name, email, password) => {
   } catch (error) {
     Error(error)
   }
-
 };
 
 export const getFavoritesFromDatabase = async (userId) => {

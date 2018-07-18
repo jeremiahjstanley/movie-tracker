@@ -34,7 +34,8 @@ export class SignUpForm extends Component {
         password: '',
         errorMessage: ''
       });
-    } else {
+    }
+    if (response.error) {
       this.setState({ 
         email: '',
         name: '',
