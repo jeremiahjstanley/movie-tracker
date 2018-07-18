@@ -62,6 +62,11 @@ ShallowWrapper {
 >
           Sign Up!
 </button>,
+        <h3>
+           
+          
+           
+</h3>,
         <Link
           replace={false}
           to="/login"
@@ -166,6 +171,25 @@ ShallowWrapper {
       Object {
         "instance": null,
         "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            " ",
+            "",
+            " ",
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          " ",
+          "",
+          " ",
+        ],
+        "type": "h3",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
         "nodeType": "class",
         "props": Object {
           "children": "Have an exisiting account? Login here.",
@@ -230,6 +254,11 @@ ShallowWrapper {
 >
             Sign Up!
 </button>,
+          <h3>
+             
+            
+             
+</h3>,
           <Link
             replace={false}
             to="/login"
@@ -330,6 +359,25 @@ ShallowWrapper {
           "ref": null,
           "rendered": "Sign Up!",
           "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              " ",
+              "",
+              " ",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            " ",
+            "",
+            " ",
+          ],
+          "type": "h3",
         },
         Object {
           "instance": null,

@@ -40,7 +40,7 @@ export const createUser = async (name, email, password) => {
   });
   const results = await response.json();
   if (results.error) {
-    alert(results.error);
+    return;
   }
   return await results;
 };
